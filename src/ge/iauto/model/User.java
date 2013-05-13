@@ -1,5 +1,8 @@
 package ge.iauto.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class User {
 	private String username;
 	
@@ -10,10 +13,10 @@ public class User {
 	private String lastName;
 	
 	private String email;
-	
+//if user is Male, this fild is "true", otherwise "false"	
 	private boolean sex;
 	
-	private int birthday;
+	private String birthday;
 
 	public String getUsername() {
 		return username;
@@ -63,11 +66,11 @@ public class User {
 		this.sex = sex;
 	}
 
-	public int getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(int birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 }

@@ -31,7 +31,7 @@ public class ServletListener implements ServletContextListener {
      * @see ServletContextListener#contextDestroyed(ServletContextEvent)
      */
     public void contextDestroyed(ServletContextEvent arg0) {
-    //    PersistenceProvider.createEM().close();
+        PersistenceProvider.closeEM();
     }
 	
 }

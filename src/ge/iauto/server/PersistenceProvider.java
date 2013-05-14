@@ -10,8 +10,15 @@ public class PersistenceProvider {
 
 	public synchronized static EntityManager createEM() {
 		if (EMF == null) {
-			EMF = Persistence.createEntityManagerFactory("persistance");
+			EMF = Persistence.createEntityManagerFactory("IAUTO");
 		}
 		return EMF.createEntityManager();
+	}
+	
+	public synchronized static void closeEM(){
+		if(EMF != null){
+			EMF.close();
+			EMF = null;
+		}
 	}
 }

@@ -168,10 +168,10 @@ div.centerStyle {
 			<td>
 				<div class="hovermenu">
 					<ul>
-						<li><a href="http://localhost:8080/iauto/home-page.jsp">მთავარი</a></li>
-						<li><a href="http://localhost:8080/iauto/my_page.jsp">ჩემი გვერდი</a></li>
-						<li><a href="http://localhost:8080/iauto/log_in.jsp">შესვლა</a></li>
-						<li><a href="http://localhost:8080/iauto/user-register.jsp">რეგისტრაცია</a></li>
+						<li><a href="home-page.jsp">მთავარი</a></li>
+						<li><a href="my-page.jsp">ჩემი გვერდი</a></li>
+						<li><a href="log-in.jsp">შესვლა</a></li>
+						<li><a href="user-register.jsp">რეგისტრაცია</a></li>
 					</ul>
 				</div>
 			</td>

@@ -198,7 +198,7 @@ div.centerStyle {
 						მომხმარებელი: 
 					</td>
 					<td class="reg_class_value">					
-						<input type="text" size="20" maxlength="10" name="username">
+						<input type="text" size="20" name="username">
 					</td>
 				</tr>
 				<tr>
@@ -206,7 +206,7 @@ div.centerStyle {
 						პაროლი: 
 					</td>
 					<td class="reg_class_value">					
-						<input type="password" size="20" maxlength="10" name="password">
+						<input type="password" size="20" name="password">
 					</td>
 				</tr>
 			</table><br>

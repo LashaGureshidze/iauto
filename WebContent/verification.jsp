@@ -193,7 +193,7 @@ div.centerStyle {
 		<p>თქვენ მიერ მითითებულ ელექტრონულ ფოსტაზე გამოგეგზავნათ დამადასტურებელი კოდი.<br>
 		გთხოვთ, შეიყვანოთ აღნიშნული კოდი ქვემოთ მოცემულ ტექსტურ ველში.</p>
 			<form method="post" action="VerifyCode">
-				<input type="text" size="20" maxlength="10" name="code">
+				<input type="text" size="20" name="code">
 				<input type="submit" value="დადასტურება"/>
 			</form>
 	</div>

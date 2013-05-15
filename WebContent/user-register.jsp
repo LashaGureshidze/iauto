@@ -204,7 +204,7 @@ table.id {
 				მომხმარებელი (username)<font color="red">*</font>: 
 			</td>
 			<td class="reg_class_value">					
-				<input type="text" size="20" maxlength="10" name="username">
+				<input type="text" size="20" name="username">
 			</td>
 		</tr>
 		
@@ -213,7 +213,7 @@ table.id {
 				პაროლი<font color="red">*</font>: 
 			</td>
 			<td class="reg_class_value">					
-				<input type="password" size="20" maxlength="10" name="password">
+				<input type="password" size="20" name="password">
 			</td>
 		</tr>
 		
@@ -222,7 +222,7 @@ table.id {
 				გაიმეორეთ პაროლი<font color="red">*</font>: 
 			</td>
 			<td class="reg_class_value">					
-				<input type="password" size="20" maxlength="10" name="rpassword">
+				<input type="password" size="20" name="rpassword">
 			</td>
 		</tr>
 		
@@ -231,7 +231,7 @@ table.id {
 				სახელი: 
 			</td>
 			<td class="reg_class_value">					
-				<input type="text" size="20" maxlength="10" name="name">
+				<input type="text" size="20" name="name">
 			</td>
 		</tr>
 		
@@ -240,7 +240,7 @@ table.id {
 				გვარი: 
 			</td>
 			<td class="reg_class_value">					
-				<input type="text" size="20" maxlength="10" name="lastname">
+				<input type="text" size="20" name="lastname">
 			</td>
 		</tr>
 		
@@ -249,7 +249,7 @@ table.id {
 				ელ-ფოსტა<font color="red">*</font>: 
 			</td>
 			<td class="reg_class_value">					
-				<input type="text" size="20" maxlength="10" name="email">
+				<input type="text" size="20" name="email">
 			</td>
 		</tr>
 		
@@ -258,7 +258,7 @@ table.id {
 				სქესი<font color="red">*</font>: 
 			</td>
 			<td class="reg_class_value">					
-				<input type="radio" name="sex" value="male">მამრობითი<br>
+				<input type="radio" name="sex" value="male" checked="checked">მამრობითი<br>
 				<input type="radio" name="sex" value="female">მდედრობითი
 			</td>
 		</tr>

@@ -33,9 +33,8 @@
 	color: rgb(255, 216, 100);
 }
 </style>
-</head>
-<body>
-	<style type="text/css">
+
+<style type="text/css">
 #axali_dzebna {
 	width: 814px;
 	background: url(http://myauto.ge/images/maxo.png);
@@ -152,6 +151,9 @@
 	border: 1px solid transparent;
 }
 </style>
+
+</head>
+<body>
 	<table>
 		<tr>
 			<td>

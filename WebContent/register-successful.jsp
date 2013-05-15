@@ -6,6 +6,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>www.IAuto.ge - რეგისტრაცია</title>
 
+<style>
+div.centerStyle {
+    width:600px;
+    height:100px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin:-100px 0 0 -300px;
+}
+</style>
+
 <style type="text/css">
 .hovermenu ul {
 	font: bold 18px calibri;
@@ -32,7 +43,7 @@
 }
 </style>
 
-	<style type="text/css">
+<style type="text/css">
 #axali_dzebna {
 	width: 814px;
 	background: url(http://myauto.ge/images/maxo.png);
@@ -150,17 +161,6 @@
 }
 </style>
 
-<style>
-div.centerStyle {
-    width:600px;
-    height:100px;
-    position:absolute;
-    left:50%;
-    top:50%;
-    margin:-100px 0 0 -300px;
-}
-</style>
-
 </head>
 <body>
 	<table>
@@ -190,8 +190,7 @@ div.centerStyle {
 </head>
 <body>
 	<div class="centerStyle" align="center">
-		<p>თქვენ მიერ მითითებულ ელექტრონულ ფოსტაზე გამოგეგზავნათ დამადასტურებელი კოდი.<br>
-		გთხოვთ, შეიყვანოთ აღნიშნული კოდი ქვემოთ მოცემულ ტექსტურ ველში.</p>
+		<p>თქვენ წარმატებით გაიარეთ რეგისტრაცია. გთხოვთ შეხვიდეთ სისტემაში.</p>
 			<form method="post" action="VerifyCode">
 				<input type="text" size="20" maxlength="10" name="code">
 				<input type="submit" value="დადასტურება"/>

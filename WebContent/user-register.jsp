@@ -6,6 +6,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>www.IAuto.ge - რეგისტრაცია</title>
 
+<style>
+input.regStyle {
+    position:absolute;
+    left:280px;
+    top:360px;
+}
+</style>
+
+<style>
+table.id {
+    width:50%;
+    position:absolute;
+    left:80px;
+    top:100px;
+}
+</style>
+
 <style type="text/css">
 .hovermenu ul {
 	font: bold 18px calibri;
@@ -32,7 +49,7 @@
 }
 </style>
 
-	<style type="text/css">
+<style type="text/css">
 #axali_dzebna {
 	width: 814px;
 	background: url(http://myauto.ge/images/maxo.png);
@@ -150,19 +167,9 @@
 }
 </style>
 
-<style>
-div.centerStyle {
-    width:600px;
-    height:100px;
-    position:absolute;
-    left:50%;
-    top:50%;
-    margin:-100px 0 0 -300px;
-}
-</style>
-
 </head>
 <body>
+	
 	<table>
 		<tr>
 			<td>
@@ -187,15 +194,90 @@ div.centerStyle {
 			</td>
 		</tr>
 	</table>
+
 </head>
 <body>
-	<div class="centerStyle" align="center">
-		<p>თქვენ მიერ მითითებულ ელექტრონულ ფოსტაზე გამოგეგზავნათ დამადასტურებელი კოდი.<br>
-		გთხოვთ, შეიყვანოთ აღნიშნული კოდი ქვემოთ მოცემულ ტექსტურ ველში.</p>
-			<form method="post" action="VerifyCode">
-				<input type="text" size="20" maxlength="10" name="code">
-				<input type="submit" value="დადასტურება"/>
-			</form>
-	</div>
+	<form action="Verification" method="post">
+	<table class="id" border="0" width="50%">
+		<tr>
+			<td class="reg_class_label">
+				მომხმარებელი (username)<font color="red">*</font>: 
+			</td>
+			<td class="reg_class_value">					
+				<input type="text" size="20" maxlength="10" name="username">
+			</td>
+		</tr>
+		
+		<tr>
+			<td class="reg_class_label">
+				პაროლი<font color="red">*</font>: 
+			</td>
+			<td class="reg_class_value">					
+				<input type="password" size="20" maxlength="10" name="password">
+			</td>
+		</tr>
+		
+		<tr>
+			<td class="reg_class_label">
+				გაიმეორეთ პაროლი<font color="red">*</font>: 
+			</td>
+			<td class="reg_class_value">					
+				<input type="password" size="20" maxlength="10" name="rpassword">
+			</td>
+		</tr>
+		
+		<tr>
+			<td class="reg_class_label">
+				სახელი: 
+			</td>
+			<td class="reg_class_value">					
+				<input type="text" size="20" maxlength="10" name="name">
+			</td>
+		</tr>
+		
+		<tr>
+			<td class="reg_class_label">
+				გვარი: 
+			</td>
+			<td class="reg_class_value">					
+				<input type="text" size="20" maxlength="10" name="lastname">
+			</td>
+		</tr>
+		
+		<tr>
+			<td class="reg_class_label">
+				ელ-ფოსტა<font color="red">*</font>: 
+			</td>
+			<td class="reg_class_value">					
+				<input type="text" size="20" maxlength="10" name="email">
+			</td>
+		</tr>
+		
+		<tr>
+			<td class="reg_class_label">
+				სქესი<font color="red">*</font>: 
+			</td>
+			<td class="reg_class_value">					
+				<input type="radio" name="sex" value="male">მამრობითი<br>
+				<input type="radio" name="sex" value="female">მდედრობითი
+			</td>
+		</tr>
+		
+		<tr>
+			<td class="reg_class_label">
+				დაბადების წელი<font color="red">*</font>:
+			</td>
+			<td class="reg_class_value">					
+				<select name="birthday">
+				<%
+					for (int i = 1913; i < 2004; i++)
+						out.println("<option value='" + i + "'>" + i + "</option>");
+				%>
+			</select>
+			</td>
+		</tr>
+	</table><br>
+	<input class="regStyle" type="submit" value="რეგისტრაცია"/>
+	</form>
 </body>
 </html>

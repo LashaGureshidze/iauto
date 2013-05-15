@@ -32,7 +32,7 @@
 }
 </style>
 
-	<style type="text/css">
+<style type="text/css">
 #axali_dzebna {
 	width: 814px;
 	background: url(http://myauto.ge/images/maxo.png);
@@ -152,12 +152,12 @@
 
 <style>
 div.centerStyle {
-    width:600px;
+    width:550px;
     height:100px;
     position:absolute;
     left:50%;
     top:50%;
-    margin:-100px 0 0 -300px;
+    margin:-100px 0 0 -275px;
 }
 </style>
 
@@ -190,8 +190,7 @@ div.centerStyle {
 </head>
 <body>
 	<div class="centerStyle" align="center">
-		<p>თქვენ მიერ მითითებულ ელექტრონულ ფოსტაზე გამოგეგზავნათ დამადასტურებელი კოდი.<br>
-		გთხოვთ, შეიყვანოთ აღნიშნული კოდი ქვემოთ მოცემულ ტექსტურ ველში.</p>
+		<p>თქვენ მიერ მითითებული დამადასტურებელი კოდი არ არის სწორი! გთხოვთ, შეიყვანოთ თავიდან.</p>
 			<form method="post" action="VerifyCode">
 				<input type="text" size="20" maxlength="10" name="code">
 				<input type="submit" value="დადასტურება"/>

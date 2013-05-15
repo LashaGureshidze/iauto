@@ -159,10 +159,10 @@
 			<td>
 				<div class="hovermenu">
 					<ul>
-						<li><a href="http://localhost:8080/myProject/home_page.jsp">მთავარი</a></li>
-						<li><a href="http://localhost:8080/myProject/my_page.jsp">ჩემი გვერდი</a></li>
-						<li><a href="http://localhost:8080/myProject/log_in.jsp">შესვლა</a></li>
-						<li><a href="http://localhost:8080/myProject/register.jsp">რეგისტრაცია</a></li>
+						<li><a href="home-page.jsp">მთავარი</a></li>
+						<li><a href="my-page.jsp">ჩემი გვერდი</a></li>
+						<li><a href="log-in.jsp">შესვლა</a></li>
+						<li><a href="register.jsp">რეგისტრაცია</a></li>
 					</ul>
 				</div>
 			</td>

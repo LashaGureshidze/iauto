@@ -168,10 +168,10 @@ div.centerStyle {
 			<td>
 				<div class="hovermenu">
 					<ul>
-						<li><a href="home-page.jsp">მთავარი</a></li>
-						<li><a href="my-page.jsp">ჩემი გვერდი</a></li>
-						<li><a href="log-in.jsp">შესვლა</a></li>
-						<li><a href="user-register.jsp">რეგისტრაცია</a></li>
+						<li><a href="http://localhost:8080/iauto/home-page.jsp">მთავარი</a></li>
+						<li><a href="http://localhost:8080/iauto/my_page.jsp">ჩემი გვერდი</a></li>
+						<li><a href="http://localhost:8080/iauto/log_in.jsp">შესვლა</a></li>
+						<li><a href="http://localhost:8080/iauto/user-register.jsp">რეგისტრაცია</a></li>
 					</ul>
 				</div>
 			</td>
@@ -191,10 +191,27 @@ div.centerStyle {
 <body>
 	<div class="centerStyle" align="center">
 		<p>თქვენ წარმატებით გაიარეთ რეგისტრაცია. გთხოვთ შეხვიდეთ სისტემაში.</p>
-			<form method="post" action="VerifyCode">
-				<input type="text" size="20" maxlength="10" name="code">
-				<input type="submit" value="დადასტურება"/>
-			</form>
+		<form method="post" action="LoginServlet">
+			<table border="0" width="50%">
+				<tr>
+					<td class="reg_class_label">
+						მომხმარებელი: 
+					</td>
+					<td class="reg_class_value">					
+						<input type="text" size="20" maxlength="10" name="username">
+					</td>
+				</tr>
+				<tr>
+					<td class="reg_class_label">
+						პაროლი: 
+					</td>
+					<td class="reg_class_value">					
+						<input type="password" size="20" maxlength="10" name="password">
+					</td>
+				</tr>
+			</table><br>
+			<input type="submit" value="სისტემაში შესვლა" />
+		</form>
 	</div>
 </body>
 </html>

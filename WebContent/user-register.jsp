@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,8 +10,8 @@
 <style>
 input.regStyle {
     position:absolute;
+    top:380px;
     left:280px;
-    top:360px;
 }
 </style>
 
@@ -169,7 +170,6 @@ table.id {
 
 </head>
 <body>
-	
 	<table>
 		<tr>
 			<td>
@@ -194,17 +194,26 @@ table.id {
 			</td>
 		</tr>
 	</table>
-
 </head>
 <body>
 	<form action="Verification" method="post">
 	<table class="id" border="0" width="50%">
+		<%
+			@SuppressWarnings("unchecked")
+			List<String> error = (List<String>)request.getAttribute("errorList");
+				if (error != null) {
+					for (int i = 0; i < error.size(); i++) {
+						out.println("<tr><td class='reg_class_label'>" +
+								"<font color='red'>" + error.get(i) + "</font></td></tr>");
+					}
+				}
+		%>
 		<tr>
 			<td class="reg_class_label">
 				მომხმარებელი (username)<font color="red">*</font>: 
 			</td>
 			<td class="reg_class_value">					
-				<input type="text" size="20" name="username">
+				<input type="text" size="20" name="username" <% if (error != null) out.println("value='" + request.getParameter("username") + "'"); %> >
 			</td>
 		</tr>
 		
@@ -231,7 +240,7 @@ table.id {
 				სახელი: 
 			</td>
 			<td class="reg_class_value">					
-				<input type="text" size="20" name="name">
+				<input type="text" size="20" name="name" <% if (error != null) out.println("value='" + request.getParameter("name") + "'"); %> >
 			</td>
 		</tr>
 		
@@ -240,7 +249,7 @@ table.id {
 				გვარი: 
 			</td>
 			<td class="reg_class_value">					
-				<input type="text" size="20" name="lastname">
+				<input type="text" size="20" name="lastname" <% if (error != null) out.println("value='" + request.getParameter("lastname") + "'"); %> >
 			</td>
 		</tr>
 		
@@ -249,7 +258,7 @@ table.id {
 				ელ-ფოსტა<font color="red">*</font>: 
 			</td>
 			<td class="reg_class_value">					
-				<input type="text" size="20" name="email">
+				<input type="text" size="20" name="email" <% if (error != null) out.println("value='" + request.getParameter("email") + "'"); %> >
 			</td>
 		</tr>
 		
@@ -258,8 +267,8 @@ table.id {
 				სქესი<font color="red">*</font>: 
 			</td>
 			<td class="reg_class_value">					
-				<input type="radio" name="sex" value="male" checked="checked">მამრობითი<br>
-				<input type="radio" name="sex" value="female">მდედრობითი
+				<input type="radio" name="sex" value="male" checked='checked' >მამრობითი<br>
+				<input type="radio" name="sex" value="female" <% if (error != null && request.getParameter("sex").equals("female")) out.println("checked='checked'"); %> >მდედრობითი
 			</td>
 		</tr>
 		
@@ -268,7 +277,7 @@ table.id {
 				დაბადების წელი<font color="red">*</font>:
 			</td>
 			<td class="reg_class_value">					
-				<select name="birthday">
+				<select name="birthday" >
 				<%
 					for (int i = 1913; i < 2004; i++)
 						out.println("<option value='" + i + "'>" + i + "</option>");

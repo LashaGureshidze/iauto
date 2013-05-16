@@ -20,7 +20,8 @@ public class User {
 	private String lastName;
 	
 	private String email;
-//if user is Male, this fild is "true", otherwise "false"	
+	
+	//if user is Male, this fild is "true", otherwise "false"	
 	private boolean sex;
 	
 	private String birthday;
@@ -65,7 +66,7 @@ public class User {
 		this.email = email;
 	}
 
-	public boolean isSex() {
+	public boolean isMale() {
 		return sex;
 	}
 

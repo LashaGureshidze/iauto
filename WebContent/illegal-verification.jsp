@@ -191,7 +191,7 @@ div.centerStyle {
 <body>
 	<div class="centerStyle" align="center">
 		<p>თქვენ მიერ მითითებული დამადასტურებელი კოდი არ არის სწორი! გთხოვთ, შეიყვანოთ თავიდან.</p>
-			<form method="post" action="VerifyCode">
+			<form method="post" action="Register">
 				<input type="text" size="20" name="code">
 				<input type="submit" value="დადასტურება"/>
 			</form>

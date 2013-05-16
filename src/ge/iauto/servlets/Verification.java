@@ -47,7 +47,7 @@ public class Verification extends HttpServlet {
 			session.setAttribute("username", request.getParameter("username"));
 			session.setAttribute("password", request.getParameter("password"));
 			session.setAttribute("name", request.getParameter("name"));
-			session.setAttribute("lastName", request.getParameter("lastName"));
+			session.setAttribute("lastname", request.getParameter("lastname"));
 			session.setAttribute("email", request.getParameter("email"));
 			session.setAttribute("birthday", request.getParameter("birthday"));
 			session.setAttribute("sex", request.getParameter("sex"));

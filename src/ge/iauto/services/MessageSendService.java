@@ -29,12 +29,12 @@ public class MessageSendService {
 		  });
  
 		try {
-			Message message = new MimeMessage(session);
+			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("from-email@gmail.com"));
 			message.setRecipients(Message.RecipientType.TO,
 				InternetAddress.parse(to));
-			message.setSubject("IAUTO - ვერიფიკაცია");
-			message.setText("თქვენი ვერიფიკაციის კოდია:  " + code);
+			message.setSubject("IAUTO - ვერიფიკაცია","UTF-8");
+			message.setText("თქვენი ვერიფიკაციის კოდია:  " + code,"UTF-8");
  
 			Transport.send(message);
  

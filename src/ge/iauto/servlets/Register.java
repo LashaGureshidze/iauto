@@ -27,7 +27,7 @@ public class Register extends HttpServlet {
 			newUser.setUsername((String) request.getSession().getAttribute("username"));
 			newUser.setPassword((String) request.getSession().getAttribute("password"));
 			newUser.setName((String) request.getSession().getAttribute("name"));
-			newUser.setLastName((String) request.getSession().getAttribute("lastName"));
+			newUser.setLastName((String) request.getSession().getAttribute("lastname"));
 			newUser.setEmail((String) request.getSession().getAttribute("email"));
 			newUser.setMale((request.getSession().getAttribute("sex")).equals("male"));
 			newUser.setBirthday((String) request.getSession().getAttribute("birthday"));

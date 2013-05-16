@@ -277,7 +277,7 @@ table.id {
 				დაბადების წელი<font color="red">*</font>:
 			</td>
 			<td class="reg_class_value">					
-				<select name="birthday" >
+				<select name="birthday">
 				<%
 					for (int i = 1913; i < 2004; i++)
 						out.println("<option value='" + i + "'>" + i + "</option>");

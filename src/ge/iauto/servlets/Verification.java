@@ -50,7 +50,7 @@ public class Verification extends HttpServlet {
 			session.setAttribute("birthday", request.getParameter("birthday"));
 			session.setAttribute("sex", request.getParameter("sex"));
 			
-			final String code = "" + new Random().nextInt();
+			final String code = "" + new Random().nextInt(10000);
 			Thread sendMessage = new Thread(new Runnable() {
 				@Override
 				public void run() {

@@ -1,15 +1,21 @@
 package ge.iauto.model;
 
+import java.util.ArrayList;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
+	
+//	@OneToMany
+//	private ArrayList<Car> cars;
 	
 	private String username;
 	
@@ -20,9 +26,9 @@ public class User {
 	private String lastName;
 	
 	private String email;
-	
-	//if user is Male, this fild is "true", otherwise "false"	
-	private boolean sex;
+//if user is Male, this fild is "true", otherwise "false"	
+	private boolean male;
+
 	
 	private String birthday;
 
@@ -66,14 +72,6 @@ public class User {
 		this.email = email;
 	}
 
-	public boolean isMale() {
-		return sex;
-	}
-
-	public void setSex(boolean sex) {
-		this.sex = sex;
-	}
-
 	public String getBirthday() {
 		return birthday;
 	}
@@ -81,4 +79,20 @@ public class User {
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
+
+	public boolean isMale() {
+		return male;
+	}
+
+	public void setMale(boolean male) {
+		this.male = male;
+	}
+//
+//	public ArrayList<Car> getCars() {
+//		return cars;
+//	}
+//
+//	public void setCars(ArrayList<Car> cars) {
+//		this.cars = cars;
+//	}
 }

@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Verification
@@ -20,23 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/Verification")
 public class Verification extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Verification() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
-
-	/**
+   	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(final HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -49,24 +34,34 @@ public class Verification extends HttpServlet {
 		if(!request.getParameter("password").equals(request.getParameter("rpassword"))){
 			errorList.add("შეიყვანეთ სწორი პაროლი");
 		}
-		
+		if(request.getParameter("email").isEmpty()){
+			errorList.add("შეიყვანეთ სწორი ელ-ფოსტა");
+		}
 		if(!errorList.isEmpty()){
 			request.setAttribute("errorList", errorList);
-			request.getRequestDispatcher("register.jsp").forward(request, response);
+			request.getRequestDispatcher("user-register.jsp").forward(request, response);
 		}else{
+			HttpSession session = request.getSession();
+			session.setAttribute("username", request.getParameter("username"));
+			session.setAttribute("password", request.getParameter("password"));
+			session.setAttribute("name", request.getParameter("name"));
+			session.setAttribute("lastName", request.getParameter("lastName"));
+			session.setAttribute("email", request.getParameter("email"));
+			session.setAttribute("birthday", request.getParameter("birthday"));
+			session.setAttribute("sex", request.getParameter("sex"));
+			
 			final String code = "" + new Random().nextInt();
-		//	Thread sendMessage = new Thread(new Runnable() {
-		//		@Override
-			//	public void run() {
+			Thread sendMessage = new Thread(new Runnable() {
+				@Override
+				public void run() {
 					MessageSendService.sendMessage(request.getParameter("email"), code);
-		//		}
-		//	});
-		//	sendMessage.setPriority(Thread.MIN_PRIORITY);
-		//	sendMessage.start();
+				}
+			});
+			sendMessage.setPriority(Thread.MIN_PRIORITY);
+			sendMessage.start();
 			
-			request.setAttribute("code", code);
+			request.getSession().setAttribute("code", code);
 			request.getRequestDispatcher("verification.jsp").forward(request, response);
-			
 		}
 	}
 

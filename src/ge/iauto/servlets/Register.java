@@ -16,37 +16,27 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/Register")
 public class Register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    /**
-     * Default constructor. 
-     */
-    public Register() {
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		User newUser = new User();
-		newUser.setUsername(request.getParameter("username"));
-		newUser.setPassword(request.getParameter("password"));
-		newUser.setName(request.getParameter("name"));
-		newUser.setLastName(request.getParameter("lastName"));
-		newUser.setEmail(request.getParameter("email"));
-		newUser.setSex(request.getParameter("sex").equals("mrs"));
-		newUser.setBirthday(request.getParameter("birthday"));
-		
-		PersistenceService service = new PersistenceService();
-		service.addUser(newUser);
-		
+		if(!request.getParameter("code").equals(request.getSession().getAttribute("code"))){
+			request.getRequestDispatcher("illegal-verification.jsp").forward(request, response);
+		}else{
+			User newUser = new User();
+			newUser.setUsername((String) request.getSession().getAttribute("username"));
+			newUser.setPassword((String) request.getSession().getAttribute("password"));
+			newUser.setName((String) request.getSession().getAttribute("name"));
+			newUser.setLastName((String) request.getSession().getAttribute("lastName"));
+			newUser.setEmail((String) request.getSession().getAttribute("email"));
+			newUser.setMale((request.getSession().getAttribute("sex")).equals("male"));
+			newUser.setBirthday((String) request.getSession().getAttribute("birthday"));
+			
+			PersistenceService service = new PersistenceService();
+			service.addUser(newUser);
+			
+			request.getRequestDispatcher("register-successful.jsp").forward(request, response);
+		}
 	}
 
 }

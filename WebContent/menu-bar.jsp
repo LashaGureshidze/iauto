@@ -38,12 +38,11 @@
 			<td>
 				<div class="menu">
 					<ul>
-						<li><a href="http://localhost:8080/IAUTO/home-page.jsp">მთავარი</a></li>
-						<li><a href="http://localhost:8080/IAUTO/my-page.jsp">ჩემი
-								გვერდი</a></li>
-						<li><a href="http://localhost:8080/IAUTO/log-in.jsp">შესვლა</a></li>
-						<li><a href="http://localhost:8080/IAUTO/register.jsp">რეგისტრაცია</a></li>
-						<li><a href="http://localhost:8080/IAUTO/add-application.jsp">დამატება</a></li>
+						<li><a href="/IAUTO/home-page.jsp">მთავარი</a></li>
+						<li><a href="/IAUTO/my-page.jsp">ჩემი გვერდი</a></li>
+						<li><a href="/IAUTO/user-register.jsp">რეგისტრაცია</a></li>
+						<li><a href="/IAUTO/add-application.jsp">დამატება</a></li>
+						<li><a href="/IAUTO/log-in.jsp">შესვლა</a></li>
 					</ul>
 				</div>
 			</td>

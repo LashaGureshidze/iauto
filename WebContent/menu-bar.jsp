@@ -22,29 +22,33 @@
 	text-decoration: none;
 	float: left;
 	color: white;
-	background-color: rgb(255, 216, 100);
-	border: 1px solid rgb(255, 216, 100);
+	background-color: rgb(10, 10, 255);
+	border: 1px solid rgb(10, 10, 15);
 }
 
 .menu ul li a:hover {
-	background-color: #FFFFFF;
-	color: rgb(255, 216, 100);
+	background-color: #99FF99;
+	color: rgb(10, 10, 255);
 }
 </style>
 </head>
 <body>
 	<table>
 		<tr>
+			<td class="menu">
+				<ul>
+					<li><a href="/IAUTO/home-page.jsp">მთავარი</a></li>
+					<li><a href="/IAUTO/my-page.jsp">ჩემი გვერდი</a></li>
+					<li><a href="/IAUTO/add-application.jsp">განბჟების
+							კალკულატორი</a></li>
+					<li><a href="/IAUTO/user-register.jsp">რეგისტრაცია</a></li>
+					<li><a href="/IAUTO/log-in.jsp">შესვლა</a></li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
 			<td>
-				<div class="menu">
-					<ul>
-						<li><a href="/IAUTO/home-page.jsp">მთავარი</a></li>
-						<li><a href="/IAUTO/my-page.jsp">ჩემი გვერდი</a></li>
-						<li><a href="/IAUTO/user-register.jsp">რეგისტრაცია</a></li>
-						<li><a href="/IAUTO/add-application.jsp">დამატება</a></li>
-						<li><a href="/IAUTO/log-in.jsp">შესვლა</a></li>
-					</ul>
-				</div>
+				<img alt="iauto-logo.jpg" src="logo" height="40" width="100" onclick="window.location = '/IAUTO/add-aplication.jsp';">
 			</td>
 		</tr>
 	</table>

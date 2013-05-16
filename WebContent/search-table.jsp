@@ -8,15 +8,16 @@
 <style type="text/css">
 #axali_dzebna {
 	width: 814px;
-	background: url(http://myauto.ge/images/maxo.png);
+	background: #99FF99;
 	border: 5px solid rgb(255, 255, 255);
-	box-shadow: 0px 4px 21px -4px #858585;
-	text-shadow: rgba(78, 78, 78, 0.12) 0.1em 0.1em 0.2em;
+	box-shadow: 4px 4px 21px -4px #858585;
+	text-shadow: rgba(180, 78, 78, 0.22) 0.1em 0.1em 0.2em;
 	font-weight: normal;
+	margin: auto;
 }
 
 #gamochenili {
-	height: 97px;
+	height: 130px;
 }
 
 .sigane {
@@ -37,17 +38,8 @@
 	text-shadow: rgba(78, 78, 78, 0.12) 0.1em 0.1em 0.2em;
 }
 
-#kompleqtacia {
-	border: 1px solid rgb(255, 195, 118);
-	background-color: rgba(255, 173, 0, 0.07);
-	margin-left: 20px;
-	margin-top: 4px;
-	width: 570px;
-	padding-bottom: 4px;
-}
-
 #dzebna {
-	background: rgb(255, 153, 0);
+	background: rgb(10, 10, 255);
 	background: -moz-linear-gradient(top, rgb(255, 208, 60) 0%,
 		rgb(255, 169, 16) 100% );
 	background: -webkit-linear-gradient(top, rgb(255, 208, 60) 0%,
@@ -59,7 +51,7 @@
 	background: linear-gradient(top, rgb(255, 208, 60) 0%, rgb(255, 169, 16)
 		100% );
 	padding: 3px 17px;
-	color: #fff;
+	color: #FFFFFF;
 	font-family: 'Helvetica Neue', sans-serif;
 	font-size: 17px;
 	border-radius: 4px;
@@ -67,42 +59,6 @@
 	-webkit-border-radius: 4px;
 	border: 1px solid rgb(213, 150, 17);
 	cursor: pointer;
-}
-
-.search_rect_down {
-	cursor: pointer;
-	padding-right: 4px;
-	background-image: url('http://myjobs.ge/new/images/rect_down.gif');
-	background-repeat: no-repeat;
-	display: inline-block;
-	text-indent: 15px;
-	background-position: 0 3px;
-}
-
-.search_rect_up {
-	background-image: url('http://myjobs.ge/new/images/rect_up.gif');
-}
-
-.search_rect_down:hover {
-	color: rgb(255, 163, 0);
-}
-
-.search_rect_down1 {
-	cursor: pointer;
-	padding-right: 4px;
-	background-image: url('http://myjobs.ge/new/images/rect_down.gif');
-	background-repeat: no-repeat;
-	display: inline-block;
-	text-indent: 15px;
-	background-position: 0 3px;
-}
-
-.search_rect_up1 {
-	background-image: url('http://myjobs.ge/new/images/rect_up.gif');
-}
-
-.search_rect_down1:hover {
-	color: rgb(255, 163, 0);
 }
 </style>
 </head>
@@ -299,10 +255,10 @@
 		</div>
 	</form>
 	<table>
-	<%
-	//karoche aq minda vip gancxadebebis chamateba 
-	//bazis saxeli ar vici saidan unda wavikitxo tore shevcham am nawils :D
-	%>
+		<%
+			//karoche aq minda vip gancxadebebis chamateba 
+			//bazis saxeli ar vici saidan unda wavikitxo tore shevcham am nawils :D
+		%>
 	</table>
 </body>
 </html>

@@ -29,7 +29,7 @@ table.id {
 			</td>
 			<td class="reg_class_value">					
 				<input type="text" size="20" name="username" <% if (error != null) out.println("value='" + request.getParameter("username") + "'"); %> >
-				<% if (error != null && error.get(0) != null) out.println("<font color='red'>" + error.get(0) + "</font>"); %>
+				<% if (error != null && error.get(0) != null) out.println("<font color='red' >" + error.get(0) + "</font>"); %>
 			</td>
 		</tr>
 		

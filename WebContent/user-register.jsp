@@ -6,18 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>www.IAuto.ge - რეგისტრაცია</title>
-
-<style>
-input.regStyle {
-    position:absolute;
-    top:380px;
-    left:280px;
-}
-</style>
-
 <style>
 table.id {
-    width:50%;
+    width:70%;
     position:absolute;
     left:80px;
     top:100px;
@@ -31,12 +22,6 @@ table.id {
 		<%
 			@SuppressWarnings("unchecked")
 			List<String> error = (List<String>)request.getAttribute("errorList");
-				if (error != null) {
-					for (int i = 0; i < error.size(); i++) {
-						out.println("<tr><td class='reg_class_label'>" +
-								"<font color='red'>" + error.get(i) + "</font></td></tr>");
-					}
-				}
 		%>
 		<tr>
 			<td class="reg_class_label" style="width:300px;">
@@ -44,6 +29,7 @@ table.id {
 			</td>
 			<td class="reg_class_value">					
 				<input type="text" size="20" name="username" <% if (error != null) out.println("value='" + request.getParameter("username") + "'"); %> >
+				<% if (error != null && error.get(0) != null) out.println("<font color='red'>" + error.get(0) + "</font>"); %>
 			</td>
 		</tr>
 		
@@ -53,6 +39,7 @@ table.id {
 			</td>
 			<td class="reg_class_value">					
 				<input type="password" size="20" name="password">
+				<% if (error != null && error.get(1) != null) out.println("<font color='red'>" + error.get(1) + "</font>"); %>
 			</td>
 		</tr>
 		
@@ -89,6 +76,7 @@ table.id {
 			</td>
 			<td class="reg_class_value">					
 				<input type="text" size="20" name="email" <% if (error != null) out.println("value='" + request.getParameter("email") + "'"); %> >
+				<% if (error != null && error.get(2) != null) out.println("<font color='red'>" + error.get(2) + "</font>"); %>
 			</td>
 		</tr>
 		

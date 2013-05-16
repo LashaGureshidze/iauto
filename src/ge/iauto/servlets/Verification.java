@@ -6,8 +6,6 @@ import ge.iauto.services.MessageSendService;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,21 +24,27 @@ public class Verification extends HttpServlet {
 	 */
 	protected void doPost(final HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<String> errorList  = new ArrayList<String>();
+		for (int i = 0; i < 3; i++) errorList.add(null);
+		boolean added = false;
 		
 		PersistenceService service = new PersistenceService();
 		if(request.getParameter("username").isEmpty()){
-			errorList.add("შეიყვანეთ მომხმარებლის სახელი!");
+			added = true;
+			errorList.set(0,"შეიყვანეთ მომხმარებლის სახელი!");
 		}else if(service.existsUserName(request.getParameter("username"))){
-			errorList.add("ასეთი მომხმარებელი უკვე არსებობს!");
+			added = true;
+			errorList.set(0,"ასეთი მომხმარებელი უკვე არსებობს!");
 		}
 		if(!request.getParameter("password").equals(request.getParameter("rpassword")) || request.getParameter("password").isEmpty()){
-			errorList.add("შეიყვანეთ სწორი პაროლი!");
+			added = true;
+			errorList.set(1,"შეიყვანეთ სწორი პაროლი!");
 		}
 		if(request.getParameter("email").isEmpty()){
-			errorList.add("შეიყვანეთ სწორი ელ-ფოსტა!");
+			added = true;
+			errorList.set(2,"შეიყვანეთ სწორი ელ-ფოსტა!");
 		}
-		if(!errorList.isEmpty()){
-			request.setAttribute("errorList", errorList);
+		request.setAttribute("errorList", errorList);
+		if(added){
 			request.getRequestDispatcher("user-register.jsp").forward(request, response);
 		}else{
 			HttpSession session = request.getSession();
@@ -52,7 +56,8 @@ public class Verification extends HttpServlet {
 			session.setAttribute("birthday", request.getParameter("birthday"));
 			session.setAttribute("sex", request.getParameter("sex"));
 			
-			final String code = "" + new Random().nextInt(10000);
+			int min = 1000; int max = 10000;
+			final String code = "" + (int)(min + (Math.random() * (max - min)));
 			Thread sendMessage = new Thread(new Runnable() {
 				@Override
 				public void run() {

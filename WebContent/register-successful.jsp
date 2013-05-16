@@ -10,8 +10,8 @@ div.centerStyle {
     width:600px;
     height:100px;
     position:absolute;
-    left:37%;
-    top:40%;
+    left:400px;
+    top:200px;
     margin:-100px 0 0 -300px;
 }
 </style>

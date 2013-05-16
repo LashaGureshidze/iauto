@@ -209,7 +209,7 @@ table.id {
 				}
 		%>
 		<tr>
-			<td class="reg_class_label">
+			<td class="reg_class_label" style="width:300px;">
 				მომხმარებელი (username)<font color="red">*</font>: 
 			</td>
 			<td class="reg_class_value">					
@@ -218,7 +218,7 @@ table.id {
 		</tr>
 		
 		<tr>
-			<td class="reg_class_label">
+			<td class="reg_class_label" style="width:300px;">
 				პაროლი<font color="red">*</font>: 
 			</td>
 			<td class="reg_class_value">					
@@ -227,7 +227,7 @@ table.id {
 		</tr>
 		
 		<tr>
-			<td class="reg_class_label">
+			<td class="reg_class_label" style="width:300px;">
 				გაიმეორეთ პაროლი<font color="red">*</font>: 
 			</td>
 			<td class="reg_class_value">					
@@ -236,7 +236,7 @@ table.id {
 		</tr>
 		
 		<tr>
-			<td class="reg_class_label">
+			<td class="reg_class_label" style="width:300px;">
 				სახელი: 
 			</td>
 			<td class="reg_class_value">					
@@ -245,7 +245,7 @@ table.id {
 		</tr>
 		
 		<tr>
-			<td class="reg_class_label">
+			<td class="reg_class_label" style="width:300px;">
 				გვარი: 
 			</td>
 			<td class="reg_class_value">					
@@ -254,7 +254,7 @@ table.id {
 		</tr>
 		
 		<tr>
-			<td class="reg_class_label">
+			<td class="reg_class_label" style="width:300px;">
 				ელ-ფოსტა<font color="red">*</font>: 
 			</td>
 			<td class="reg_class_value">					
@@ -263,7 +263,7 @@ table.id {
 		</tr>
 		
 		<tr>
-			<td class="reg_class_label">
+			<td class="reg_class_label" style="width:300px;">
 				სქესი<font color="red">*</font>: 
 			</td>
 			<td class="reg_class_value">					
@@ -273,7 +273,7 @@ table.id {
 		</tr>
 		
 		<tr>
-			<td class="reg_class_label">
+			<td class="reg_class_label" style="width:300px;">
 				დაბადების წელი<font color="red">*</font>:
 			</td>
 			<td class="reg_class_value">					
@@ -285,8 +285,13 @@ table.id {
 			</select>
 			</td>
 		</tr>
+		
+		<tr>
+			<td align="center">
+				<br><input type="submit" value="რეგისტრაცია"/>
+			</td>
+		</tr>
 	</table><br>
-	<input class="regStyle" type="submit" value="რეგისტრაცია"/>
 	</form>
 </body>
 </html>

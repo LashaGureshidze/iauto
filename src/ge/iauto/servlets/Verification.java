@@ -28,14 +28,16 @@ public class Verification extends HttpServlet {
 		List<String> errorList  = new ArrayList<String>();
 		
 		PersistenceService service = new PersistenceService();
-		if(service.existsUserName(request.getParameter("username"))){
-			errorList.add("ასეთი მომხმარებელი უკვე არსებობს");
+		if(request.getParameter("username").isEmpty()){
+			errorList.add("შეიყვანეთ მომხმარებლის სახელი!");
+		}else if(service.existsUserName(request.getParameter("username"))){
+			errorList.add("ასეთი მომხმარებელი უკვე არსებობს!");
 		}
-		if(!request.getParameter("password").equals(request.getParameter("rpassword"))){
-			errorList.add("შეიყვანეთ სწორი პაროლი");
+		if(!request.getParameter("password").equals(request.getParameter("rpassword")) || request.getParameter("password").isEmpty()){
+			errorList.add("შეიყვანეთ სწორი პაროლი!");
 		}
 		if(request.getParameter("email").isEmpty()){
-			errorList.add("შეიყვანეთ სწორი ელ-ფოსტა");
+			errorList.add("შეიყვანეთ სწორი ელ-ფოსტა!");
 		}
 		if(!errorList.isEmpty()){
 			request.setAttribute("errorList", errorList);

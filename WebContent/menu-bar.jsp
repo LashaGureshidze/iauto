@@ -39,7 +39,7 @@
 				<ul>
 					<li><a href="/IAUTO/home-page.jsp">მთავარი</a></li>
 					<li><a href="/IAUTO/my-page.jsp">ჩემი გვერდი</a></li>
-					<li><a href="/IAUTO/add-application.jsp">განბჟების
+					<li><a href="/IAUTO/calculator.jsp">განბჟების
 							კალკულატორი</a></li>
 					<li><a href="/IAUTO/user-register.jsp">რეგისტრაცია</a></li>
 					<li><a href="/IAUTO/log-in.jsp">შესვლა</a></li>

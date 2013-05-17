@@ -6,19 +6,47 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>www.IAuto.ge - რეგისტრაცია</title>
+
 <style>
-table.id {
-    width:70%;
-    position:absolute;
-    left:80px;
-    top:100px;
+#dzebna {
+	background: #66CCFF;
+	padding: 3px 17px;
+	color: black;
+	font-family: 'Helvetica Neue', sans-serif;
+	font-size: 15px;
+	border-radius: 2px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border: 0px solid rgb(213, 150, 17);
+	cursor: pointer;
+}
+
+#dzebna.hover{
+	background-color: #3399FF;
+	color: black;
 }
 </style>
+
+<script type="text/javascript">
+function checkPasswordMatch(){
+	var pass = document.getElementById("pass").value;
+	var rpass = document.getElementById("rpass").value;
+	if (pass != rpass) {
+		document.getElementById("passError").innerHTML="არ ემთხვევა ზემოთ შეყვანილ პაროლს!";
+		document.getElementById("dzebna").disabled = true;
+	} else {
+		document.getElementById("passError").innerHTML="";
+		document.getElementById("dzebna").disabled = false;
+	}
+}
+</script>
+
 <%@include file="menu-bar.jsp"%>
 </head>
 <body>
+	<fieldset style="background-color:rgb(240,240,240); width:750px; margin:auto;">
 	<form action="Verification" method="post">
-	<table class="id" border="0" width="50%">
+	<table width="100%" border="0">
 		<%
 			@SuppressWarnings("unchecked")
 			List<String> error = (List<String>)request.getAttribute("errorList");
@@ -29,7 +57,7 @@ table.id {
 			</td>
 			<td class="reg_class_value">					
 				<input type="text" size="20" name="username" <% if (error != null) out.println("value='" + request.getParameter("username") + "'"); %> >
-				<% if (error != null && error.get(0) != null) out.println("<font color='red' >" + error.get(0) + "</font>"); %>
+				<% if (error != null && error.get(0) != null) out.println("<font size='2' color='red' >" + error.get(0) + "</font>"); %>
 			</td>
 		</tr>
 		
@@ -38,8 +66,8 @@ table.id {
 				პაროლი<font color="red">*</font>: 
 			</td>
 			<td class="reg_class_value">					
-				<input type="password" size="20" name="password">
-				<% if (error != null && error.get(1) != null) out.println("<font color='red'>" + error.get(1) + "</font>"); %>
+				<input id="pass" type="password" size="20" name="password">
+				<% if (error != null && error.get(1) != null) out.println("<font size='2' color='red'>" + error.get(1) + "</font>"); %>
 			</td>
 		</tr>
 		
@@ -48,7 +76,8 @@ table.id {
 				გაიმეორეთ პაროლი<font color="red">*</font>: 
 			</td>
 			<td class="reg_class_value">					
-				<input type="password" size="20" name="rpassword">
+				<input id="rpass" type="password" size="20" name="rpassword" onchange="checkPasswordMatch()">
+				<% out.print("<font size='2' color='red' id='passError'>" + "" + "</font>"); %>
 			</td>
 		</tr>
 		
@@ -76,7 +105,7 @@ table.id {
 			</td>
 			<td class="reg_class_value">					
 				<input type="text" size="20" name="email" <% if (error != null) out.println("value='" + request.getParameter("email") + "'"); %> >
-				<% if (error != null && error.get(2) != null) out.println("<font color='red'>" + error.get(2) + "</font>"); %>
+				<% if (error != null && error.get(2) != null) out.println("<font size='2' color='red'>" + error.get(2) + "</font>"); %>
 			</td>
 		</tr>
 		
@@ -103,13 +132,13 @@ table.id {
 			</select>
 			</td>
 		</tr>
-		
 		<tr>
 			<td align="center">
-				<br><input type="submit" value="რეგისტრაცია"/>
+				<br><input id="dzebna" type="submit" value="რეგისტრაცია"/>
 			</td>
 		</tr>
-	</table><br>
+	</table>
 	</form>
+	</fieldset>
 </body>
 </html>

@@ -35,9 +35,12 @@ public class Verification extends HttpServlet {
 			added = true;
 			errorList.set(0,"ასეთი მომხმარებელი უკვე არსებობს!");
 		}
-		if(!request.getParameter("password").equals(request.getParameter("rpassword")) || request.getParameter("password").isEmpty()){
+		if(request.getParameter("password").isEmpty()){
 			added = true;
-			errorList.set(1,"შეიყვანეთ სწორი პაროლი!");
+			errorList.set(1,"შეიყვანეთ პაროლი!");
+		}else if(request.getParameter("rpassword").isEmpty()){
+			added = true;
+			errorList.set(1,"გაიმეორეთ პაროლი!");
 		}
 		if(request.getParameter("email").isEmpty()){
 			added = true;

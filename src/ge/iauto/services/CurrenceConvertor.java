@@ -2,8 +2,8 @@ package ge.iauto.services;
 
 public class CurrenceConvertor {
 	
-	public static void convertGelToDollar(){
-		
+	public static double UsdToGel(){
+		return 1.0;
 	}
 
 }

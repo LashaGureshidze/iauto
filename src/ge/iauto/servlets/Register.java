@@ -1,6 +1,6 @@
 package ge.iauto.servlets;
 
-import ge.iauto.model.User;
+import ge.iauto.data.User;
 import ge.iauto.server.PersistenceService;
 
 import java.io.IOException;

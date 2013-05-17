@@ -4,7 +4,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
-import ge.iauto.model.User;
+import ge.iauto.data.CarMake;
+import ge.iauto.data.CarModel;
+import ge.iauto.data.User;
 
 public class PersistenceService {
 
@@ -12,6 +14,22 @@ public class PersistenceService {
 		EntityManager entitymanager = PersistenceProvider.createEM();
 		entitymanager.getTransaction().begin();		
 		entitymanager.persist(user);
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
+	}
+	
+	public void addCarMark(CarMake carMark){
+		EntityManager entitymanager = PersistenceProvider.createEM();
+		entitymanager.getTransaction().begin();		
+		entitymanager.persist(carMark);
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
+	}
+	
+	public void addCarModel(CarModel carModel){
+		EntityManager entitymanager = PersistenceProvider.createEM();
+		entitymanager.getTransaction().begin();		
+		entitymanager.persist(carModel);
 		entitymanager.getTransaction().commit();
 		entitymanager.close();
 	}

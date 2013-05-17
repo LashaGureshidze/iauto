@@ -48,7 +48,7 @@ public class PersistenceService {
 	
 	public User getUser(String username,String password){
 		EntityManager entitymanager = PersistenceProvider.createEM();
-		Query q = entitymanager.createQuery("SELECT * FROM User WHERE username = :name and password = :pass");
+		Query q = entitymanager.createQuery("FROM User WHERE username = :name and password = :pass");
 		q.setParameter("name", username);
 		q.setParameter("pass", password);
 		User user = null;

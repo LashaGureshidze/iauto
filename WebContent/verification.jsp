@@ -10,10 +10,7 @@
 div.centerStyle {
     width:600px;
     height:100px;
-    position:absolute;
-    left:400px;
-    top:200px;
-    margin:-100px 0 0 -300px;
+    margin:auto;
 }
 </style>
 </head>

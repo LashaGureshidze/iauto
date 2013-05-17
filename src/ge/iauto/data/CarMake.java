@@ -13,18 +13,18 @@ import javax.persistence.OneToMany;
 @SuppressWarnings("serial")
 @Entity
 public class CarMake implements Serializable{
-	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+	
 	private long id;
 	
 	private String name;
 	
 	private List<CarModel> models = new ArrayList<CarModel>();
-
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}
-
+	
 	public void setId(long id) {
 		this.id = id;
 	}

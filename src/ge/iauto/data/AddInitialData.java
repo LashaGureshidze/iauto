@@ -13,149 +13,186 @@ public class AddInitialData {
 	public static void main(String[] args) {
 		
 		
-//		CarModel model = null;
-//		List<CarModel> modelsss = new ArrayList<CarModel>();
-//		
-//		model = new CarModel();
-//		model.setName("CL");
-//		modelsss.add(model);
-//		
-//		model = new CarModel();
-//		model.setName("CSX");
-//		modelsss.add(model);
-//		
-//		model = new CarModel();
-//		model.setName("El");
-//		modelsss.add(model);
-//		
-//		model = new CarModel();
-//		model.setName("ILX");
-//		modelsss.add(model);
-//		
-//		model = new CarModel();
-//		model.setName("Integra");
-//		modelsss.add(model);
-//		
-//		model = new CarModel();
-//		model.setName("Legend");
-//		modelsss.add(model);
-//		
-//		model = new CarModel();
-//		model.setName("MDX");
-//		modelsss.add(model);
-//		
-//		model = new CarModel();
-//		model.setName("NSX");
-//		modelsss.add(model);
-//		
-//		model = new CarModel();
-//		model.setName("RDX");
-//		modelsss.add(model);
-//		
-//		model = new CarModel();
-//		model.setName("TL");
-//		modelsss.add(model);
-//		
-//		model = new CarModel();
-//		model.setName("Verisa");
-//		modelsss.add(model);
-//		
-//		model = new CarModel();
-//		model.setName("ZDX");
-//		modelsss.add(model);
-//		
-//		CarMake mark = new CarMake();
-//		mark.setModels(modelsss);
-//		mark.setName("ACURA");
+		CarModel model = null;
+		List<CarModel> modelsss = new ArrayList<CarModel>();
+		
+		CarMake mark = new CarMake();
+		mark.setName("ACURA");
+		model = new CarModel();
+		
+		model.setName("CL");
+		model.setCarmake(mark);
+		modelsss.add(model);
+		
+		model = new CarModel();
+		model.setName("CSX");
+		model.setCarmake(mark);
+		modelsss.add(model);
+		
+		model = new CarModel();
+		model.setName("El");
+		model.setCarmake(mark);
+		modelsss.add(model);
+		
+		model = new CarModel();
+		model.setName("ILX");
+		model.setCarmake(mark);
+		modelsss.add(model);
+		
+		model = new CarModel();
+		model.setName("Integra");
+		model.setCarmake(mark);
+		modelsss.add(model);
+		
+		model = new CarModel();
+		model.setName("Legend");
+		model.setCarmake(mark);
+		modelsss.add(model);
+		
+		model = new CarModel();
+		model.setName("MDX");
+		model.setCarmake(mark);
+		modelsss.add(model);
+		
+		model = new CarModel();
+		model.setName("NSX");
+		model.setCarmake(mark);
+		modelsss.add(model);
+		
+		model = new CarModel();
+		model.setName("RDX");
+		model.setCarmake(mark);
+		modelsss.add(model);
+		
+		model = new CarModel();
+		model.setName("TL");
+		model.setCarmake(mark);
+		modelsss.add(model);
+		
+		model = new CarModel();
+		model.setName("Verisa");
+		model.setCarmake(mark);
+		modelsss.add(model);
+		
+		model = new CarModel();
+		model.setName("ZDX");
+		model.setCarmake(mark);
+		modelsss.add(model);
+		
+		
+		mark.setModels(modelsss);
+		
 		
 		//===========================================
 		
 		CarModel mod = null;
 		List<CarModel> models = new ArrayList<CarModel>();
 		
+		CarMake markk = new CarMake();
+		markk.setName("ALFA ROMEO");
+		
 		mod = new CarModel();
 		mod.setName("145");
+		mod.setCarmake(markk);
 		models.add(mod);
 		
-//		mod = new CarModel();
-//		mod.setName("146");
-//		models.add(mod);
-//		
-//		mod = new CarModel();
-//		mod.setName("156");
-//		models.add(mod);
-//		
-//		mod = new CarModel();
-//		mod.setName("159");
-//		models.add(mod);
-//		
-//		mod = new CarModel();
-//		mod.setName("164");
-//		models.add(mod);
-//		
-//		mod = new CarModel();
-//		mod.setName("8C");
-//		models.add(mod);
-//		
-//		mod = new CarModel();
-//		mod.setName("Alfasud");
-//		models.add(mod);
-//		
-//		mod = new CarModel();
-//		mod.setName("Alfeta");
-//		models.add(mod);
-//		
-//		mod = new CarModel();
-//		mod.setName("Arna");
-//		models.add(mod);
-//		
-//		mod = new CarModel();
-//		mod.setName("Brera");
-//		models.add(mod);
-//		
-//		mod = new CarModel();
-//		mod.setName("Giulieta");
-//		models.add(mod);
-//		
-//		mod = new CarModel();
-//		mod.setName("GT");
-//		models.add(mod);
-//		
-//		mod = new CarModel();
-//		mod.setName("GTA Coupe");
-//		models.add(mod);
-//		
-//		mod = new CarModel();
-//		mod.setName("GTV");
-//		models.add(mod);
-//		
-//		mod = new CarModel();
-//		mod.setName("Mito");
-//		models.add(mod);
-//		
-//		mod = new CarModel();
-//		mod.setName("Montreal");
-//		models.add(mod);
-//		
-//		mod = new CarModel();
-//		mod.setName("RZ");
-//		models.add(mod);
-//		
-//		mod = new CarModel();
-//		mod.setName("Spider");
-//		models.add(mod);
-//		
-//		mod = new CarModel();
-//		mod.setName("SZ");
-//		models.add(mod);
+		mod = new CarModel();
+		mod.setName("146");
+		mod.setCarmake(markk);
+		models.add(mod);
 		
-		CarMake markk = new CarMake();
+		mod = new CarModel();
+		mod.setName("156");
+		mod.setCarmake(markk);
+		models.add(mod);
+		
+		mod = new CarModel();
+		mod.setName("159");
+		mod.setCarmake(markk);
+		models.add(mod);
+		
+		mod = new CarModel();
+		mod.setName("164");
+		mod.setCarmake(markk);
+		models.add(mod);
+		
+		mod = new CarModel();
+		mod.setName("8C");
+		mod.setCarmake(markk);
+		models.add(mod);
+		
+		mod = new CarModel();
+		mod.setName("Alfasud");
+		mod.setCarmake(markk);
+		models.add(mod);
+		
+		mod = new CarModel();
+		mod.setName("Alfeta");
+		mod.setCarmake(markk);
+		models.add(mod);
+		
+		mod = new CarModel();
+		mod.setName("Arna");
+		mod.setCarmake(markk);
+		models.add(mod);
+		
+		mod = new CarModel();
+		mod.setName("Brera");
+		mod.setCarmake(markk);
+		models.add(mod);
+		
+		mod = new CarModel();
+		mod.setName("Giulieta");
+		mod.setCarmake(markk);
+		models.add(mod);
+		
+		mod = new CarModel();
+		mod.setName("GT");
+		mod.setCarmake(markk);
+		models.add(mod);
+		
+		mod = new CarModel();
+		mod.setName("GTA Coupe");
+		mod.setCarmake(markk);
+		models.add(mod);
+		
+		mod = new CarModel();
+		mod.setName("GTV");
+		mod.setCarmake(markk);
+		models.add(mod);
+		
+		mod = new CarModel();
+		mod.setName("Mito");
+		mod.setCarmake(markk);
+		models.add(mod);
+		
+		mod = new CarModel();
+		mod.setName("Montreal");
+		mod.setCarmake(markk);
+		models.add(mod);
+		
+		mod = new CarModel();
+		mod.setName("RZ");
+		mod.setCarmake(markk);
+		models.add(mod);
+		
+		mod = new CarModel();
+		mod.setName("Spider");
+		mod.setCarmake(markk);
+		models.add(mod);
+		
+		mod = new CarModel();
+		mod.setName("SZ");
+		mod.setCarmake(markk);
+		models.add(mod);
+		
+		
 		markk.setModels(models);
-		markk.setName("ALFA ROMEO");
+		
 		
 		//==========================persist===================
 		PersistenceService service = new PersistenceService();
-	//	service.addCarMark(mark);
+		service.addCarMark(mark);
 		service.addCarMark(markk);
 		
 		

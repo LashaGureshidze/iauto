@@ -1,12 +1,14 @@
 package ge.iauto.server;
 
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.Query;
+import java.util.List;
 
 import ge.iauto.data.CarMake;
 import ge.iauto.data.CarModel;
 import ge.iauto.data.User;
+
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
 
 public class PersistenceService {
 
@@ -18,10 +20,10 @@ public class PersistenceService {
 		entitymanager.close();
 	}
 	
-	public void addCarMark(CarMake carMark){
+	public void addCarMark(CarMake carMake){
 		EntityManager entitymanager = PersistenceProvider.createEM();
 		entitymanager.getTransaction().begin();		
-		entitymanager.persist(carMark);
+		entitymanager.persist(carMake);
 		entitymanager.getTransaction().commit();
 		entitymanager.close();
 	}
@@ -56,5 +58,13 @@ public class PersistenceService {
 			
 		}
 		return user;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<CarMake> getCarMakes(){
+		EntityManager entitymanager = PersistenceProvider.createEM();
+		Query q = entitymanager.createQuery("FROM CarMake");
+		List<CarMake> result = q.getResultList();
+		return result;
 	}
 }

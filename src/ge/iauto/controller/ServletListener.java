@@ -1,6 +1,7 @@
 package ge.iauto.controller;
 
 import ge.iauto.server.PersistenceProvider;
+import ge.iauto.server.PersistenceService;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -24,7 +25,8 @@ public class ServletListener implements ServletContextListener {
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
     public void contextInitialized(ServletContextEvent arg0) {
-        
+    	PersistenceService service = new PersistenceService();
+        arg0.getServletContext().setAttribute("carMakes", service.getCarMakes());
     }
 
 	/**

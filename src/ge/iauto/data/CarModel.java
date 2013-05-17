@@ -10,14 +10,14 @@ import javax.persistence.ManyToOne;
 @SuppressWarnings("serial")
 @Entity
 public class CarModel implements Serializable{
-	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+	
 	private long id;
 	
 	private String name;
 	
 	private CarMake carmake;
-
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}

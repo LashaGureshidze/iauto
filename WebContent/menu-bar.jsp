@@ -21,9 +21,9 @@
 	text-decoration: none;
 	float: left;
 	color: black;
-	background-color: rgb(240,240,240);
+	background-color: rgb(240, 240, 240);
 	border: 0px solid rgb(10, 10, 15);
-	border-radius : 4px;
+	border-radius: 4px;
 }
 
 .menu td a:hover {
@@ -48,17 +48,14 @@
 			</td>
 		</tr>
 		<tr>
-			<td>
-				<a href="/IAUTO/home-page.jsp"><img src="logo.jpg" width="250" height="80" style="border: 0px solid rgb(10, 10, 15)"></a>
-			 	<a href="/IAUTO/add-application.jsp"><img alt="" src="add.png" style="vertical-align: 70%; border: 0px solid rgb(10, 10, 15)"></a>
+			<td><a href="/IAUTO/home-page.jsp"><img src="logo.jpg"
+					width="250" height="80" style="border: 0px solid rgb(10, 10, 15)"></a>
+				<a href="/IAUTO/add-application.jsp"><img alt="" src="add.png"
+					style="vertical-align: 70%; border: 0px solid rgb(10, 10, 15)"></a>
+				<a href="https://www.facebook.com/pages/IAutoge/155285524650712"
+					target="_blank"><img src="facebook_share.png" width="140" height="50" style=" border: 0px solid rgb(10, 10, 15); vertical-align: 70%"/></a>
 			</td>
 		</tr>
 	</table>
-	<div style="position:;right:260px;top:30px;"  align="right">
-			<br/>
-				<a href="https://www.facebook.com/pages/IAutoge/155285524650712" target="_blank"  ><img src="facebook_share.png" /></a>
-				<br/>
-				
-			</div>
 </body>
 </html>

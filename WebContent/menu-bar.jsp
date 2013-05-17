@@ -39,18 +39,22 @@
 				<ul>
 					<li><a href="/IAUTO/home-page.jsp">მთავარი</a></li>
 					<li><a href="/IAUTO/my-page.jsp">ჩემი გვერდი</a></li>
-					<li><a href="/IAUTO/calculator.jsp">განბჟების
-							კალკულატორი</a></li>
+					<li><a href="/IAUTO/calculator.jsp">განბჟების კალკულატორი</a></li>
 					<li><a href="/IAUTO/user-register.jsp">რეგისტრაცია</a></li>
 					<li><a href="/IAUTO/log-in.jsp">შესვლა</a></li>
 				</ul>
 			</td>
 		</tr>
 		<tr>
-			<td>
-				<img alt="iauto-logo.jpg" src="logo" height="40" width="100" onclick="window.location = '/IAUTO/add-aplication.jsp';">
-			</td>
+			<td><img alt="iauto-logo.jpg" src="logo" height="40" width="100"
+				onclick="window.location = '/IAUTO/add-aplication.jsp';"></td>
 		</tr>
 	</table>
+	<div style="position:;right:260px;top:30px;"  align="right">
+			<br/>
+				<a href="https://www.facebook.com/pages/IAutoge/155285524650712" target="_blank"  ><img src="facebook_share.png" /></a>
+				<br/>
+				
+			</div>
 </body>
 </html>

@@ -6,8 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>www.IAuto.ge</title>
 </head>
-<body bgcolor=#F0F0F0  >
+<body background="w2.jpg">
 	<%@include file="menu-bar.jsp"%>
 	<%@include file="search-table.jsp"%>
+	
 </body>
 </html>

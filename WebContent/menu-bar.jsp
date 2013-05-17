@@ -6,6 +6,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>www.IAuto.ge</title>
 
+<script type="text/javascript">
+	function setUser(){
+	<%
+		request.getSession().setAttribute("account", "");
+	%>
+	}
+</script>
+
 <style type="text/css">
 .menu {
 	height: 25px;
@@ -17,13 +25,14 @@
 }
 
 .menu td a {
+	text-shadow:0 0 0.2em #000;
 	padding: 10px 25px 10px 25px;
 	text-decoration: none;
 	float: left;
 	color: black;
 	background-color: rgb(240, 240, 240);
 	border: 0px solid rgb(10, 10, 15);
-	border-radius: 4px;
+	border-radius: 2px;
 }
 
 .menu td a:hover {
@@ -32,7 +41,7 @@
 }
 </style>
 </head>
-<body background="w2.jpg">
+<body bgcolor=#C8C8C8>
 	<table align="center">
 		<tr>
 			<td>
@@ -41,8 +50,16 @@
 						<td><a href="/IAUTO/home-page.jsp">მთავარი</a></td>
 						<td><a href="/IAUTO/my-page.jsp">ჩემი გვერდი</a></td>
 						<td><a href="/IAUTO/calculator.jsp">განბჟების კალკულატორი</a></td>
-						<td><a href="/IAUTO/user-register.jsp">რეგისტრაცია</a></td>
-						<td><a href="/IAUTO/log-in.jsp">შესვლა</a></td>
+						<% 
+						String name = (String)request.getSession().getAttribute("account");
+						if(!name.equals("")){
+						%>
+							<td><a href="/IAUTO/my-page.jsp"><%=name%></a></td>
+							<td><a href="/IAUTO/home-page.jsp" onclick="setUser()">გამოსვლა</a></td>
+						<%}else{%>
+							<td><a href="/IAUTO/user-register.jsp">რეგისტრაცია</a></td>
+							<td><a href="/IAUTO/log-in.jsp">შესვლა</a></td>
+						<%}%>
 					</tr>
 				</table>
 			</td>
@@ -53,8 +70,9 @@
 				<a href="/IAUTO/add-application.jsp"><img alt="" src="add.png"
 					style="vertical-align: 70%; border: 0px solid rgb(10, 10, 15)"></a>
 				<a href="https://www.facebook.com/pages/IAutoge/155285524650712"
-					target="_blank"><img src="facebook_share.png" width="140" height="50" style=" border: 0px solid rgb(10, 10, 15); vertical-align: 70%"/></a>
-			</td>
+				target="_blank"><img src="facebook_share.png" width="140"
+					height="50"
+					style="border: 0px solid rgb(10, 10, 15); vertical-align: 70%" /></a></td>
 		</tr>
 	</table>
 </body>

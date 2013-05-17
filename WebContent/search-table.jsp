@@ -8,7 +8,7 @@
 <style type="text/css">
 #axali_dzebna {
 	width: 814px;
-	background: #99FF99;
+	background: rgb(240,240,240);
 	border: 5px solid rgb(255, 255, 255);
 	box-shadow: 4px 4px 21px -4px #858585;
 	text-shadow: rgba(180, 78, 78, 0.22) 0.1em 0.1em 0.2em;
@@ -17,7 +17,7 @@
 }
 
 #gamochenili {
-	height: 130px;
+	height: 110px;
 }
 
 .sigane {
@@ -39,26 +39,21 @@
 }
 
 #dzebna {
-	background: rgb(10, 10, 255);
-	background: -moz-linear-gradient(top, rgb(255, 208, 60) 0%,
-		rgb(255, 169, 16) 100% );
-	background: -webkit-linear-gradient(top, rgb(255, 208, 60) 0%,
-		rgb(255, 169, 16) 100% );
-	background: -o-linear-gradient(top, rgb(255, 208, 60) 0%,
-		rgb(255, 169, 16) 100% );
-	background: -ms-linear-gradient(top, rgb(255, 208, 60) 0%,
-		rgb(255, 169, 16) 100% );
-	background: linear-gradient(top, rgb(255, 208, 60) 0%, rgb(255, 169, 16)
-		100% );
+	background: #66CCFF;
 	padding: 3px 17px;
-	color: #FFFFFF;
+	color: black;
 	font-family: 'Helvetica Neue', sans-serif;
 	font-size: 17px;
 	border-radius: 4px;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
-	border: 1px solid rgb(213, 150, 17);
+	border: 0px solid rgb(213, 150, 17);
 	cursor: pointer;
+}
+
+#dzebna.hover{
+	background-color: #3399FF;
+	color: white;
 }
 </style>
 </head>
@@ -247,9 +242,8 @@
 							<option value="31">ბოლო 1 თვე</option>
 					</select>
 					</span> <span class="sigane">
-						<button id="dzebna">ძებნა</button> <span
-						style="color: rgba(255, 255, 255, 0); text-shadow: none; font-size: 14px;">....</span>
-					</span>
+						<button id="dzebna">ძებნა</button>
+						</span>
 				</div>
 			</div>
 		</div>

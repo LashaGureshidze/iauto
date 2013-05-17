@@ -7,47 +7,51 @@
 <title>www.IAuto.ge</title>
 
 <style type="text/css">
-.menu ul {
-	font: bold 18px calibri;
+.menu {
 	height: 25px;
 }
 
-.menu ul li {
+.menu td {
 	list-style: none;
 	display: inline;
 }
 
-.menu ul li a {
+.menu td a {
 	padding: 10px 25px 10px 25px;
 	text-decoration: none;
 	float: left;
-	color: white;
-	background-color: rgb(10, 10, 255);
-	border: 1px solid rgb(10, 10, 15);
+	color: black;
+	background-color: rgb(240,240,240);
+	border: 0px solid rgb(10, 10, 15);
+	border-radius : 4px;
 }
 
-.menu ul li a:hover {
-	background-color: #99FF99;
-	color: rgb(10, 10, 255);
+.menu td a:hover {
+	background-color: #3399FF;
+	color: white;
 }
 </style>
 </head>
-<body>
-	<table>
+<body background="w2.jpg">
+	<table align="center">
 		<tr>
-			<td class="menu">
-				<ul>
-					<li><a href="/IAUTO/home-page.jsp">მთავარი</a></li>
-					<li><a href="/IAUTO/my-page.jsp">ჩემი გვერდი</a></li>
-					<li><a href="/IAUTO/calculator.jsp">განბჟების კალკულატორი</a></li>
-					<li><a href="/IAUTO/user-register.jsp">რეგისტრაცია</a></li>
-					<li><a href="/IAUTO/log-in.jsp">შესვლა</a></li>
-				</ul>
+			<td>
+				<table>
+					<tr class="menu">
+						<td><a href="/IAUTO/home-page.jsp">მთავარი</a></td>
+						<td><a href="/IAUTO/my-page.jsp">ჩემი გვერდი</a></td>
+						<td><a href="/IAUTO/calculator.jsp">განბჟების კალკულატორი</a></td>
+						<td><a href="/IAUTO/user-register.jsp">რეგისტრაცია</a></td>
+						<td><a href="/IAUTO/log-in.jsp">შესვლა</a></td>
+					</tr>
+				</table>
 			</td>
 		</tr>
 		<tr>
-			<td><img alt="iauto-logo.jpg" src="logo" height="40" width="100"
-				onclick="window.location = '/IAUTO/add-aplication.jsp';"></td>
+			<td>
+				<a href="/IAUTO/home-page.jsp"><img src="logo.jpg" width="250" height="80" style="border: 0px solid rgb(10, 10, 15)"></a>
+			 	<a href="/IAUTO/add-application.jsp"><img alt="" src="add.png" style="vertical-align: 70%; border: 0px solid rgb(10, 10, 15)"></a>
+			</td>
 		</tr>
 	</table>
 	<div style="position:;right:260px;top:30px;"  align="right">

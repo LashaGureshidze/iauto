@@ -28,15 +28,22 @@
 </style>
 
 <script type="text/javascript">
-function checkPasswordMatch(){
+function checkPasswordMatch(pos){
+	var st;
+	if (pos == "up") st = "არ ემთხვევა ქვემოთ შეყვანილ პაროლს!";
+	else st = "არ ემთხვევა ზემოთ შეყვანილ პაროლს!";
 	var pass = document.getElementById("pass").value;
 	var rpass = document.getElementById("rpass").value;
+	document.getElementById("up").innerHTML="";
+	document.getElementById("down").innerHTML="";
 	if (pass != rpass) {
-		document.getElementById("passError").innerHTML="არ ემთხვევა ზემოთ შეყვანილ პაროლს!";
+		document.getElementById(pos).innerHTML = st;
 		document.getElementById("dzebna").disabled = true;
 	} else {
-		document.getElementById("passError").innerHTML="";
-		document.getElementById("dzebna").disabled = false;
+		if (pass.length < 6) {
+			document.getElementById("up").innerHTML="პაროლი უნდა შეიცავდეს მინიმუმ 6 სიმბოლოს!";
+			document.getElementById("dzebna").disabled = true;
+		} else document.getElementById("dzebna").disabled = false;
 	}
 }
 </script>
@@ -44,7 +51,7 @@ function checkPasswordMatch(){
 <%@include file="menu-bar.jsp"%>
 </head>
 <body>
-	<fieldset style="background-color:rgb(240,240,240); width:750px; margin:auto;">
+	<fieldset style="background-color:rgb(240,240,240); width:770px; margin:auto;">
 	<form action="Verification" method="post">
 	<table width="100%" border="0">
 		<%
@@ -66,8 +73,9 @@ function checkPasswordMatch(){
 				პაროლი<font color="red">*</font>: 
 			</td>
 			<td class="reg_class_value">					
-				<input id="pass" type="password" size="20" name="password">
+				<input id="pass" type="password" size="20" name="password" onchange="checkPasswordMatch('up')">
 				<% if (error != null && error.get(1) != null) out.println("<font size='2' color='red'>" + error.get(1) + "</font>"); %>
+				<% out.print("<font size='2' color='red' id='up'>" + "" + "</font>"); %>
 			</td>
 		</tr>
 		
@@ -76,8 +84,8 @@ function checkPasswordMatch(){
 				გაიმეორეთ პაროლი<font color="red">*</font>: 
 			</td>
 			<td class="reg_class_value">					
-				<input id="rpass" type="password" size="20" name="rpassword" onchange="checkPasswordMatch()">
-				<% out.print("<font size='2' color='red' id='passError'>" + "" + "</font>"); %>
+				<input id="rpass" type="password" size="20" name="rpassword" onchange="checkPasswordMatch('down')">
+				<% out.print("<font size='2' color='red' id='down'>" + "" + "</font>"); %>
 			</td>
 		</tr>
 		
@@ -134,7 +142,7 @@ function checkPasswordMatch(){
 		</tr>
 		<tr>
 			<td align="center">
-				<br><input id="dzebna" type="submit" value="რეგისტრაცია"/>
+				<br><input id="dzebna" type="submit" value="რეგისტრაცია" disabled="disabled"/>
 			</td>
 		</tr>
 	</table>

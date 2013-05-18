@@ -6,14 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>www.IAuto.ge</title>
 
-<script type="text/javascript">
-	function setUser(){
-	<%
-		request.getSession().setAttribute("account", "");
-	%>
-	}
-</script>
-
 <style type="text/css">
 .menu {
 	height: 25px;
@@ -25,11 +17,23 @@
 }
 
 .menu td a {
-	text-shadow:0 0 0.2em #000;
+	text-shadow: 0 0 0.2em #000;
 	padding: 10px 25px 10px 25px;
 	text-decoration: none;
 	float: left;
 	color: black;
+	background-color: rgb(240, 240, 240);
+	border: 0px solid rgb(10, 10, 15);
+	border-radius: 2px;
+}
+
+.menu td input {
+	text-shadow: 0 0 0.2em #000;
+	padding: 10px 25px 10px 25px;
+	text-decoration: none;
+	float: left;
+	color: black;
+	height: 38px;
 	background-color: rgb(240, 240, 240);
 	border: 0px solid rgb(10, 10, 15);
 	border-radius: 2px;
@@ -42,6 +46,7 @@
 </style>
 </head>
 <body bgcolor=#C8C8C8>
+	<form action="LogoutServlet" method="post">
 	<table align="center">
 		<tr>
 			<td>
@@ -50,16 +55,20 @@
 						<td><a href="/IAUTO/home-page.jsp">მთავარი</a></td>
 						<td><a href="/IAUTO/my-page.jsp">ჩემი გვერდი</a></td>
 						<td><a href="/IAUTO/calculator.jsp">განბჟების კალკულატორი</a></td>
-						<% 
-						String name = (String)request.getSession().getAttribute("account");
-						if(!name.equals("")){
+						<%
+							if (request.getSession().getAttribute("account") == null) {
 						%>
-							<td><a href="/IAUTO/my-page.jsp"><%=name%></a></td>
-							<td><a href="/IAUTO/home-page.jsp" onclick="setUser()">გამოსვლა</a></td>
-						<%}else{%>
-							<td><a href="/IAUTO/user-register.jsp">რეგისტრაცია</a></td>
-							<td><a href="/IAUTO/log-in.jsp">შესვლა</a></td>
-						<%}%>
+						<td><a href="/IAUTO/user-register.jsp">რეგისტრაცია</a></td>
+						<td><a href="/IAUTO/log-in.jsp">შესვლა</a></td>
+						<%
+							} else {
+						%>
+						<td><a href="/IAUTO/my-page.jsp"> <%=request.getSession().getAttribute("account")%>
+						</a></td>
+						<td><input type="submit" value="გამოსვლა"></td>
+						<%
+							}
+						%>
 					</tr>
 				</table>
 			</td>
@@ -75,5 +84,6 @@
 					style="border: 0px solid rgb(10, 10, 15); vertical-align: 70%" /></a></td>
 		</tr>
 	</table>
+	</form>
 </body>
 </html>

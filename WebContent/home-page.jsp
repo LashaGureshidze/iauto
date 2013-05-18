@@ -9,6 +9,5 @@
 <body background="w2.jpg">
 	<%@include file="menu-bar.jsp"%>
 	<%@include file="search-table.jsp"%>
-	
 </body>
 </html>

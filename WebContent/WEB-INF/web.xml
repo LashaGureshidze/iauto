@@ -5,4 +5,14 @@
     <welcome-file>home-page.jsp</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>StartServlet</display-name>
+    <servlet-name>StartServlet</servlet-name>
+    <servlet-class>ge.iauto.servlets.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StartServlet</servlet-name>
+    <url-pattern>/StartServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -44,8 +44,4 @@ public class CarMake implements Serializable{
 	public void setModels(List<CarModel> models) {
 		this.models = models;
 	}
-
-	
-	
-
 }

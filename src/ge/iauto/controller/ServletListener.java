@@ -1,5 +1,9 @@
 package ge.iauto.controller;
 
+import java.util.HashMap;
+import java.util.List;
+
+import ge.iauto.data.CarMake;
 import ge.iauto.server.PersistenceProvider;
 import ge.iauto.server.PersistenceService;
 
@@ -24,9 +28,22 @@ public class ServletListener implements ServletContextListener {
 	/**
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
+    /*
+     * when context is create it puts into it
+     * two HashMap . one is id with names and 
+     * second is cars with keys their id 
+     */
     public void contextInitialized(ServletContextEvent arg0) {
     	PersistenceService service = new PersistenceService();
-        arg0.getServletContext().setAttribute("carMakes", service.getCarMakes());
+    	List<CarMake> result = service.getCarMakes();
+    	HashMap<String, Long> Ids = new HashMap<String, Long>();
+    	HashMap<Long, CarMake> cars = new HashMap<Long, CarMake>();
+    	for(CarMake car : result){
+    		Ids.put(car.getName(), car.getId());
+    		cars.put(car.getId(), car);
+    	}
+        arg0.getServletContext().setAttribute("idByName", Ids);
+        arg0.getServletContext().setAttribute("carById", cars);
     }
 
 	/**

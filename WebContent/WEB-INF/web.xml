@@ -15,4 +15,14 @@
     <servlet-name>StartServlet</servlet-name>
     <url-pattern>/StartServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>home-page</display-name>
+    <servlet-name>home-page</servlet-name>
+    <jsp-file>/home-page.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>home-page</servlet-name>
+    <url-pattern>/home-page</url-pattern>
+  </servlet-mapping>
 </web-app>

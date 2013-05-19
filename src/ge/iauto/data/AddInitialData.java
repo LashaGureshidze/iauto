@@ -192,8 +192,8 @@ public class AddInitialData {
 		
 		//==========================persist===================
 		PersistenceService service = new PersistenceService();
-		service.addCarMark(mark);
-		service.addCarMark(markk);
+		service.saveCarMake(mark);
+		service.saveCarMake(markk);
 		
 		
 		

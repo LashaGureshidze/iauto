@@ -12,7 +12,7 @@ import javax.persistence.Query;
 
 public class PersistenceService {
 
-	public void addUser(User user){
+	public void saveUser(User user){
 		EntityManager entitymanager = PersistenceProvider.createEM();
 		entitymanager.getTransaction().begin();		
 		entitymanager.persist(user);
@@ -20,7 +20,7 @@ public class PersistenceService {
 		entitymanager.close();
 	}
 	
-	public void addCarMark(CarMake carMake){
+	public void saveCarMake(CarMake carMake){
 		EntityManager entitymanager = PersistenceProvider.createEM();
 		entitymanager.getTransaction().begin();		
 		entitymanager.persist(carMake);
@@ -28,7 +28,7 @@ public class PersistenceService {
 		entitymanager.close();
 	}
 	
-	public void addCarModel(CarModel carModel){
+	public void saveCarModel(CarModel carModel){
 		EntityManager entitymanager = PersistenceProvider.createEM();
 		entitymanager.getTransaction().begin();		
 		entitymanager.persist(carModel);

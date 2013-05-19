@@ -7,12 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Car {
-	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+	
 	private long id;
+	
+	private User user;
 	
 	private String category;
 	
@@ -95,7 +97,9 @@ public class Car {
 	private String describtion;
 	
 	private ArrayList<Image> images;
-
+	
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}
@@ -430,6 +434,14 @@ public class Car {
 
 	public void setImages(ArrayList<Image> images) {
 		this.images = images;
+	}
+	@ManyToOne
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 }

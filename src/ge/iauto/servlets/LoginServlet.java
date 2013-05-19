@@ -47,10 +47,11 @@ public class LoginServlet extends HttpServlet {
 		User user = service.getUser(username, password);
 		if (user == null) {
 			RequestDispatcher dispatcher = request
-					.getRequestDispatcher("log-in.jsp");
+					.getRequestDispatcher("log-in.jsp?message=error");
 			dispatcher.forward(request, response);
 		} else {
 			request.getSession().setAttribute("account", username);
+			request.getSession().setAttribute("user", user);
 			RequestDispatcher dispatcher = request
 					.getRequestDispatcher("home-page.jsp");
 			dispatcher.forward(request, response);

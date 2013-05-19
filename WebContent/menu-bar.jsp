@@ -33,10 +33,15 @@
 	text-decoration: none;
 	float: left;
 	color: black;
-	height: 38px;
+	height: 40px;
 	background-color: rgb(240, 240, 240);
 	border: 0px solid rgb(10, 10, 15);
 	border-radius: 2px;
+}
+
+.menu td input:hover{
+	background-color: #3399FF;
+	color: white;
 }
 
 .menu td a:hover {

@@ -27,6 +27,13 @@
 </head>
 <body bgcolor=#A0A0A0>
 	<%@include file="menu-bar.jsp"%>
+	<%
+		String message = request.getParameter("message");
+		if (message == null)
+			message = "";
+		else
+			message = "სწორად შეავსეთ ველი";
+	%>
 	<form action="LoginServlet" method="post">
 		<fieldset
 			style="background-color: rgb(240, 240, 240); width: 300px; margin: auto;">
@@ -35,20 +42,21 @@
 					<td class="reg_class_label" style="width: 300px;">მომხმარებელი<font
 						color="red">*</font>:
 					</td>
-					<td class="reg_class_value"><input type="text"
-						size="20" name="username"></td>
+					<td class="reg_class_value"><input type="text" size="20"
+						name="username"></td>
 				</tr>
-
 				<tr>
 					<td class="reg_class_label" style="width: 300px;">პაროლი<font
 						color="red">*</font>:
 					</td>
-					<td class="reg_class_value"><input type="password"
-						size="20" name="password"></td>
+					<td class="reg_class_value"><input type="password" size="20"
+						name="password"></td>
 				</tr>
 				<tr>
 					<td align="center"><br> <input id="dzebna" type="submit"
 						value="შესვლა" /></td>
+					<td align="center"><font
+						color="red" size="3px"><%=message%></font></td>
 				</tr>
 			</table>
 		</fieldset>

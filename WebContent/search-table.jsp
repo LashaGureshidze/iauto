@@ -38,7 +38,7 @@
 	text-shadow: rgba(78, 78, 78, 0.12) 0.1em 0.1em 0.2em;
 }
 
-#dzebna {
+.dzebna {
 	background: #66CCFF;
 	padding: 3px 17px;
 	color: black;
@@ -49,9 +49,10 @@
 	-webkit-border-radius: 4px;
 	border: 0px solid rgb(213, 150, 17);
 	cursor: pointer;
+	background-color: rgb(140, 140, 140);
 }
 
-#dzebna.hover{
+.dzebna:hover{
 	background-color: #3399FF;
 	color: white;
 }
@@ -242,7 +243,7 @@
 							<option value="31">ბოლო 1 თვე</option>
 					</select>
 					</span> <span class="sigane">
-						<button id="dzebna">ძებნა</button>
+						<button class="dzebna">ძებნა</button>
 						</span>
 				</div>
 			</div>

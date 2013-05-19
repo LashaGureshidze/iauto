@@ -33,7 +33,7 @@
 			<tr>
 				<td align=right><strong>კატეგორია:</strong></td>
 				<td align=left><select name=category_id
-					style="border: dashed #666 1px;" onchange="change_run();"
+					style="border: dashed #660 1px;" onchange="change_run();"
 					id=category_id>
 						<option value="">აირჩიეთ კატეგორია</option>
 						<option value=1>სედანი</option>

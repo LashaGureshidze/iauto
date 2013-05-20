@@ -4,6 +4,8 @@ import java.util.List;
 
 import ge.iauto.data.CarMake;
 import ge.iauto.data.CarModel;
+import ge.iauto.data.Category;
+import ge.iauto.data.Location;
 import ge.iauto.data.User;
 
 import javax.persistence.EntityManager;
@@ -32,6 +34,22 @@ public class PersistenceService {
 		EntityManager entitymanager = PersistenceProvider.createEM();
 		entitymanager.getTransaction().begin();		
 		entitymanager.persist(carModel);
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
+	}
+	
+	public void saveLocation(Location location){
+		EntityManager entitymanager = PersistenceProvider.createEM();
+		entitymanager.getTransaction().begin();		
+		entitymanager.persist(location);
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
+	}
+	
+	public void saveCategory(Category category){
+		EntityManager entitymanager = PersistenceProvider.createEM();
+		entitymanager.getTransaction().begin();		
+		entitymanager.persist(category);
 		entitymanager.getTransaction().commit();
 		entitymanager.close();
 	}
@@ -65,6 +83,22 @@ public class PersistenceService {
 		EntityManager entitymanager = PersistenceProvider.createEM();
 		Query q = entitymanager.createQuery("FROM CarMake");
 		List<CarMake> result = q.getResultList();
+		return result;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Location> getLocations(){
+		EntityManager entitymanager = PersistenceProvider.createEM();
+		Query q = entitymanager.createQuery("FROM Location");
+		List<Location> result = q.getResultList();
+		return result;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Category> getCategories(){
+		EntityManager entitymanager = PersistenceProvider.createEM();
+		Query q = entitymanager.createQuery("FROM Category");
+		List<Category> result = q.getResultList();
 		return result;
 	}
 }

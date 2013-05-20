@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import ge.iauto.data.CarMake;
+import ge.iauto.data.Category;
+import ge.iauto.data.Location;
 import ge.iauto.server.PersistenceProvider;
 import ge.iauto.server.PersistenceService;
 
@@ -44,6 +46,14 @@ public class ServletListener implements ServletContextListener {
     	}
         arg0.getServletContext().setAttribute("idByName", Ids);
         arg0.getServletContext().setAttribute("carById", cars);
+    
+        //=======================load Locations==========
+        List<Location> list = service.getLocations();
+        arg0.getServletContext().setAttribute("locations", list);
+        
+        //======================load Categroies
+        List<Category> lis = service.getCategories();
+        arg0.getServletContext().setAttribute("categories", lis);
     }
 
 	/**

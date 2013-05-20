@@ -16,13 +16,13 @@ public class Car {
 	
 	private User user;
 	
-	private String category;
+	private Category category;
 	
 	private long mark;
 	
 	private long model;
 	
-	private String location;
+	private Location location;
 	
 	private String year;
 	
@@ -108,14 +108,6 @@ public class Car {
 		this.id = id;
 	}
 
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
 	public long getMark() {
 		return mark;
 	}
@@ -130,14 +122,6 @@ public class Car {
 
 	public void setModel(long model) {
 		this.model = model;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
 	}
 
 	public String getYear() {
@@ -442,6 +426,22 @@ public class Car {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	@ManyToOne
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	@ManyToOne
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 	
 }

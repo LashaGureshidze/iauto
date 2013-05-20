@@ -195,7 +195,104 @@ public class AddInitialData {
 		service.saveCarMake(mark);
 		service.saveCarMake(markk);
 		
+		//=========================save Location and Category
+		Location location = null;
 		
+		location = new Location();
+		location.setName("Sakartvelo");
+		service.saveLocation(location);
+		
+		location = new Location();
+		location.setName("tbilisi");
+		service.saveLocation(location);
+		
+		location = new Location();
+		location.setName("rustavis avtobazroba");
+		service.saveLocation(location);
+		
+		location = new Location();
+		location.setName("kutaisi");
+		service.saveLocation(location);
+		
+		location = new Location();
+		location.setName("zestafoni");
+		service.saveLocation(location);
+		
+		location = new Location();
+		location.setName("axmeta");
+		service.saveLocation(location);
+		
+		location = new Location();
+		location.setName("borjomi");
+		service.saveLocation(location);
+		
+		location = new Location();
+		location.setName("batumi");
+		service.saveLocation(location);
+		
+		location = new Location();
+		location.setName("soxumi");
+		service.saveLocation(location);
+		
+		location = new Location();
+		location.setName("cxinvali");
+		service.saveLocation(location);
+		
+		location = new Location();
+		location.setName("gori");
+		service.saveLocation(location);
+		
+		//დასამატებელია, და ქართულად არის შესაცვლელი
+		
+		Category category = null;
+		
+		category = new Category();
+		category.setName("sedani");
+		service.saveCategory(category);
+		
+		category = new Category();
+		category.setName("jipi");
+		service.saveCategory(category);
+		
+		category = new Category();
+		category.setName("kupe");
+		service.saveCategory(category);
+		
+		category = new Category();
+		category.setName("hechbeki");
+		service.saveCategory(category);
+		
+		category = new Category();
+		category.setName("kabrioleti");
+		service.saveCategory(category);
+		
+		category = new Category();
+		category.setName("pikapi");
+		service.saveCategory(category);
+		
+		category = new Category();
+		category.setName("miniveni");
+		service.saveCategory(category);
+		
+		category = new Category();
+		category.setName("mikroavtobusi");
+		service.saveCategory(category);
+		
+		category = new Category();
+		category.setName("furgoni");
+		service.saveCategory(category);
+		
+		category = new Category();
+		category.setName("limuzini");
+		service.saveCategory(category);
+		
+		category = new Category();
+		category.setName("specteqnika");
+		service.saveCategory(category);
+		
+		category = new Category();
+		category.setName("motocikli");
+		service.saveCategory(category);
 		
 	}
 

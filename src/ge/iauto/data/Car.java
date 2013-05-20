@@ -1,6 +1,7 @@
 package ge.iauto.data;
 
 import java.awt.Image;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.persistence.Entity;
@@ -9,18 +10,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+@SuppressWarnings("serial")
 @Entity
-public class Car {
+public class Car implements Serializable{
 	
 	private long id;
+	
+	private String uploaddate;
 	
 	private User user;
 	
 	private Category category;
 	
-	private long mark;
+	private CarMake carmake;
 	
-	private long model;
+	private CarModel carmodel;
 	
 	private Location location;
 	
@@ -56,7 +60,7 @@ public class Car {
 	
 	private boolean ganbajebuli;
 	
-	private boolean exchange;
+	private boolean changable;
 	
 	private boolean saleonauction;
 	
@@ -106,22 +110,6 @@ public class Car {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public long getMark() {
-		return mark;
-	}
-
-	public void setMark(long mark) {
-		this.mark = mark;
-	}
-
-	public long getModel() {
-		return model;
-	}
-
-	public void setModel(long model) {
-		this.model = model;
 	}
 
 	public String getYear() {
@@ -250,14 +238,6 @@ public class Car {
 
 	public void setGanbajebuli(boolean ganbajebuli) {
 		this.ganbajebuli = ganbajebuli;
-	}
-
-	public boolean isExchange() {
-		return exchange;
-	}
-
-	public void setExchange(boolean exchange) {
-		this.exchange = exchange;
 	}
 
 	public boolean isSaleonauction() {
@@ -442,6 +422,38 @@ public class Car {
 
 	public void setLocation(Location location) {
 		this.location = location;
+	}
+
+	public boolean isChangable() {
+		return changable;
+	}
+
+	public void setChangable(boolean changable) {
+		this.changable = changable;
+	}
+	@ManyToOne
+	public CarMake getCarmake() {
+		return carmake;
+	}
+
+	public void setCarmake(CarMake carmake) {
+		this.carmake = carmake;
+	}
+	@ManyToOne
+	public CarModel getCarmodel() {
+		return carmodel;
+	}
+
+	public void setCarmodel(CarModel carmodel) {
+		this.carmodel = carmodel;
+	}
+
+	public String getUploaddate() {
+		return uploaddate;
+	}
+
+	public void setUploaddate(String uploaddate) {
+		this.uploaddate = uploaddate;
 	}
 	
 }

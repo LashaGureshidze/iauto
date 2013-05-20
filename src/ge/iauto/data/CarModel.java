@@ -1,12 +1,16 @@
 package ge.iauto.data;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 @SuppressWarnings("serial")
 @Entity
 public class CarModel implements Serializable{
@@ -16,6 +20,9 @@ public class CarModel implements Serializable{
 	private String name;
 	
 	private CarMake carmake;
+	
+	private List<Car> cars = new ArrayList<Car>();
+	
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	public long getId() {
@@ -40,6 +47,14 @@ public class CarModel implements Serializable{
 
 	public void setCarmake(CarMake carmake) {
 		this.carmake = carmake;
+	}
+	@OneToMany(mappedBy="carmodel",cascade = CascadeType.ALL)
+	public List<Car> getCars() {
+		return cars;
+	}
+
+	public void setCars(List<Car> cars) {
+		this.cars = cars;
 	}
 	
 

@@ -19,6 +19,9 @@ public class CarMake implements Serializable{
 	private String name;
 	
 	private List<CarModel> models = new ArrayList<CarModel>();
+	
+	private List<Car> cars = new ArrayList<Car>();
+	
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	public long getId() {
@@ -43,5 +46,13 @@ public class CarMake implements Serializable{
 
 	public void setModels(List<CarModel> models) {
 		this.models = models;
+	}
+	@OneToMany(mappedBy="carmake",cascade = CascadeType.ALL)
+	public List<Car> getCars() {
+		return cars;
+	}
+
+	public void setCars(List<Car> cars) {
+		this.cars = cars;
 	}
 }

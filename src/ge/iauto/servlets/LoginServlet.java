@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+			HttpServletResponse response) throws ServletException, IOException {	
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		PersistenceService service = new PersistenceService();
@@ -50,7 +50,6 @@ public class LoginServlet extends HttpServlet {
 					.getRequestDispatcher("log-in.jsp?message=error");
 			dispatcher.forward(request, response);
 		} else {
-			request.getSession().setAttribute("account", username);
 			request.getSession().setAttribute("user", user);
 			RequestDispatcher dispatcher = request
 					.getRequestDispatcher("home-page.jsp");

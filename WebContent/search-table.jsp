@@ -8,7 +8,7 @@
 <style type="text/css">
 #axali_dzebna {
 	width: 814px;
-	background: rgb(240,240,240);
+	background: rgb(240, 240, 240);
 	border: 5px solid rgb(255, 255, 255);
 	box-shadow: 4px 4px 21px -4px #858585;
 	text-shadow: rgba(180, 78, 78, 0.22) 0.1em 0.1em 0.2em;
@@ -52,22 +52,21 @@
 	background-color: rgb(140, 140, 140);
 }
 
-.dzebna:hover{
+.dzebna:hover {
 	background-color: #3399FF;
 	color: white;
 }
 </style>
 </head>
 <body>
-	<form action="Search">
+	<form action="SearchServlet" method="post">
 		<input value="1" name="search_tp" type="hidden">
 		<div id="axali_dzebna">
 			<div id="gamochenili">
 				<div id="pirveli_rigi">
 					<span class="sigane" style="width: 150px;"> <select
 						name="man_id" id="man_id" class="seleqtebi"
-						onChange="manBoxChange('man_model_id_group','man_id');"
-						tabindex="1">
+						onChange="manBoxChange(this);" tabindex="1">
 							<option value="" selected="selected">მწარმოებელი</option>
 							<option value="">ყველა</option>
 							<option value='1'>ALFA ROMEO</option>
@@ -96,7 +95,7 @@
 					</select>
 					</span> <span class="sigane" style="text-align: right; width: 200px;">
 						<a style="margin-left: -16px;">წელი</a> <select name="year_from"
-						id="year_from" tabindex="4" class="seleqtebi" style="width: 75px;">
+						tabindex="4" class="seleqtebi" style="width: 75px;">
 							<option>დან</option>
 							<%
 								for (int k = 1940; k <= 2013; k++) {
@@ -105,7 +104,7 @@
 							<%
 								}
 							%>
-					</select> <select name="year_to" id="year_to" tabindex="5" class="seleqtebi"
+					</select> <select name="year" tabindex="5" class="seleqtebi"
 						style="width: 75px;">
 							<option>მდე</option>
 							<%
@@ -117,8 +116,7 @@
 							%>
 					</select>
 					</span> <span class="sigane" style="text-align: right;"> <select
-						onChange="gearch(this.value);countresult(que);"
-						name="gear_type_id" id="gear_type_id" class="seleqtebi">
+						name="gear_type" class="seleqtebi">
 							<option value="">ტრანსმისია</option>
 							<option value="1">მექანიკური</option>
 							<option value="2">ავტომატიკა</option>
@@ -137,20 +135,16 @@
 				</div>
 				<div id="meore_rigi">
 					<span class="sigane" style="width: 150px;"> <select
-						onChange="manmodelch(this.value);countresult(que);"
-						name="man_model" id="man_model" class="seleqtebi">
-
+						name="model" id="model" class="seleqtebi">
 							<option value="" selected="selected">მოდელი</option>
-
 					</select>
 					</span> <span class="sigane" style="text-align: right; width: 200px;">
 						<a style="">ფასი</a> <input type="text" name="price_from"
-						id="price_from" tabindex="6" value="დან"
-						style="height: 22px; width: 69px;" /> <input name="price_to"
-						id="price_to" tabindex="7" value="მდე"
+						tabindex="6" value="დან" style="height: 22px; width: 69px;" /> <input
+						name="price_to" tabindex="7" value="მდე"
 						style="height: 22px; width: 69px;">
 					</span> <span class="sigane" style="text-align: right;"> <select
-						name="fuel_type_id" id="fuel_type_id" class="seleqtebi">
+						name="fuel_type" class="seleqtebi">
 							<option value="0">საწვავის ტიპი</option>
 							<option value="1">ელექტრო</option>
 							<option value="2">ბენზინი</option>
@@ -162,8 +156,7 @@
 					</select>
 
 					</span> <span class="sigane" style="text-align: right;"> <span>მარჯვენა
-							საჭე <select onChange="" name="right_wheel" id="right_wheel"
-							class="seleqtebi" style="width: 47px;">
+							საჭე <select name="right_wheel" class="seleqtebi" style="width: 47px;">
 								<option></option>
 								<option value="1">კი</option>
 								<option value="2">არა</option>
@@ -173,8 +166,7 @@
 				</div>
 				<div id="mesame_rigi">
 					<span class="sigane" style="width: 150px;"> <select
-						onChange="categorych(this.value);countresult(que);"
-						name="category_id" id="category_id" class="seleqtebi">
+						name="category_id" class="seleqtebi">
 							<option value="" selected="selected">კატეგორია</option>
 							<optgroup label="ავტომობილები">
 								<option value="1">ჯიპი</option>
@@ -205,8 +197,7 @@
 							</optgroup>
 					</select>
 					</span> <span class="sigane"> <select
-						onChange="locationch(this.value);countresult(que);"
-						id="location_id" name="location_id" class="seleqtebi">
+						name="location" class="seleqtebi">
 							<option value="" selected="selected">მდებარეობა</option>
 							<option value='1'>საქართველო</option>
 							<option value='2'>&nbsp;&nbsp;&nbsp;&nbsp;თბილისი</option>
@@ -225,7 +216,6 @@
 							<option value='11'>&nbsp;&nbsp;&nbsp;&nbsp;მცხეთა</option>
 					</select>
 					</span> <span class="sigane"> <select class="seleqtebi"
-						onChange="lastdch(this.value);countresult(que);" id="last_days"
 						name="last_days">
 							<option value="">განცხადებები</option>
 							<option value="1">ბოლო 1 საათი</option>
@@ -244,7 +234,7 @@
 					</select>
 					</span> <span class="sigane">
 						<button class="dzebna">ძებნა</button>
-						</span>
+					</span>
 				</div>
 			</div>
 		</div>

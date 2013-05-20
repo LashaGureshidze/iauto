@@ -1,3 +1,4 @@
+<%@page import="ge.iauto.data.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -22,7 +23,7 @@
 	text-decoration: none;
 	float: left;
 	color: black;
-	background-color: rgb(240, 240, 240);
+	background-color: rgb(200, 200, 200);
 	border: 0px solid rgb(10, 10, 15);
 	border-radius: 2px;
 }
@@ -34,45 +35,43 @@
 </style>
 </head>
 <body background="bg.png">
-	<form action="LogoutServlet" method="post">
-		<table align="center">
-			<tr>
-				<td>
-					<table>
-						<tr class="menu">
-							<td><a href="/IAUTO/home-page.jsp">მთავარი</a></td>
-							<td><a href="/IAUTO/my-page.jsp">ჩემი გვერდი</a></td>
-							<td><a href="/IAUTO/calculator.jsp">განბჟების
-									კალკულატორი</a></td>
-							<%
-								if (request.getSession().getAttribute("account") == null) {
-							%>
-							<td><a href="/IAUTO/user-register.jsp">რეგისტრაცია</a></td>
-							<td><a href="/IAUTO/log-in.jsp">შესვლა</a></td>
-							<%
-								} else {
-							%>
-							<td><a href="/IAUTO/my-page.jsp"> <%=request.getSession().getAttribute("account")%>
-							</a></td>
-							<td><a href="/IAUTO/LogoutServlet">გამოსვლა</a></td>
-							<%
-								}
-							%>
-						</tr>
-					</table>
-				</td>
-			</tr>
-			<tr>
-				<td><a href="/IAUTO/home-page.jsp"><img src="iautoLogo.gif"
-						width="300" height="80" style="border: 0px solid rgb(10, 10, 15)"></a>
-					<a href="/IAUTO/add-application.jsp"><img alt="" src="add.png"
-						style="vertical-align: 70%; border: 0px solid rgb(10, 10, 15)"></a>
-					<a href="https://www.facebook.com/pages/IAutoge/155285524650712"
-					target="_blank"><img src="facebook_share.png" width="140"
-						height="50"
-						style="border: 0px solid rgb(10, 10, 15); vertical-align: 70%" /></a></td>
-			</tr>
-		</table>
-	</form>
+	<table align="center">
+		<tr>
+			<td>
+				<table>
+					<tr class="menu">
+						<td><a href="/IAUTO/HomeServlet">მთავარი</a></td>
+						<td><a href="/IAUTO/MyPageServlet">ჩემი გვერდი</a></td>
+						<td><a href="/IAUTO/CalculatorServlet">განბჟების
+								კალკულატორი</a></td>
+						<%
+							if (request.getSession().getAttribute("user") == null) {
+						%>
+						<td><a href="/IAUTO/RegisterServlet">რეგისტრაცია</a></td>
+						<td><a href="/IAUTO/LogServlet">შესვლა</a></td>
+						<%
+							} else {
+								User user = (User) request.getSession().getAttribute("user");
+								String name = user.getName();
+						%>
+						<td><a href="/IAUTO/MyPageServlet"><%=name%> </a></td>
+						<td><a href="/IAUTO/LogoutServlet">გამოსვლა</a></td>
+						<%
+							}
+						%>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td><a href="/IAUTO/HomeServlet"><img src="iautoLogo.gif"
+					width="300" height="80" style="border: 0px solid rgb(10, 10, 15)"></a>
+				<a href="/IAUTO/AddAplicationServlet"><img alt="" src="add.png"
+					style="vertical-align: 70%; border: 0px solid rgb(10, 10, 15)"></a>
+				<a href="https://www.facebook.com/pages/IAutoge/155285524650712" target="_blank"><img
+					src="facebook_share.png" width="140" height="50"
+					style="border: 0px solid rgb(10, 10, 15); vertical-align: 70%" /></a></td>
+		</tr>
+	</table>
 </body>
 </html>

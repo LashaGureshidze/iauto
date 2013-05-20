@@ -22,7 +22,6 @@ public class LoginedSession implements HttpSessionListener {
      * @see HttpSessionListener#sessionCreated(HttpSessionEvent)
      */
     public void sessionCreated(HttpSessionEvent arg0) {
-    	arg0.getSession().setAttribute("account", null);
     	arg0.getSession().setAttribute("user", null);
     }
 

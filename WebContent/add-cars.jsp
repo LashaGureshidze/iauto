@@ -1,3 +1,7 @@
+<%@page import="ge.iauto.data.Location"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="ge.iauto.data.Category"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -36,20 +40,18 @@
 					style="border: dashed #660 1px;" onchange="change_run();"
 					id=category_id>
 						<option value="">აირჩიეთ კატეგორია</option>
-						<option value=1>სედანი</option>
-						<option value=5>ჯიპი</option>
-						<option value=4>კუპე</option>
-						<option value=2>ჰეჩბექი</option>
-						<option value=3>უნივერსალი</option>
-						<option value=6>კაბრიოლეტი</option>
-						<option value=29>პიკაპი</option>
-						<option value=30>მინივენი</option>
-						<option value=7>მიკროავტობუსი</option>
-						<option value=13>ფურგონი</option>
-						<option value=15>ლიმუზინი</option>
-						<option value=37>საგზაო</option>
-						<option value=35>მსუბუქი კომერციული</option>
-						<option value=36>გამწევი</option>
+						<%
+							@SuppressWarnings("unchecked")
+							List<Category> categeory = (List<Category>) request
+									.getServletContext().getAttribute("categories");
+							Iterator<Category> it = categeory.iterator();
+							while (it.hasNext()) {
+								Category tmp = it.next();
+						%>
+						<option value=<%=tmp.getId()%>><%=tmp.getName()%></option>
+						<%
+							}
+						%>
 				</select> <img src="http://www.myauto.ge/images/attention_icon.gif"
 					width="30" height="30" style="margin-top: -4px;" /></td>
 			</tr>
@@ -157,57 +159,23 @@
 			<tr>
 				<td align="right">მდებარეობა:</td>
 				<td align="left"><select name="location_id" id="location_id">
-						<option value='2'>თბილისი</option>
-						<option value='34'>MyAuto-ს ავტობაზრობა</option>
-						<option value='30'>რუსთავის ავტობაზრობა</option>
-						<option value='3'>ქუთაისი</option>
-						<option value='36'>ზესტაფონი</option>
-						<option value='37'>ახმეტა</option>
-						<option value='38'>ბორჯომი</option>
-						<option value='4'>ბათუმი</option>
-						<option value='5'>სოხუმი</option>
-						<option value='6'>ცხინვალი</option>
-						<option value='7'>ფოთი</option>
-						<option value='8'>თელავი</option>
-						<option value='44'>გურჯაანი</option>
-						<option value='9'>ზუგდიდი</option>
-						<option value='39'>კასპი</option>
-						<option value='40'>საგარეჯო</option>
-						<option value='41'>ქობულეთი</option>
-						<option value='10'>ოზურგეთი</option>
-						<option value='11'>ამბროლაური</option>
-						<option value='12'>ხაშური</option>
-						<option value='13'>გორი</option>
-						<option value='14'>ახალქალაქი</option>
-						<option value='15'>რუსთავი</option>
-						<option value='16'>მცხეთა</option>
-						<option value='31'>ახალციხე</option>
-						<option value=''>--------------</option>
-						<option value='19'>გერმანია</option>
-						<option value='20'>ჰოლანდია</option>
-						<option value='21'>აშშ</option>
-						<option value='33'>ევროპა</option>
-						<option value=''>--------------</option>
-						<option value='22'>იაპონია</option>
-						<option value=''>--------------</option>
-						<option value='42'>იტალია</option>
-						<option value='32'>ინგლისი</option>
-						<option value=''>--------------</option>
-						<option value='43'>ირლანდია</option>
-						<option value='17'>აზერბაიჯანი</option>
-						<option value='18'>სომხეთი</option>
-						<option value='28'>რუსეთი</option>
-						<option value=''>--------------</option>
-						<option value='35'>დუბაი</option>
-						<option value='23'>გზაში საქ.-სკენ</option>
-						<option value='24'>სხვა</option>
+						<%
+							@SuppressWarnings("unchecked")
+							List<Location> locat = (List<Location>) request.getServletContext()
+									.getAttribute("locations");
+							Iterator<Location> it1 = locat.iterator();
+							while (it1.hasNext()) {
+								Location tmp = it1.next();
+						%>
+						<option value=<%=tmp.getId()%>><%=tmp.getName()%></option>
+						<%
+							}
+						%>
 				</select></td>
 				<td align=right>ამჟამად იყიდება აუქციონზე:</td>
 				<td align=left><input type="checkbox" name="is_auction"
 					id="is_auction" onClick="auctionOnClick()"></td>
 			</tr>
-
-
 
 			<tr>
 				<td align=right>გამოშვების წელი:</td>
@@ -400,11 +368,8 @@
 			</tr>
 			<tr valign=top>
 
-				<td align=right>
-				
-				</td>
-				<td align=left>
-					<input type="text" size=7 MAXLENGTH=4
+				<td align=right></td>
+				<td align=left><input type="text" size=7 MAXLENGTH=4
 					onKeyPress="return keyfilter_num(event)" name="import_year" /> <select
 					name="import_month"><option value=""></option>
 						<option value="1">1</option>
@@ -419,8 +384,7 @@
 						<option value="10">10</option>
 						<option value="11">11</option>
 						<option value="12">12</option></select> <br />(თუ გზაშია, მაშინ ჩამოსვლის
-					თარიღი)
-				</td>
+					თარიღი)</td>
 			</tr>
 		</table>
 
@@ -500,3 +464,4 @@
 	</form>
 </body>
 </html>
+

@@ -33,7 +33,7 @@
 }
 </style>
 </head>
-<body bgcolor=#C8C8C8>
+<body background="bg.png">
 	<form action="LogoutServlet" method="post">
 		<table align="center">
 			<tr>
@@ -63,8 +63,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td><a href="/IAUTO/home-page.jsp"><img src="logo.jpg"
-						width="250" height="80" style="border: 0px solid rgb(10, 10, 15)"></a>
+				<td><a href="/IAUTO/home-page.jsp"><img src="iautoLogo.gif"
+						width="300" height="80" style="border: 0px solid rgb(10, 10, 15)"></a>
 					<a href="/IAUTO/add-application.jsp"><img alt="" src="add.png"
 						style="vertical-align: 70%; border: 0px solid rgb(10, 10, 15)"></a>
 					<a href="https://www.facebook.com/pages/IAutoge/155285524650712"

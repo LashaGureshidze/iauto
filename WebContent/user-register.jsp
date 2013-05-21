@@ -36,6 +36,7 @@ function checkPasswordMatch(pos){
 	var rpass = document.getElementById("rpass").value;
 	document.getElementById("up").innerHTML="";
 	document.getElementById("down").innerHTML="";
+	if (pass.length == 0 && rpass.length == 0) return;
 	if (pass != rpass) {
 		document.getElementById(pos).innerHTML = st;
 		document.getElementById("dzebna").disabled = true;

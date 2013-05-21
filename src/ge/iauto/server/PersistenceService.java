@@ -64,6 +64,16 @@ public class PersistenceService {
 		return true;
 	}
 	
+	public boolean existsEmail(String email) {
+		EntityManager entitymanager = PersistenceProvider.createEM();
+		Query q = entitymanager.createQuery("SELECT COUNT(*) FROM User WHERE email = :name");
+		q.setParameter("email", email);
+		if (Long.valueOf(q.getSingleResult().toString()) == 0) {
+			return false;
+		}
+		return true;
+	}
+	
 	public User getUser(String username,String password){
 		EntityManager entitymanager = PersistenceProvider.createEM();
 		Query q = entitymanager.createQuery("FROM User WHERE username = :name and password = :pass");
@@ -100,5 +110,20 @@ public class PersistenceService {
 		Query q = entitymanager.createQuery("FROM Category");
 		List<Category> result = q.getResultList();
 		return result;
+	}
+
+	public void changeEmail(String oldUsername, String parameter) {
+		EntityManager entitymanager = PersistenceProvider.createEM();
+		entitymanager.createQuery("UPDATE User SET email='" + parameter + "' WHERE username='" + oldUsername + "'");
+	}
+
+	public void changePassword(String oldUsername, String parameter) {
+		EntityManager entitymanager = PersistenceProvider.createEM();
+		entitymanager.createQuery("UPDATE User SET password='" + parameter + "' WHERE username='" + oldUsername + "'");
+	}
+
+	public void changeUsername(String oldUsername, String parameter) {
+		EntityManager entitymanager = PersistenceProvider.createEM();
+		entitymanager.createQuery("UPDATE User SET username='" + parameter + "' WHERE username='" + oldUsername + "'");
 	}
 }

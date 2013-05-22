@@ -1,3 +1,6 @@
+<%@page import="ge.iauto.data.CarModel"%>
+<%@page import="ge.iauto.data.CarMake"%>
+<%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -57,6 +60,65 @@
 	color: white;
 }
 </style>
+
+<script type="text/javascript">
+	function BoxChange(selectObj) {
+		var idx = selectObj.selectedIndex;
+		var which = selectObj.options[idx].value;
+		if(which == ""){
+			var cSelect = document.getElementById("model");
+			while (cSelect.options.length > 0) {
+				cSelect.remove(0);
+			}
+			var newOption;
+			newOption = document.createElement("option");
+			newOption.value = "";
+			newOption.text = "ყველა";
+			try {
+				cSelect.add(newOption); 
+			} catch (e) {
+				cSelect.appendChild(newOption);
+			}	
+			return;
+		}
+		var cSelect = document.getElementById("model");
+		while (cSelect.options.length > 0) {
+			cSelect.remove(0);
+		}
+		var newOption;
+		var cList = [];
+		<%
+		@SuppressWarnings("unchecked")
+		HashMap<String,Long> car = (HashMap<String,Long>)request.getServletContext().getAttribute("idByName");
+		@SuppressWarnings("unchecked")
+		HashMap<Long,CarMake> models = (HashMap<Long,CarMake>)request.getServletContext().getAttribute("carById");
+		for(String name : car.keySet()){	
+		%>
+			if(which == "<%=name%>"){
+			<%
+				for(CarModel model : models.get(car.get(name)).getModels()){
+			%>
+					cList.push("<%=model.getName()%>");
+			<%
+				}
+			%>		
+			}
+		<%
+		}
+		%>
+		for ( var i = 0; i < cList.length; i++) {
+			newOption = document.createElement("option");
+			newOption.value = cList[i];
+			newOption.text = cList[i];
+			try {
+				cSelect.add(newOption); 
+			} catch (e) {
+				cSelect.appendChild(newOption);
+			}
+		}
+	}
+</script>
+
 </head>
 <body>
 	<form action="SearchServlet" method="post">
@@ -65,33 +127,17 @@
 			<div id="gamochenili">
 				<div id="pirveli_rigi">
 					<span class="sigane" style="width: 150px;"> <select
-						name="man_id" id="man_id" class="seleqtebi"
-						onChange="manBoxChange(this);" tabindex="1">
+						name="man_id" class="seleqtebi"
+						onChange="BoxChange(this);" tabindex="1">
 							<option value="" selected="selected">მწარმოებელი</option>
 							<option value="">ყველა</option>
-							<option value='1'>ALFA ROMEO</option>
-							<option value='2'>ASTON MARTIN</option>
-							<option value='3'>AUDI</option>
-							<option value='4'>BELARUS</option>
-							<option value='5'>BENTLEY</option>
-							<option value='6'>BMW</option>
-							<option value='7'>MERCEDESS</option>
-							<option value='8'>FORD</option>
-							<option value='9'>SUZUKI</option>
-							<option value='10'>HUNDAI</option>
-							<option value='11'>HONDA</option>
-							<option value='12'>OPEL</option>
-							<option value='13'>KIA</option>
-							<option value='14'>CHEVROLET</option>
-							<option value='15'>CHRYSLER</option>
-							<option value='16'>CITROEN</option>
-							<option value='17'>TOYOTA</option>
-							<option value='18'>VOLVO</option>
-							<option value='19'>DAEWOO</option>
-							<option value='20'>DAF</option>
-							<option value='21'>DAIHATSU</option>
-							<option value='22'>DNEPR</option>
-							<option value='23'>DODGE</option>
+							<%
+							@SuppressWarnings("unchecked")
+							HashMap<String,Long> cars = (HashMap<String,Long>)request.getServletContext().getAttribute("idByName");
+							for(String ids : cars.keySet()){
+							%>
+								<option value="<%=ids%>" id="<%=cars.get(ids)%>"><%=ids%></option>
+							<%}%>
 					</select>
 					</span> <span class="sigane" style="text-align: right; width: 200px;">
 						<a style="margin-left: -16px;">წელი</a> <select name="year_from"

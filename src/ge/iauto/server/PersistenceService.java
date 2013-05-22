@@ -66,7 +66,7 @@ public class PersistenceService {
 	
 	public boolean existsEmail(String email) {
 		EntityManager entitymanager = PersistenceProvider.createEM();
-		Query q = entitymanager.createQuery("SELECT COUNT(*) FROM User WHERE email = :name");
+		Query q = entitymanager.createQuery("SELECT COUNT(*) FROM User WHERE email = :email");
 		q.setParameter("email", email);
 		if (Long.valueOf(q.getSingleResult().toString()) == 0) {
 			return false;
@@ -112,18 +112,36 @@ public class PersistenceService {
 		return result;
 	}
 
-	public void changeEmail(String oldUsername, String parameter) {
+	public void changeEmail(String username, String newEmail) {
 		EntityManager entitymanager = PersistenceProvider.createEM();
-		entitymanager.createQuery("UPDATE User SET email='" + parameter + "' WHERE username='" + oldUsername + "'");
+		entitymanager.getTransaction().begin();		
+		Query q = entitymanager.createQuery("UPDATE User SET email = :newEmail WHERE username = :name");
+		q.setParameter("newEmail", newEmail);
+		q.setParameter("name", username);
+		q.executeUpdate();
+        entitymanager.getTransaction().commit();
+		entitymanager.close();
 	}
 
-	public void changePassword(String oldUsername, String parameter) {
+	public void changePassword(String username, String newPassword) {
 		EntityManager entitymanager = PersistenceProvider.createEM();
-		entitymanager.createQuery("UPDATE User SET password='" + parameter + "' WHERE username='" + oldUsername + "'");
+		entitymanager.getTransaction().begin();		
+		Query q = entitymanager.createQuery("UPDATE User SET password = :newPassword WHERE username = :name");
+		q.setParameter("newPassword", newPassword);
+		q.setParameter("name", username);
+		q.executeUpdate();
+        entitymanager.getTransaction().commit();
+		entitymanager.close();
 	}
 
-	public void changeUsername(String oldUsername, String parameter) {
+	public void changeUsername(String username, String newUsername) {
 		EntityManager entitymanager = PersistenceProvider.createEM();
-		entitymanager.createQuery("UPDATE User SET username='" + parameter + "' WHERE username='" + oldUsername + "'");
+		entitymanager.getTransaction().begin();		
+		Query q = entitymanager.createQuery("UPDATE User SET username = :newUsername WHERE username = :name");
+		q.setParameter("newUsername", newUsername);
+		q.setParameter("name", username);
+		q.executeUpdate();
+        entitymanager.getTransaction().commit();
+		entitymanager.close();
 	}
 }

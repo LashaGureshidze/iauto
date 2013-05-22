@@ -1,5 +1,6 @@
 package ge.iauto.servlets;
 
+import ge.iauto.data.User;
 import ge.iauto.server.PersistenceService;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -54,13 +55,20 @@ public class ChangeParameterServlet extends HttpServlet {
 		request.setAttribute("errorList", errorList);
 		if (added) request.getRequestDispatcher("profile-parameters.jsp").forward(request, response);
 		else {
+			User curr = (User)request.getSession().getAttribute("user");
 			String oldUsername = (String)request.getParameter("oldUsername");
-			if (!request.getParameter("newEmail").isEmpty())
+			if (!request.getParameter("newEmail").isEmpty()) {
 				service.changeEmail(oldUsername, request.getParameter("newEmail"));
-			if (!request.getParameter("password").isEmpty())
+				curr.setEmail(request.getParameter("newEmail"));
+			}
+			if (!request.getParameter("password").isEmpty()) {
 				service.changePassword(oldUsername, request.getParameter("password"));
-			if (!request.getParameter("newUsername").isEmpty())
+				curr.setPassword(request.getParameter("password"));
+			}
+			if (!request.getParameter("newUsername").isEmpty()) {
 				service.changeUsername(oldUsername, request.getParameter("newUsername"));
+				curr.setUsername(request.getParameter("newUsername"));
+			}
 			request.getRequestDispatcher("change-successful.jsp").forward(request, response);
 		}
 	}

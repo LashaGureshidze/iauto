@@ -76,6 +76,7 @@ function checkOldUser() {
 		if (checkAllFields()) document.getElementById("changeButton").disabled = false;
 		return;
 	}
+	if (oldUser == "<%=currUser%>") return;
 	document.getElementById("userErrorLabel").innerHTML="შეიყვანეთ სწორი username!";
 	document.getElementById("changeButton").disabled = true;
 }
@@ -91,6 +92,7 @@ function checkOldPassword() {
 		if (checkAllFields()) document.getElementById("changeButton").disabled = false;
 		return;
 	}
+	if (oldPass == "<%=currPass%>") return;
 	document.getElementById("passErrorLabel").innerHTML="შეიყვანეთ სწორი პაროლი!";
 	document.getElementById("changeButton").disabled = true;
 }

@@ -191,7 +191,7 @@ public class AddInitialData {
 		
 		
 		//==========================persist===================
-		PersistenceService service = new PersistenceService();
+	PersistenceService service = new PersistenceService();
 		service.saveCarMake(mark);
 		service.saveCarMake(markk);
 		
@@ -199,101 +199,155 @@ public class AddInitialData {
 		Location location = null;
 		
 		location = new Location();
-		location.setName("Sakartvelo");
+		location.setName("საქართველო");
 		service.saveLocation(location);
 		
 		location = new Location();
-		location.setName("tbilisi");
+		location.setName("თბილისი");
 		service.saveLocation(location);
 		
 		location = new Location();
-		location.setName("rustavis avtobazroba");
+		location.setName("რუსთავის ავტობაზრობა");
 		service.saveLocation(location);
 		
 		location = new Location();
-		location.setName("kutaisi");
+		location.setName("ქუთაისი");
 		service.saveLocation(location);
 		
 		location = new Location();
-		location.setName("zestafoni");
+		location.setName("ზესტაფონი");
 		service.saveLocation(location);
 		
 		location = new Location();
-		location.setName("axmeta");
+		location.setName("ახმეტა");
 		service.saveLocation(location);
 		
 		location = new Location();
-		location.setName("borjomi");
+		location.setName("ბორჯომი");
 		service.saveLocation(location);
 		
 		location = new Location();
-		location.setName("batumi");
+		location.setName("ბატუმი");
 		service.saveLocation(location);
 		
 		location = new Location();
-		location.setName("soxumi");
+		location.setName("სოხუმი");
 		service.saveLocation(location);
 		
 		location = new Location();
-		location.setName("cxinvali");
+		location.setName("ცხინვალი");
 		service.saveLocation(location);
 		
 		location = new Location();
-		location.setName("gori");
+		location.setName("გორი");
 		service.saveLocation(location);
 		
-		//დასამატებელია, და ქართულად არის შესაცვლელი
+		location = new Location();
+		location.setName("ფოთი");
+		service.saveLocation(location);
+		
+		location = new Location();
+		location.setName("თელავი");
+		service.saveLocation(location);
+		
+		location = new Location();
+		location.setName("გურჯაანი");
+		service.saveLocation(location);
+		
+		location = new Location();
+		location.setName("კასპი");
+		service.saveLocation(location);
+		
+		location = new Location();
+		location.setName("საგარეჯო");
+		service.saveLocation(location);
+		
+		location = new Location();
+		location.setName("ქობულეთი");
+		service.saveLocation(location);
+		
+		location = new Location();
+		location.setName("ოზურგეთი");
+		service.saveLocation(location);
+		
+		location = new Location();
+		location.setName("ამბროლაური");
+		service.saveLocation(location);
+		
+		location = new Location();
+		location.setName("ხაშური");
+		service.saveLocation(location);
+		
+		location = new Location();
+		location.setName("ახალქალაქი");
+		service.saveLocation(location);
+		
+		location = new Location();
+		location.setName("ახალციხე");
+		service.saveLocation(location);
+		
+		location = new Location();
+		location.setName("მცხეთა");
+		service.saveLocation(location);
+		
+		location = new Location();
+		location.setName("საზღვარგარეთი");
+		service.saveLocation(location);
+		
+		
+		
 		
 		Category category = null;
 		
 		category = new Category();
-		category.setName("sedani");
+		category.setName("სედანი");
 		service.saveCategory(category);
 		
 		category = new Category();
-		category.setName("jipi");
+		category.setName("ჯიპი");
 		service.saveCategory(category);
 		
 		category = new Category();
-		category.setName("kupe");
+		category.setName("კუპე");
 		service.saveCategory(category);
 		
 		category = new Category();
-		category.setName("hechbeki");
+		category.setName("ჰეჩბეკი");
 		service.saveCategory(category);
 		
 		category = new Category();
-		category.setName("kabrioleti");
+		category.setName("კაბრიოლეტი");
 		service.saveCategory(category);
 		
 		category = new Category();
-		category.setName("pikapi");
+		category.setName("პიკაპი");
 		service.saveCategory(category);
 		
 		category = new Category();
-		category.setName("miniveni");
+		category.setName("მინივენი");
 		service.saveCategory(category);
 		
 		category = new Category();
-		category.setName("mikroavtobusi");
+		category.setName("მიკროავტობუსი");
 		service.saveCategory(category);
 		
 		category = new Category();
-		category.setName("furgoni");
+		category.setName("ფურგონი");
 		service.saveCategory(category);
 		
 		category = new Category();
-		category.setName("limuzini");
+		category.setName("ლიმუზინი");
 		service.saveCategory(category);
 		
 		category = new Category();
-		category.setName("specteqnika");
+		category.setName("სპეც-ტექნიკა");
 		service.saveCategory(category);
 		
 		category = new Category();
-		category.setName("motocikli");
+		category.setName("მოტოციკლი");
 		service.saveCategory(category);
 		
+
 	}
 
 }

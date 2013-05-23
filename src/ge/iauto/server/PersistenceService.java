@@ -2,6 +2,7 @@ package ge.iauto.server;
 
 import java.util.List;
 
+import ge.iauto.data.Car;
 import ge.iauto.data.CarMake;
 import ge.iauto.data.CarModel;
 import ge.iauto.data.Category;
@@ -52,6 +53,15 @@ public class PersistenceService {
 		entitymanager.persist(category);
 		entitymanager.getTransaction().commit();
 		entitymanager.close();
+	}
+	
+	public void saveCar(Car car){
+		EntityManager entitymanager = PersistenceProvider.createEM();
+		entitymanager.getTransaction().begin();		
+		entitymanager.persist(car);
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
+		System.out.println("saved! !");
 	}
 	
 	public boolean existsUserName(String username){
@@ -143,5 +153,29 @@ public class PersistenceService {
 		q.executeUpdate();
         entitymanager.getTransaction().commit();
 		entitymanager.close();
+	}
+	
+	public Category findCategory(long id){
+		EntityManager entitymanager = PersistenceProvider.createEM();
+		Category cat = entitymanager.find(Category.class, id);
+		return cat;
+	}
+	
+	public CarMake findCarMake(long id){
+		EntityManager entitymanager = PersistenceProvider.createEM();
+		CarMake car = entitymanager.find(CarMake.class, id);
+		return car;
+	}
+	
+	public CarModel findCarModel(long id){
+		EntityManager entitymanager = PersistenceProvider.createEM();
+		CarModel car = entitymanager.find(CarModel.class, id);
+		return car;
+	}
+	
+	public Location findLocation(long id){
+		EntityManager entitymanager = PersistenceProvider.createEM();
+		Location loc = entitymanager.find(Location.class, id);
+		return loc;
 	}
 }

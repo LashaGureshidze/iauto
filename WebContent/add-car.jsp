@@ -95,7 +95,7 @@
 
 
 <body>
-	<form action="AddingCars" method="post">
+	<form action="AddCar" method="post">
 		<table width=800 cellspacing=3 border=0>
 			<tr>
 				<td align=right><strong>კატეგორია:</strong></td>
@@ -137,9 +137,9 @@
 				<td align="left"><input name="price" id="price" size="6"
 					maxlength="8" onkeypress="return keyfilter_num(event)" /> <select
 					name="currency_id" id="currency_id">
-						<option value="0">$</option>
-						<option value="1">ევრო</option>
-						<option value="2">ლარი</option>
+						<option value="$">$</option>
+						<option value="ევრო">ევრო</option>
+						<option value="ლარი">ლარი</option>
 				</select><br /> <input type="checkbox" name="customs_passed" /> განბაჟებული</td>
 			</tr>
 			<tr>
@@ -199,9 +199,8 @@
 						<%
 							for (int k = 1; k <= 80; k++) {
 								double motor = k / (double) 10;
-								int value = k * 100;
 						%>
-						<option value=<%=value%>><%=motor%></option>
+						<option value=<%=motor%>><%=motor%></option>
 						<%
 							}
 						%>
@@ -211,9 +210,9 @@
 			<tr>
 				<td align=right>გარბენი</td>
 				<td align=left><input name="car_run" size="7" maxlength="7"
-					onKeyPress="return keyfilter_num(event)"> <select
-					name="car_run_dim" id="car_run_dim"><option value="1">კმ.</option>
-						<option value="2">მილი</option>
+					type ="number""> <select
+					name="car_run_dim" id="car_run_dim"><option value="კმ">კმ.</option>
+						<option value="მილი">მილი</option>
 				</select></td>
 				<td align=right>ცილინდრები:</td>
 				<td align=left><select name=cylinders>
@@ -229,17 +228,17 @@
 			<tr>
 				<td align=right>კარები:</td>
 				<td align=left><select name=door_type_id>
-						<option value=2>4/5</option>
-						<option value=1>2/3</option>
-						<option value=3>1</option>
-						<option value=4>5</option>
-						<option value=5>0</option>
+						<option value=4/5>4/5</option>
+						<option value=2/3>2/3</option>
+						<option value=1>1</option>
+						<option value=5>5</option>
+						<option value=0>0</option>
 				</select></td>
 				<td align=right>წამყვანი თვლები:</td>
 				<td align=left><select name=drive_type_id>
-						<option value=1>წინა</option>
-						<option value=2>უკანა</option>
-						<option value=3>4x4</option>
+						<option value=წინა>წინა</option>
+						<option value=უკანა>უკანა</option>
+						<option value=4x4>4x4</option>
 				</select></td>
 
 			</tr>
@@ -256,44 +255,42 @@
 				</select></td>
 				<td align=right>საწვავის ტიპი:</td>
 				<td align=left><select name=fuel_type_id>
-						<option value=2>ბენზინი</option>
-						<option value=1>ბენზინი/კარბურატორი</option>
-						<option value=3>დიზელი</option>
-						<option value=4>ტურბოდიზელი</option>
-						<option value=5>გაზი/ბენზინი</option>
-						<option value=6>ჰიბრიდი</option>
-						<option value=7>ელექტრო</option>
+						<option value=ბენზინი>ბენზინი</option>
+						<option value=ბენზინი/კარბურატორი>ბენზინი/კარბურატორი</option>
+						<option value=დიზელი>დიზელი</option>
+						<option value=ტურბოდიზელი>ტურბოდიზელი</option>
+						<option value=გაზი/ბენზინი>გაზი/ბენზინი</option>
+						<option value=ჰიბრიდი>ჰიბრიდი</option>
+						<option value=ელექტრო>ელექტრო</option>
 				</select></td>
 			</tr>
 
 			<tr>
-				<td align=right>ქირავდება:</td>
-				<td align=left><input type="checkbox" name="forrent"></td>
 				<td align=right>ფერი:</td>
 				<td align=left><select name=color_id>
-						<option value=16>შავი</option>
-						<option value=1>თეთრი</option>
-						<option value=2>ბეჟი</option>
-						<option value=3>ცისფერი</option>
-						<option value=4>ყვითელი</option>
-						<option value=5>მწვანე</option>
-						<option value=6>ოქროსფერი</option>
-						<option value=7>ყავისფერი</option>
-						<option value=8>წითელი</option>
-						<option value=9>სტაფილოსფერი</option>
-						<option value=11>შინდისფერი</option>
-						<option value=12>ვერცხლისფერი</option>
-						<option value=13>ნაცრისფერი</option>
-						<option value=14>ლურჯი</option>
-						<option value=17>ბადრიჯნისფერი</option>
+						<option value=შავი>შავი</option>
+						<option value=თეთრი>თეთრი</option>
+						<option value=ბეჟი>ბეჟი</option>
+						<option value=ცისფერი>ცისფერი</option>
+						<option value=ყვითელი>ყვითელი</option>
+						<option value=მწვანე>მწვანე</option>
+						<option value=ოქროსფერი>ოქროსფერი</option>
+						<option value=ყავისფერი>ყავისფერი</option>
+						<option value=წითელი>წითელი</option>
+						<option value=სტაფილოსფერი>სტაფილოსფერი</option>
+						<option value=შინდისფერი>შინდისფერი</option>
+						<option value=ვერცხლისფერი>ვერცხლისფერი</option>
+						<option value=ნაცრისფერი>ნაცრისფერი</option>
+						<option value=ლურჯი>ლურჯი</option>
+						<option value=ბადრიჯნისფერი>ბადრიჯნისფერი</option>
 				</select></td>
 			</tr>
 			<tr>
 				<td align=right>გადაცემათა კოლოფი:</td>
 				<td align=left><select name="gear_type_id">
-						<option value=1>მექანიკა</option>
-						<option value=2>ავტომატიკა</option>
-						<option value=3>ტიპტრონიკი</option>
+						<option value=მექანიკა>მექანიკა</option>
+						<option value=ავტომატიკა>ავტომატიკა</option>
+						<option value=ტიპტრონიკი>ტიპტრონიკი</option>
 				</select></td>
 
 				<td align=right>მარჯვენა საჭე:</td>
@@ -361,26 +358,6 @@
 				<td align=left><input type=checkbox name=alarm></td>
 				<td align=right>ჰიდრავლიკა:</td>
 				<td align=left><input type=checkbox name=hydraulics></td>
-			</tr>
-			<tr valign=top>
-
-				<td align=right></td>
-				<td align=left><input type="text" size=7 MAXLENGTH=4
-					onKeyPress="return keyfilter_num(event)" name="import_year" /> <select
-					name="import_month"><option value=""></option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-						<option value="6">6</option>
-						<option value="7">7</option>
-						<option value="8">8</option>
-						<option value="9">9</option>
-						<option value="10">10</option>
-						<option value="11">11</option>
-						<option value="12">12</option></select> <br />(თუ გზაშია, მაშინ ჩამოსვლის
-					თარიღი)</td>
 			</tr>
 		</table>
 

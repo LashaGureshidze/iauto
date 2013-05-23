@@ -28,7 +28,11 @@ public class Car implements Serializable{
 	
 	private Location location;
 	
-	private String year;
+	private int year;
+	
+	private int month;
+	
+	private String currency;
 	
 	private String kilometer;
 	
@@ -56,7 +60,7 @@ public class Car implements Serializable{
 	
 	private boolean sequrity;
 	
-	private String price;
+	private int price;
 	
 	private boolean ganbajebuli;
 	
@@ -110,14 +114,6 @@ public class Car implements Serializable{
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public String getYear() {
-		return year;
-	}
-
-	public void setYear(String year) {
-		this.year = year;
 	}
 
 	public String getKilometer() {
@@ -222,14 +218,6 @@ public class Car implements Serializable{
 
 	public void setSequrity(boolean sequrity) {
 		this.sequrity = sequrity;
-	}
-
-	public String getPrice() {
-		return price;
-	}
-
-	public void setPrice(String price) {
-		this.price = price;
 	}
 
 	public boolean isGanbajebuli() {
@@ -454,6 +442,38 @@ public class Car implements Serializable{
 
 	public void setUploaddate(String uploaddate) {
 		this.uploaddate = uploaddate;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public int getMonth() {
+		return month;
+	}
+
+	public void setMonth(int month) {
+		this.month = month;
+	}
+
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
 	}
 	
 }

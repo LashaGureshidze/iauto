@@ -48,11 +48,11 @@
 							if (request.getSession().getAttribute("user") == null) {
 						%>
 						<td><a href="/IAUTO/RegisterServlet">რეგისტრაცია</a></td>
-						<td><a href="/IAUTO/LogServlet">შესვლა</a></td>
+						<td><a href="log-in.jsp">შესვლა</a></td>
 						<%
 							} else {
 								User user = (User) request.getSession().getAttribute("user");
-								String name = user.getName();
+								String name = user.getUsername();
 						%>
 						<td><a href="/IAUTO/MyPageServlet"><%=name%> </a></td>
 						<td><a href="/IAUTO/LogoutServlet">გამოსვლა</a></td>
@@ -66,7 +66,7 @@
 		<tr>
 			<td><a href="/IAUTO/HomeServlet"><img src="iautoLogo.gif"
 					width="300" height="80" style="border: 0px solid rgb(10, 10, 15)"></a>
-				<a href="/IAUTO/AddAplicationServlet"><img alt="" src="add.png"
+				<a href="/IAUTO/AddCar"><img alt="" src="add.png"
 					style="vertical-align: 70%; border: 0px solid rgb(10, 10, 15)"></a>
 				<a href="https://www.facebook.com/pages/IAutoge/155285524650712" target="_blank"><img
 					src="facebook_share.png" width="140" height="50"

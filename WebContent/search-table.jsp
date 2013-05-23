@@ -1,6 +1,10 @@
 <%@page import="ge.iauto.data.CarModel"%>
 <%@page import="ge.iauto.data.CarMake"%>
 <%@page import="java.util.HashMap"%>
+<%@page import="ge.iauto.data.Location"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="ge.iauto.data.Category"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -126,8 +130,8 @@
 		<div id="axali_dzebna">
 			<div id="gamochenili">
 				<div id="pirveli_rigi">
-					<span class="sigane" style="width: 150px;"> <select
-						name="man_id" class="seleqtebi"
+					<span class="sigane" style="width: 150px;">
+					 <select name="man_id" class="seleqtebi"
 						onChange="BoxChange(this);" tabindex="1">
 							<option value="" selected="selected">მწარმოებელი</option>
 							<option value="">ყველა</option>
@@ -214,52 +218,33 @@
 					<span class="sigane" style="width: 150px;"> <select
 						name="category_id" class="seleqtebi">
 							<option value="" selected="selected">კატეგორია</option>
-							<optgroup label="ავტომობილები">
-								<option value="1">ჯიპი</option>
-								<option value="2">კუპე</option>
-								<option value="3">ჰეჩბექი</option>
-								<option value="4">უნივერსალი</option>
-								<option value="5">კაბრიოლეტი</option>
-								<option value="6">პიკაპი</option>
-								<option value="7">მინივენი</option>
-								<option value="8">მიკროავტობუსი</option>
-								<option value="9">ფურგონი</option>
-								<option value="10">ლიმუზინი</option>
-							</optgroup>
-							<optgroup label="სპეცტექნიკა">
-								<option value="11">სატვირთო</option>
-								<option value="12">ავტობუსი</option>
-								<option value="13">საგზაო</option>
-								<option value="14">მისაბმელი</option>
-								<option value="15">სპეც. ტექნიკა</option>
-								<option value="16">ამწე</option>
-								<option value="17">ბულდოზერი</option>
-								<option value="18">ექსკავატორი</option>
-								<option value="19">სამშენებლო</option>
-								<option value="20">სასოფლო-სამეურნეო</option>
-								<option value="21">დამტვირთველი</option>
-								<option value="22">მსუბუქი კომერციული</option>
-								<option value="23">გამწევი</option>
-							</optgroup>
+							<%
+							@SuppressWarnings("unchecked")
+							List<Category> categeory = (List<Category>) request
+									.getServletContext().getAttribute("categories");
+							Iterator<Category> it = categeory.iterator();
+							while (it.hasNext()) {
+								Category tmp = it.next();
+							%>
+							<option value=<%=tmp.getId()%>><%=tmp.getName()%></option>
+							<%
+								}
+							%>
 					</select>
-					</span> <span class="sigane"> <select
-						name="location" class="seleqtebi">
-							<option value="" selected="selected">მდებარეობა</option>
-							<option value='1'>საქართველო</option>
-							<option value='2'>&nbsp;&nbsp;&nbsp;&nbsp;თბილისი</option>
-							<option value='12'>&nbsp;&nbsp;&nbsp;&nbsp;MyAuto-ს
-								ავტობაზრობა</option>
-							<option value='13'>&nbsp;&nbsp;&nbsp;&nbsp;რუსთავის
-								ავტობაზრობა</option>
-							<option value='3'>&nbsp;&nbsp;&nbsp;&nbsp;ქუთაისი</option>
-							<option value='4'>&nbsp;&nbsp;&nbsp;&nbsp;ზესტაფონი</option>
-							<option value='5'>&nbsp;&nbsp;&nbsp;&nbsp;ბათუმი</option>
-							<option value='6'>&nbsp;&nbsp;&nbsp;&nbsp;ფოთი</option>
-							<option value='7'>&nbsp;&nbsp;&nbsp;&nbsp;თელავი</option>
-							<option value='8'>&nbsp;&nbsp;&nbsp;&nbsp;ზუგდიდი</option>
-							<option value='9'>&nbsp;&nbsp;&nbsp;&nbsp;გორი</option>
-							<option value='10'>&nbsp;&nbsp;&nbsp;&nbsp;რუსთავი</option>
-							<option value='11'>&nbsp;&nbsp;&nbsp;&nbsp;მცხეთა</option>
+					</span> <span class="sigane">
+					<select	name="location" class="seleqtebi">
+							<%
+							@SuppressWarnings("unchecked")
+							List<Location> locat = (List<Location>) request.getServletContext()
+									.getAttribute("locations");
+							Iterator<Location> it1 = locat.iterator();
+							while (it1.hasNext()) {
+								Location tmp = it1.next();
+							%>
+								<option value=<%=tmp.getId()%>><%=tmp.getName()%></option>
+							<%
+							}
+							%>
 					</select>
 					</span> <span class="sigane"> <select class="seleqtebi"
 						name="last_days">

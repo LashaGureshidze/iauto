@@ -3,6 +3,12 @@
 <%@ page import="java.util.List" %>
 <%@ page import="ge.iauto.data.User" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<%
+	if (request.getSession().getAttribute("user") == null)
+		request.getRequestDispatcher("home-page.jsp").forward(request, response);
+%>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -47,8 +53,7 @@
 </style>
 
 <%
-	String currUser = ((User)(request.getSession().getAttribute("user"))).getUsername();
-	String currPass = ((User)(request.getSession().getAttribute("user"))).getPassword();
+	User currUser = (User)(request.getSession().getAttribute("user"));
 %>
 
 <script type="text/javascript">
@@ -61,7 +66,7 @@ function validatePasswords() {
 function checkStarFieldsMatch() {
 	var oldUser = document.getElementById("oldUser").value;
 	var oldPass = document.getElementById("oldPass").value;
-	if (oldUser == "<%=currUser%>" && oldPass == "<%=currPass%>") return true;
+	if (oldUser == '<%=currUser.getUsername()%>' && oldPass == '<%=currUser.getPassword()%>') return true;
 	return false;
 }
 
@@ -76,7 +81,7 @@ function checkOldUser() {
 		if (checkAllFields()) document.getElementById("changeButton").disabled = false;
 		return;
 	}
-	if (oldUser == "<%=currUser%>") return;
+	if (oldUser == '<%=currUser.getUsername()%>') return;
 	document.getElementById("userErrorLabel").innerHTML="შეიყვანეთ სწორი username!";
 	document.getElementById("changeButton").disabled = true;
 }
@@ -92,7 +97,7 @@ function checkOldPassword() {
 		if (checkAllFields()) document.getElementById("changeButton").disabled = false;
 		return;
 	}
-	if (oldPass == "<%=currPass%>") return;
+	if (oldPass == '<%=currUser.getPassword()%>') return;
 	document.getElementById("passErrorLabel").innerHTML="შეიყვანეთ სწორი პაროლი!";
 	document.getElementById("changeButton").disabled = true;
 }

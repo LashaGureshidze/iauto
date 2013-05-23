@@ -8,6 +8,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<%
+	if (request.getSession().getAttribute("user") == null)
+		request.getRequestDispatcher("log-in.jsp").forward(request, response);
+%>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -51,7 +57,8 @@
 				cSelect.add(newOption); 
 			} catch (e) {
 				cSelect.appendChild(newOption);
-			}	
+			}
+			checkStarFields();
 			return;
 		}
 		var cSelect = document.getElementById("model");
@@ -89,24 +96,48 @@
 				cSelect.appendChild(newOption);
 			}
 		}
+		checkStarFields();
 	}
 </script>
 
+<script type="text/javascript">
+function checkStarFields() {
+	var category = document.getElementById('category_id').options[document.getElementById('category_id').selectedIndex].value;
+	var make = document.getElementById('man_id').options[document.getElementById('man_id').selectedIndex].value;
+	var model = document.getElementById('model').options[document.getElementById('model').selectedIndex].value;
+	var location = document.getElementById('location_id').options[document.getElementById('location_id').selectedIndex].value;
+	var year = document.getElementById('prod_year').options[document.getElementById('prod_year').selectedIndex].value;
+	var month = document.getElementById('prod_month').options[document.getElementById('prod_month').selectedIndex].value;
+	var price = document.getElementById('price').value;
+	var engine = document.getElementById('engine_volume').options[document.getElementById('engine_volume').selectedIndex].value;
+	if (category != 0 && make.length != 0 && model.length !=0 && location.length !=0
+			&& year.length !=0 && month.length !=0 && price.length !=0 && engine.length !=0) {
+		document.getElementById("adding").disabled = false;
+	} else document.getElementById("adding").disabled = true;
+}
 
+function isNumber(e) {
+	var charCode;
+    if (window.event) charCode = window.event.keyCode;
+    else if (e) {
+    	charCode = e.which;
+    } else return true;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) return false;
+    return true;
+}
+</script>
 
 <body>
 	<form action="AddCar" method="post">
 		<table width=800 cellspacing=3 border=0>
 			<tr>
-				<td align=right><strong>კატეგორია:</strong></td>
-				<td align=left><select name=category_id
-					style="border: dashed #660 1px;" onchange="change_run();"
+				<td align=right>კატეგორია<font color="red">*</font>:</td>
+				<td align=left><select name=category_id onchange="checkStarFields()"
 					id=category_id>
 						<option value="">აირჩიეთ კატეგორია</option>
 						<%
 							@SuppressWarnings("unchecked")
-							List<Category> categeory = (List<Category>) request
-									.getServletContext().getAttribute("categories");
+							List<Category> categeory = (List<Category>) request.getServletContext().getAttribute("categories");
 							Iterator<Category> it = categeory.iterator();
 							while (it.hasNext()) {
 								Category tmp = it.next();
@@ -116,15 +147,12 @@
 							}
 						%>
 				</select> 
-				<img src="http://www.myauto.ge/images/attention_icon.gif"
-					width="30" height="30" style="margin-top: -4px;" /></td>
 			</tr>
 			<tr>
-				<td align=right>მწარმოებელი:</td>
+				<td align=right>მწარმოებელი<font color="red">*</font>:</td>
 				<td align=left>
-				<select name="man_id" id="man_id" 	onChange="BoxChange(this);" tabindex="1">
-						<option value="" selected="selected">მწარმოებელი</option>
-							<option value="">ყველა</option>
+				<select name="man_id" id="man_id" onChange="BoxChange(this);" tabindex="1">
+						<option value="" selected="selected"></option>
 							<%
 							@SuppressWarnings("unchecked")
 							HashMap<String,Long> cars = (HashMap<String,Long>)request.getServletContext().getAttribute("idByName");
@@ -133,9 +161,9 @@
 								<option value="<%=ids%>" id="<%=cars.get(ids)%>"><%=ids%></option>
 							<%}%>
 				</select></td>
-				<td align="right">ფასი:</td>
+				<td align="right">ფასი<font color="red">*</font>:</td>
 				<td align="left"><input name="price" id="price" size="6"
-					maxlength="8" onkeypress="return keyfilter_num(event)" /> <select
+					maxlength="8" onkeypress="return isNumber(event)" onchange="checkStarFields()" /> <select
 					name="currency_id" id="currency_id">
 						<option value="$">$</option>
 						<option value="ევრო">ევრო</option>
@@ -143,9 +171,9 @@
 				</select><br /> <input type="checkbox" name="customs_passed" /> განბაჟებული</td>
 			</tr>
 			<tr>
-				<td align="right">მოდელი:</td>
-				<td align="left"><select name="model" id="model" class="seleqtebi">
-							<option value="" selected="selected">მოდელი</option>
+				<td align="right">მოდელი<font color="red">*</font>:</td>
+				<td align="left"><select name="model" id="model" class="seleqtebi" onchange="checkStarFields()">
+							<option value="" selected="selected"></option>
 					</select> <input name="model" size="10" maxlength="10" /></td>
 				<td align="right">გაცვლა:</td>
 				<td align="left"><input type="checkbox" name="changable" /></td>
@@ -153,8 +181,9 @@
 
 			<tr>
 			<tr>
-				<td align="right">მდებარეობა:</td>
-				<td align="left"><select name="location_id" id="location_id">
+				<td align="right">მდებარეობა<font color="red">*</font>:</td>
+				<td align="left"><select name="location_id" id="location_id" onchange="checkStarFields()">
+						<option value="" selected="selected"></option>
 						<%
 							@SuppressWarnings("unchecked")
 							List<Location> locat = (List<Location>) request.getServletContext()
@@ -174,8 +203,8 @@
 			</tr>
 
 			<tr>
-				<td align=right>გამოშვების წელი:</td>
-				<td align=left><select name='prod_year' id='prod_year'>
+				<td align=right>გამოშვების წელი<font color="red">*</font>:</td>
+				<td align=left><select name='prod_year' id='prod_year' onchange="checkStarFields()">
 						<option></option>
 						<%
 							for (int k = 1960; k <= 2013; k++) {
@@ -184,7 +213,7 @@
 						<%
 							}
 						%>
-				</select> თვე: <select name="prod_month"><option value=""></option>
+				</select> თვე<font color="red">*</font>: <select name="prod_month" id="prod_month" onchange="checkStarFields()"><option value=""></option>
 						<%
 							for (int k = 1; k <= 12; k++) {
 						%>
@@ -193,8 +222,8 @@
 							}
 						%>
 				</select></td>
-				<td align=right>ძრავის მოცულობა:</td>
-				<td align=left><select name=engine_volume>
+				<td align=right>ძრავის მოცულობა<font color="red">*</font>:</td>
+				<td align=left><select name="engine_volume" id="engine_volume" onchange="checkStarFields()">
 						<option selected="selected" value=''></option>
 						<%
 							for (int k = 1; k <= 80; k++) {
@@ -210,7 +239,7 @@
 			<tr>
 				<td align=right>გარბენი</td>
 				<td align=left><input name="car_run" size="7" maxlength="7"
-					type ="number""> <select
+					onkeypress="return isNumber(event)"> <select
 					name="car_run_dim" id="car_run_dim"><option value="კმ">კმ.</option>
 						<option value="მილი">მილი</option>
 				</select></td>
@@ -430,7 +459,7 @@
 
 			<tr>
 				<td align="center"><br> <input id="adding" type="submit"
-					value="დამატება" /></td>
+					value="დამატება" disabled="disabled"/></td>
 			</tr>
 
 		</table>

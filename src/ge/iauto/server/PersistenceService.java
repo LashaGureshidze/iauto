@@ -121,39 +121,6 @@ public class PersistenceService {
 		List<Category> result = q.getResultList();
 		return result;
 	}
-
-	public void changeEmail(String username, String newEmail) {
-		EntityManager entitymanager = PersistenceProvider.createEM();
-		entitymanager.getTransaction().begin();		
-		Query q = entitymanager.createQuery("UPDATE User SET email = :newEmail WHERE username = :name");
-		q.setParameter("newEmail", newEmail);
-		q.setParameter("name", username);
-		q.executeUpdate();
-        entitymanager.getTransaction().commit();
-		entitymanager.close();
-	}
-
-	public void changePassword(String username, String newPassword) {
-		EntityManager entitymanager = PersistenceProvider.createEM();
-		entitymanager.getTransaction().begin();		
-		Query q = entitymanager.createQuery("UPDATE User SET password = :newPassword WHERE username = :name");
-		q.setParameter("newPassword", newPassword);
-		q.setParameter("name", username);
-		q.executeUpdate();
-        entitymanager.getTransaction().commit();
-		entitymanager.close();
-	}
-
-	public void changeUsername(String username, String newUsername) {
-		EntityManager entitymanager = PersistenceProvider.createEM();
-		entitymanager.getTransaction().begin();		
-		Query q = entitymanager.createQuery("UPDATE User SET username = :newUsername WHERE username = :name");
-		q.setParameter("newUsername", newUsername);
-		q.setParameter("name", username);
-		q.executeUpdate();
-        entitymanager.getTransaction().commit();
-		entitymanager.close();
-	}
 	
 	public Category findCategory(long id){
 		EntityManager entitymanager = PersistenceProvider.createEM();
@@ -177,5 +144,17 @@ public class PersistenceService {
 		EntityManager entitymanager = PersistenceProvider.createEM();
 		Location loc = entitymanager.find(Location.class, id);
 		return loc;
+	}
+
+	public void updateUser(User user, String oldUsername) {
+		EntityManager entitymanager = PersistenceProvider.createEM();
+        Query q = entitymanager.createQuery("SELECT COUNT(*) FROM User WHERE username= :name");
+        q.setParameter("name", oldUsername);
+        if (Long.valueOf(q.getSingleResult().toString()) <= 1) {
+        	entitymanager.getTransaction().begin();
+        	entitymanager.merge(user);
+        	entitymanager.getTransaction().commit();
+        	entitymanager.close();
+        }
 	}
 }

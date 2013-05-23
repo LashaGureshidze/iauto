@@ -42,33 +42,29 @@ public class ChangeParameterServlet extends HttpServlet {
 		boolean added = false;
 		
 		PersistenceService service = new PersistenceService();
-		if (!request.getParameter("newUsername").isEmpty() &&
-				service.existsUserName(request.getParameter("newUsername"))) {
-			added = true;
-			errorList.set(0,"ასეთი მომხმარებელი უკვე არსებობს!");
+		User user = service.getUser(request.getParameter("oldUsername"), request.getParameter("oldPassword"));
+		
+		if (!request.getParameter("newUsername").isEmpty()) {
+			if (service.existsUserName(request.getParameter("newUsername"))) {
+				added = true;
+				errorList.set(0,"ასეთი მომხმარებელი უკვე არსებობს!");
+			} else user.setUsername(request.getParameter("newUsername"));
 		}
-		if (!request.getParameter("newEmail").isEmpty() &&
-				service.existsEmail(request.getParameter("newEmail"))){
-			added = true;
-			errorList.set(1,"ეს ელ-ფოსტა უკვე დაკავებულია!");
+		
+		if (!request.getParameter("newEmail").isEmpty()) {
+			if (service.existsUserName(request.getParameter("newEmail"))) {
+				added = true;
+				errorList.set(1,"ეს ელ-ფოსტა უკვე დაკავებულია!");
+			} else user.setEmail(request.getParameter("newEmail"));
 		}
+		
+		if (!request.getParameter("password").isEmpty()) user.setPassword(request.getParameter("password"));
+		
 		request.setAttribute("errorList", errorList);
 		if (added) request.getRequestDispatcher("profile-parameters.jsp").forward(request, response);
 		else {
-			User curr = (User)request.getSession().getAttribute("user");
-			String oldUsername = (String)request.getParameter("oldUsername");
-			if (!request.getParameter("newEmail").isEmpty()) {
-				service.changeEmail(oldUsername, request.getParameter("newEmail"));
-				curr.setEmail(request.getParameter("newEmail"));
-			}
-			if (!request.getParameter("password").isEmpty()) {
-				service.changePassword(oldUsername, request.getParameter("password"));
-				curr.setPassword(request.getParameter("password"));
-			}
-			if (!request.getParameter("newUsername").isEmpty()) {
-				service.changeUsername(oldUsername, request.getParameter("newUsername"));
-				curr.setUsername(request.getParameter("newUsername"));
-			}
+			request.getSession().setAttribute("user", user);
+			service.updateUser(user, request.getParameter("oldUsername"));
 			request.getRequestDispatcher("change-successful.jsp").forward(request, response);
 		}
 	}

@@ -2,13 +2,19 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<%
+	if (request.getSession().getAttribute("user") != null)
+		request.getRequestDispatcher("user-register-warning.jsp").forward(request, response);
+%>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>www.IAuto.ge - რეგისტრაცია</title>
 
 <style>
-#dzebna {
+#registerButton {
 	background: #66CCFF;
 	padding: 3px 17px;
 	color: black;
@@ -21,14 +27,32 @@
 	cursor: pointer;
 }
 
-#dzebna.hover{
+#registerButton.hover{
 	background-color: #3399FF;
 	color: black;
 }
 </style>
 
 <script type="text/javascript">
-function checkPasswordMatch(pos){
+function validatePasswords() {
+	if (document.getElementById("pass").value == document.getElementById("rpass").value &&
+			document.getElementById("pass").value.length >= 6) return true;
+	return false;
+}
+
+function checkStarFields() {
+	var username = document.getElementById("username").value;
+	var email = document.getElementById("email").value;
+	if (username.length > 0 && email.length > 0 && validatePasswords()) return true;
+	return false;
+}
+
+function checkUsernameOrEmail() {
+	if (checkStarFields()) document.getElementById("registerButton").disabled = false;
+	else document.getElementById("changeButton").disabled = true;
+}
+
+function checkPasswordMatch(pos) {
 	var st;
 	if (pos == "up") st = "არ ემთხვევა ქვემოთ შეყვანილ პაროლს!";
 	else st = "არ ემთხვევა ზემოთ შეყვანილ პაროლს!";
@@ -39,12 +63,12 @@ function checkPasswordMatch(pos){
 	if (pass.length == 0 && rpass.length == 0) return;
 	if (pass != rpass) {
 		document.getElementById(pos).innerHTML = st;
-		document.getElementById("dzebna").disabled = true;
+		document.getElementById("registerButton").disabled = true;
 	} else {
 		if (pass.length < 6) {
 			document.getElementById("up").innerHTML="პაროლი უნდა შეიცავდეს მინიმუმ 6 სიმბოლოს!";
-			document.getElementById("dzebna").disabled = true;
-		} else document.getElementById("dzebna").disabled = false;
+			document.getElementById("registerButton").disabled = true;
+		} else if (checkStarFields()) document.getElementById("registerButton").disabled = false;
 	}
 }
 </script>
@@ -64,7 +88,7 @@ function checkPasswordMatch(pos){
 				მომხმარებელი (username)<font color="red">*</font>: 
 			</td>
 			<td class="reg_class_value">					
-				<input type="text" size="20" name="username" <% if (error != null) out.println("value='" + request.getParameter("username") + "'"); %> >
+				<input id="username" type="text" size="20" name="username" <% if (error != null) out.println("value='" + request.getParameter("username") + "'"); %> onchange="checkUsernameOrEmail()">
 				<% if (error != null && error.get(0) != null) out.println("<font size='2' color='red' >" + error.get(0) + "</font>"); %>
 			</td>
 		</tr>
@@ -113,14 +137,14 @@ function checkPasswordMatch(pos){
 				ელ-ფოსტა<font color="red">*</font>: 
 			</td>
 			<td class="reg_class_value">					
-				<input type="text" size="20" name="email" <% if (error != null) out.println("value='" + request.getParameter("email") + "'"); %> >
+				<input id="email" type="text" size="20" name="email" <% if (error != null) out.println("value='" + request.getParameter("email") + "'"); %> onchange="checkUsernameOrEmail()">
 				<% if (error != null && error.get(2) != null) out.println("<font size='2' color='red'>" + error.get(2) + "</font>"); %>
 			</td>
 		</tr>
 		
 		<tr>
 			<td class="reg_class_label" style="width:300px;">
-				სქესი<font color="red">*</font>: 
+				სქესი: 
 			</td>
 			<td class="reg_class_value">					
 				<input type="radio" name="sex" value="male" checked='checked' >მამრობითი<br>
@@ -130,7 +154,7 @@ function checkPasswordMatch(pos){
 		
 		<tr>
 			<td class="reg_class_label" style="width:300px;">
-				დაბადების წელი<font color="red">*</font>:
+				დაბადების წელი:
 			</td>
 			<td class="reg_class_value">					
 				<select name="birthday">
@@ -143,7 +167,7 @@ function checkPasswordMatch(pos){
 		</tr>
 		<tr>
 			<td align="center">
-				<br><input id="dzebna" type="submit" value="რეგისტრაცია" disabled="disabled"/>
+				<br><input id="registerButton" type="submit" value="რეგისტრაცია" disabled="disabled"/>
 			</td>
 		</tr>
 	</table>

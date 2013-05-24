@@ -128,7 +128,7 @@ function isNumber(e) {
 </script>
 
 <body>
-	<form action="AddCar" method="post">
+	<form action="AddCar" method="post" enctype="multipart/form-data">
 		<table width=800 cellspacing=3 border=0>
 			<tr>
 				<td align=right>კატეგორია<font color="red">*</font>:</td>
@@ -388,6 +388,13 @@ function isNumber(e) {
 				<td align=right>ჰიდრავლიკა:</td>
 				<td align=left><input type=checkbox name=hydraulics></td>
 			</tr>
+			<tr>
+				<td align = right ><b>VIN კოდი</b>:
+				</td>
+				<td align =left ><input type=text name="vin"  id="vin" >
+				</td>
+
+			</tr>
 		</table>
 
 		<div align="center">
@@ -400,7 +407,7 @@ function isNumber(e) {
 		<table cellspacing=10 border=0>
 			<tr>
 				<td align=right width=250>I სურათი (640x480) :</td>
-				<td align=left><input type="FILE" name="photo1" size=80>
+				<td align=left><input type="FILE" name="photo1" size=80 >
 				</td>
 			</tr>
 			<tr>
@@ -432,31 +439,7 @@ function isNumber(e) {
 				<td align=left><input type="FILE" name="photo6" size=80>
 				</td>
 			</tr>
-
-			<tr>
-				<td align=right width=250>VII სურათი (640x480) :</td>
-				<td align=left><input type="FILE" name="photo7" size=80>
-				</td>
-			</tr>
-
-			<tr>
-				<td align=right width=250>VIII სურათი (640x480) :</td>
-				<td align=left><input type="FILE" name="photo8" size=80>
-				</td>
-			</tr>
-
-			<tr>
-				<td align=right width=250>IX სურათი (640x480) :</td>
-				<td align=left><input type="FILE" name="photo9" size=80>
-				</td>
-			</tr>
-
-			<tr>
-				<td align=right width=250>X სურათი (640x480) :</td>
-				<td align=left><input type="FILE" name="photo10" size=80>
-				</td>
-			</tr>
-
+			
 			<tr>
 				<td align="center"><br> <input id="adding" type="submit"
 					value="დამატება" disabled="disabled"/></td>

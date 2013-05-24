@@ -1,13 +1,14 @@
 package ge.iauto.data;
 
-import java.awt.Image;
 import java.io.Serializable;
-import java.util.ArrayList;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 @SuppressWarnings("serial")
@@ -104,8 +105,71 @@ public class Car implements Serializable{
 	
 	private String describtion;
 	
-	private ArrayList<Image> images;
+	private byte[] photo1;
+
+	private byte[] photo2;
 	
+	private byte[] photo3;
+	
+	private byte[] photo4;
+	
+	private byte[] photo5;
+	
+	private byte[] photo6;
+	@Lob
+	@Basic(fetch=FetchType.EAGER)
+	public byte[] getPhoto1() {
+		return photo1;
+	}
+	
+	public void setPhoto1(byte[] photo1) {
+		this.photo1 = photo1;
+	}
+	@Lob
+	@Basic(fetch=FetchType.LAZY)
+	public byte[] getPhoto2() {
+		return photo2;
+	}
+
+	public void setPhoto2(byte[] photo2) {
+		this.photo2 = photo2;
+	}
+	@Lob
+	@Basic(fetch=FetchType.LAZY)
+	public byte[] getPhoto3() {
+		return photo3;
+	}
+
+	public void setPhoto3(byte[] photo3) {
+		this.photo3 = photo3;
+	}
+	@Lob
+	@Basic(fetch=FetchType.LAZY)
+	public byte[] getPhoto4() {
+		return photo4;
+	}
+
+	public void setPhoto4(byte[] photo4) {
+		this.photo4 = photo4;
+	}
+	@Lob
+	@Basic(fetch=FetchType.LAZY)
+	public byte[] getPhoto5() {
+		return photo5;
+	}
+
+	public void setPhoto5(byte[] photo5) {
+		this.photo5 = photo5;
+	}
+	@Lob
+	@Basic(fetch=FetchType.LAZY)
+	public byte[] getPhoto6() {
+		return photo6;
+	}
+
+	public void setPhoto6(byte[] photo6) {
+		this.photo6 = photo6;
+	}
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	public long getId() {
@@ -380,13 +444,6 @@ public class Car implements Serializable{
 		this.describtion = describtion;
 	}
 
-	public ArrayList<Image> getImages() {
-		return images;
-	}
-
-	public void setImages(ArrayList<Image> images) {
-		this.images = images;
-	}
 	@ManyToOne
 	public User getUser() {
 		return user;
@@ -475,5 +532,4 @@ public class Car implements Serializable{
 	public void setCurrency(String currency) {
 		this.currency = currency;
 	}
-	
 }

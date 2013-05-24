@@ -25,4 +25,18 @@
     <servlet-name>home-page</servlet-name>
     <url-pattern>/home-page</url-pattern>
   </servlet-mapping>
+  
+  
+  
+  
+  
+  	<context-param> 
+    	<description>Location to store uploaded file</description> 
+    	<param-name>file-upload</param-name> 
+    	<param-value>
+        	 C:\Program Files\Apache Software Foundation\apache-tomcat-7.0.34\webapps\data\
+     	</param-value> 
+   </context-param>
+  
+  
 </web-app>

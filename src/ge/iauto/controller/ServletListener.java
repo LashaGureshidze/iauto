@@ -8,6 +8,7 @@ import ge.iauto.data.Category;
 import ge.iauto.data.Location;
 import ge.iauto.server.PersistenceProvider;
 import ge.iauto.server.PersistenceService;
+import ge.iauto.services.Reloader;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -54,6 +55,8 @@ public class ServletListener implements ServletContextListener {
         //======================load Categroies
         List<Category> lis = service.getCategories();
         arg0.getServletContext().setAttribute("categories", lis);
+        //================start up timer==============
+        Reloader.start(15 * 60); //15 წუთების რაოდენობა
     }
 
 	/**
@@ -61,6 +64,7 @@ public class ServletListener implements ServletContextListener {
      */
     public void contextDestroyed(ServletContextEvent arg0) {
         PersistenceProvider.closeEM();
+        Reloader.shutdown();
     }
 	
 }

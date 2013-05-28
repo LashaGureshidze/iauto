@@ -74,7 +74,7 @@
 		var newOption;
 		if (which == "მწარმოებელი" || which == "ყველა") {
 			newOption = document.createElement("option");
-			newOption.value = "0";
+			newOption.value = "all";
 			newOption.text = "მოდელი";
 			try {
 				cSelect.add(newOption); 
@@ -91,6 +91,14 @@
 		for(String name : car.keySet()){	
 		%>
 			if(which == "<%=name%>"){
+				newOption = document.createElement("option");
+				newOption.value = "all";
+				newOption.text = "მოდელი";
+				try {
+					cSelect.add(newOption); 
+				} catch (e) {
+					cSelect.appendChild(newOption);
+				}	
 			<%
 				for(CarModel model : models.get(car.get(name)).getModels()){
 			%>
@@ -122,14 +130,14 @@
 					<span class="sigane" style="width: 150px;">
 					 <select name="carmake_id" class="seleqtebi"
 						onChange="BoxChange(this);" tabindex="1">
-							<option value="-1" selected="selected">მწარმოებელი</option>
-							<option value="0">ყველა</option>
+							<option value="all" selected="selected">მწარმოებელი</option>
+							<option value="all">ყველა</option>
 							<%
 							@SuppressWarnings("unchecked")
 							HashMap<String,Long> cars = (HashMap<String,Long>)request.getServletContext().getAttribute("idByName");
 							for(String ids : cars.keySet()){
 							%>
-								<option value="<%=cars.get(ids)%>" id="<%=cars.get(ids)%>"><%=ids%></option>
+								<option value="<%=cars.get(ids)%>"><%=ids%></option>
 							<%}%>
 					</select>
 					</span> <span class="sigane" style="text-align: right; width: 200px;">

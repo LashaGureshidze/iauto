@@ -33,20 +33,30 @@ public class SearchServlet extends HttpServlet {
 		return res;
 	}
 	
+	public boolean isNumber(String st) {
+		try {
+			Integer.parseInt(st);
+		}
+		catch (NumberFormatException e) {
+			return false;
+		}
+		return true; 
+	}
+	
 	public String getPrice(HttpServletRequest request) {
 		String from = (String)request.getParameter("price_from");
 		String to = (String)request.getParameter("price_to");
 		String res = "";
-		if (!from.equals("დან") && from.length() > 0 && from.charAt(0) != '0')
+		if (isNumber(from) && from.length() > 0 && from.charAt(0) != '0')
 			res += " price >= '" + from + "' and";
-		if (!to.equals("მდე") && to.length() > 0 && to.charAt(0) != '0')
+		if (isNumber(to) && to.length() > 0 && to.charAt(0) != '0')
 			res += " price <= '" + to + "' and";
 		return res;
 	}
 	
 	public String getRequestParameter(HttpServletRequest request, String parameter) {
-		int selected = Integer.parseInt(request.getParameter(parameter));
-		if (selected <= 0) return "";
+		String selected = request.getParameter(parameter);
+		if (selected.equals("all") || selected.equals("0")) return "";
 		return " " + parameter + "='" + selected + "' and";
 	}
 	

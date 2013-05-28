@@ -164,7 +164,7 @@
 					</select>
 					</span> <span class="sigane" style="text-align: right;"> <select
 						name="gearbox" class="seleqtebi">
-							<option value="0">ტრანსმისია</option>
+							<option value="all">ტრანსმისია</option>
 							<option value="1">მექანიკური</option>
 							<option value="2">ავტომატიკა</option>
 							<option value="3">ტიპტრონიკი</option>
@@ -173,7 +173,7 @@
 					</span> <span class="sigane" style="text-align: right;"> <span>განბაჟებული
 							<select onChange="" name="ganbajebuli" id="customs_passed"
 							class="seleqtebi" style="width: 47px;">
-								<option value="-1"></option>
+								<option value="all"></option>
 								<option value="1">კი</option>
 								<option value="0">არა</option>
 						</select>
@@ -183,7 +183,7 @@
 				<div id="meore_rigi">
 					<span class="sigane" style="width: 150px;"> <select
 						name="carmodel_id" id="model" class="seleqtebi">
-							<option value="0" selected="selected">მოდელი</option>
+							<option value="all" selected="selected">მოდელი</option>
 					</select>
 					</span> <span class="sigane" style="text-align: right; width: 200px;">
 						<a style="">ფასი</a> <input type="text" name="price_from"
@@ -192,7 +192,7 @@
 						style="height: 22px; width: 69px;">
 					</span> <span class="sigane" style="text-align: right;"> <select
 						name="fuel" class="seleqtebi">
-							<option value="0">საწვავის ტიპი</option>
+							<option value="all">საწვავის ტიპი</option>
 							<option value="1">ელექტრო</option>
 							<option value="2">ბენზინი</option>
 							<option value="3">დიზელი</option>
@@ -204,7 +204,7 @@
 
 					</span> <span class="sigane" style="text-align: right;"> <span>მარჯვენა
 							საჭე <select name="rightsteeringwheel" class="seleqtebi" style="width: 47px;">
-								<option value="-1"></option>
+								<option value="all"></option>
 								<option value="1">კი</option>
 								<option value="0">არა</option>
 						</select>
@@ -214,7 +214,7 @@
 				<div id="mesame_rigi">
 					<span class="sigane" style="width: 150px;"> <select
 						name="category_id" class="seleqtebi">
-							<option value="0" selected="selected">კატეგორია</option>
+							<option value="all" selected="selected">კატეგორია</option>
 							<%
 							@SuppressWarnings("unchecked")
 							List<Category> categeory = (List<Category>) request
@@ -230,7 +230,7 @@
 					</select>
 					</span> <span class="sigane">
 					<select	name="location_id" class="seleqtebi">
-							<option value="0">მდებარეობა</option>
+							<option value="all">მდებარეობა</option>
 							<%
 							@SuppressWarnings("unchecked")
 							List<Location> locat = (List<Location>) request.getServletContext()
@@ -246,7 +246,7 @@
 					</select>
 					</span> <span class="sigane"> <select class="seleqtebi"
 						name="last_days">
-							<option value="0">განცხადებები</option>
+							<option value="all">განცხადებები</option>
 							<option value="1">ბოლო 1 საათი</option>
 							<option value="2">ბოლო 2 საათი</option>
 							<option value="3">ბოლო 3 საათი</option>

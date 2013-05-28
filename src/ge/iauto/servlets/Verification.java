@@ -46,6 +46,9 @@ public class Verification extends HttpServlet {
 		if(request.getParameter("email").isEmpty()){
 			added = true;
 			errorList.set(2,"შეიყვანეთ სწორი ელ-ფოსტა!");
+		}else if(service.existsEmail(request.getParameter("email"))){
+			added = true;
+			errorList.set(2,"ასეთი ელ-ფოსტა უკვე არსებობს!");
 		}
 		request.setAttribute("errorList", errorList);
 		if(added){

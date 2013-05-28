@@ -99,6 +99,14 @@ public class PersistenceService {
 	}
 	
 	@SuppressWarnings("unchecked")
+	public List<Car> getCars(String queryString){
+		EntityManager entitymanager = PersistenceProvider.createEM();
+		Query q = entitymanager.createQuery(queryString);
+		List<Car> result = q.getResultList();
+		return result;
+	}
+	
+	@SuppressWarnings("unchecked")
 	public List<CarMake> getCarMakes(){
 		EntityManager entitymanager = PersistenceProvider.createEM();
 		Query q = entitymanager.createQuery("FROM CarMake");

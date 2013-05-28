@@ -68,16 +68,14 @@
 <script type="text/javascript">
 	function BoxChange(selectObj) {
 		var idx = selectObj.selectedIndex;
-		var which = selectObj.options[idx].value;
-		if(which == ""){
-			var cSelect = document.getElementById("model");
-			while (cSelect.options.length > 0) {
-				cSelect.remove(0);
-			}
-			var newOption;
+		var which = selectObj.options[idx].text;
+		var cSelect = document.getElementById("model");
+		while (cSelect.options.length > 0) cSelect.remove(0);
+		var newOption;
+		if (which == "მწარმოებელი" || which == "ყველა") {
 			newOption = document.createElement("option");
-			newOption.value = "";
-			newOption.text = "ყველა";
+			newOption.value = "0";
+			newOption.text = "მოდელი";
 			try {
 				cSelect.add(newOption); 
 			} catch (e) {
@@ -85,12 +83,6 @@
 			}	
 			return;
 		}
-		var cSelect = document.getElementById("model");
-		while (cSelect.options.length > 0) {
-			cSelect.remove(0);
-		}
-		var newOption;
-		var cList = [];
 		<%
 		@SuppressWarnings("unchecked")
 		HashMap<String,Long> car = (HashMap<String,Long>)request.getServletContext().getAttribute("idByName");
@@ -102,7 +94,14 @@
 			<%
 				for(CarModel model : models.get(car.get(name)).getModels()){
 			%>
-					cList.push("<%=model.getName()%>");
+					newOption = document.createElement("option");
+					newOption.value = "<%=model.getId()%>";
+					newOption.text = "<%=model.getName()%>";
+					try {
+						cSelect.add(newOption); 
+					} catch (e) {
+						cSelect.appendChild(newOption);
+					}
 			<%
 				}
 			%>		
@@ -110,16 +109,6 @@
 		<%
 		}
 		%>
-		for ( var i = 0; i < cList.length; i++) {
-			newOption = document.createElement("option");
-			newOption.value = cList[i];
-			newOption.text = cList[i];
-			try {
-				cSelect.add(newOption); 
-			} catch (e) {
-				cSelect.appendChild(newOption);
-			}
-		}
 	}
 </script>
 
@@ -131,22 +120,22 @@
 			<div id="gamochenili">
 				<div id="pirveli_rigi">
 					<span class="sigane" style="width: 150px;">
-					 <select name="man_id" class="seleqtebi"
+					 <select name="carmake_id" class="seleqtebi"
 						onChange="BoxChange(this);" tabindex="1">
-							<option value="" selected="selected">მწარმოებელი</option>
-							<option value="">ყველა</option>
+							<option value="-1" selected="selected">მწარმოებელი</option>
+							<option value="0">ყველა</option>
 							<%
 							@SuppressWarnings("unchecked")
 							HashMap<String,Long> cars = (HashMap<String,Long>)request.getServletContext().getAttribute("idByName");
 							for(String ids : cars.keySet()){
 							%>
-								<option value="<%=ids%>" id="<%=cars.get(ids)%>"><%=ids%></option>
+								<option value="<%=cars.get(ids)%>" id="<%=cars.get(ids)%>"><%=ids%></option>
 							<%}%>
 					</select>
 					</span> <span class="sigane" style="text-align: right; width: 200px;">
 						<a style="margin-left: -16px;">წელი</a> <select name="year_from"
 						tabindex="4" class="seleqtebi" style="width: 75px;">
-							<option>დან</option>
+							<option value="0">დან</option>
 							<%
 								for (int k = 1940; k <= 2013; k++) {
 							%>
@@ -156,7 +145,7 @@
 							%>
 					</select> <select name="year" tabindex="5" class="seleqtebi"
 						style="width: 75px;">
-							<option>მდე</option>
+							<option value="1">მდე</option>
 							<%
 								for (int k = 1940; k <= 2013; k++) {
 							%>
@@ -166,27 +155,27 @@
 							%>
 					</select>
 					</span> <span class="sigane" style="text-align: right;"> <select
-						name="gear_type" class="seleqtebi">
-							<option value="">ტრანსმისია</option>
+						name="gearbox" class="seleqtebi">
+							<option value="0">ტრანსმისია</option>
 							<option value="1">მექანიკური</option>
 							<option value="2">ავტომატიკა</option>
 							<option value="3">ტიპტრონიკი</option>
 							<option value="4">ავტ. ან ტიპტ.</option>
 					</select>
 					</span> <span class="sigane" style="text-align: right;"> <span>განბაჟებული
-							<select onChange="" name="customs_passed" id="customs_passed"
+							<select onChange="" name="ganbajebuli" id="customs_passed"
 							class="seleqtebi" style="width: 47px;">
-								<option></option>
+								<option value="-1"></option>
 								<option value="1">კი</option>
-								<option value="2">არა</option>
+								<option value="0">არა</option>
 						</select>
 					</span>
 					</span>
 				</div>
 				<div id="meore_rigi">
 					<span class="sigane" style="width: 150px;"> <select
-						name="model" id="model" class="seleqtebi">
-							<option value="" selected="selected">მოდელი</option>
+						name="carmodel_id" id="model" class="seleqtebi">
+							<option value="0" selected="selected">მოდელი</option>
 					</select>
 					</span> <span class="sigane" style="text-align: right; width: 200px;">
 						<a style="">ფასი</a> <input type="text" name="price_from"
@@ -194,7 +183,7 @@
 						name="price_to" tabindex="7" value="მდე"
 						style="height: 22px; width: 69px;">
 					</span> <span class="sigane" style="text-align: right;"> <select
-						name="fuel_type" class="seleqtebi">
+						name="fuel" class="seleqtebi">
 							<option value="0">საწვავის ტიპი</option>
 							<option value="1">ელექტრო</option>
 							<option value="2">ბენზინი</option>
@@ -206,10 +195,10 @@
 					</select>
 
 					</span> <span class="sigane" style="text-align: right;"> <span>მარჯვენა
-							საჭე <select name="right_wheel" class="seleqtebi" style="width: 47px;">
-								<option></option>
+							საჭე <select name="rightsteeringwheel" class="seleqtebi" style="width: 47px;">
+								<option value="-1"></option>
 								<option value="1">კი</option>
-								<option value="2">არა</option>
+								<option value="0">არა</option>
 						</select>
 					</span>
 					</span>
@@ -217,7 +206,7 @@
 				<div id="mesame_rigi">
 					<span class="sigane" style="width: 150px;"> <select
 						name="category_id" class="seleqtebi">
-							<option value="" selected="selected">კატეგორია</option>
+							<option value="0" selected="selected">კატეგორია</option>
 							<%
 							@SuppressWarnings("unchecked")
 							List<Category> categeory = (List<Category>) request
@@ -232,7 +221,8 @@
 							%>
 					</select>
 					</span> <span class="sigane">
-					<select	name="location" class="seleqtebi">
+					<select	name="location_id" class="seleqtebi">
+							<option value="0">მდებარეობა</option>
 							<%
 							@SuppressWarnings("unchecked")
 							List<Location> locat = (List<Location>) request.getServletContext()
@@ -248,7 +238,7 @@
 					</select>
 					</span> <span class="sigane"> <select class="seleqtebi"
 						name="last_days">
-							<option value="">განცხადებები</option>
+							<option value="0">განცხადებები</option>
 							<option value="1">ბოლო 1 საათი</option>
 							<option value="2">ბოლო 2 საათი</option>
 							<option value="3">ბოლო 3 საათი</option>

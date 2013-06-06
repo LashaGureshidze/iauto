@@ -7,7 +7,6 @@ import ge.iauto.server.PersistenceService;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -16,7 +15,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -103,7 +101,7 @@ public class AddCar extends HttpServlet {
 			            // fi is ordinary input field
 					}else{
 						String fieldName = fi.getFieldName();
-						String parameter = fi.getString();
+						String parameter = new String(fi.getString().getBytes("iso-8859-1"),"UTF-8");
 						if(fieldName.equals("category_id")){
 							car.setCategory(service.findCategory(Long.valueOf(parameter)));
 						}else if(fieldName.equals("man_id")){
@@ -184,6 +182,7 @@ public class AddCar extends HttpServlet {
 							car.setHydraulics(true);
 						}else if(fieldName.equals("discription")){
 							car.setDescribtion(parameter);
+							System.out.println(car.getDescribtion());
 						}else if(fieldName.equals("vin")){
 							car.setVincode(parameter);
 						}

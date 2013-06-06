@@ -1,3 +1,4 @@
+<%@ page language="java" pageEncoding="utf-8" contentType="text/html; charset=UTF-8"%>
 <%@page import="ge.iauto.data.Location"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="ge.iauto.data.Category"%>
@@ -5,8 +6,7 @@
 <%@page import="ge.iauto.data.CarModel"%>
 <%@page import="ge.iauto.data.CarMake"%>
 <%@page import="java.util.HashMap"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%
@@ -128,7 +128,7 @@ function isNumber(e) {
 </script>
 
 <body>
-	<form action="AddCar" method="post" enctype="multipart/form-data">
+	<form action="AddCar" method="post" enctype="multipart/form-data" acceptcharset="UTF-8">
 		<table width=800 cellspacing=3 border=0>
 			<tr>
 				<td align=right>კატეგორია<font color="red">*</font>:</td>

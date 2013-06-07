@@ -1,4 +1,4 @@
-package ge.iauto.data;
+package ge.iauto.server.model;
 
 import java.io.Serializable;
 

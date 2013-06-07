@@ -1,10 +1,10 @@
 <%@ page language="java" pageEncoding="utf-8" contentType="text/html; charset=UTF-8"%>
-<%@page import="ge.iauto.data.Location"%>
+<%@page import="ge.iauto.server.model.Location"%>
 <%@page import="java.util.Iterator"%>
-<%@page import="ge.iauto.data.Category"%>
+<%@page import="ge.iauto.server.model.Category"%>
 <%@page import="java.util.List"%>
-<%@page import="ge.iauto.data.CarModel"%>
-<%@page import="ge.iauto.data.CarMake"%>
+<%@page import="ge.iauto.server.model.CarModel"%>
+<%@page import="ge.iauto.server.model.CarMake"%>
 <%@page import="java.util.HashMap"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

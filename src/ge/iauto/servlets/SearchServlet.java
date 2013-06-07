@@ -1,7 +1,8 @@
 package ge.iauto.servlets;
 
-import ge.iauto.data.Car;
 import ge.iauto.server.PersistenceService;
+import ge.iauto.server.model.Car;
+import ge.iauto.server.model.SearchData;
 
 import java.io.IOException;
 import java.util.List;
@@ -21,72 +22,62 @@ public class SearchServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
-	}
-	
-	public String getYear(HttpServletRequest request) {
-		int from = Integer.parseInt(request.getParameter("year_from"));
-		int to = Integer.parseInt(request.getParameter("year"));
-		String res = "";
-		if (from != 0) res += " year >= '" + from + "' and";
-		if (to != 1) res += " year <= '" + to + "' and";
-		return res;
-	}
-	
-	public boolean isNumber(String st) {
-		try {
-			Integer.parseInt(st);
+		SearchData data = new SearchData();
+		if(!request.getParameter("carmake_id").isEmpty()) {
+			data.put("carmake_id", request.getParameter("carmake_id"));
 		}
-		catch (NumberFormatException e) {
-			return false;
+		if(!request.getParameter("year_from").isEmpty()) {
+			data.put("year_from", request.getParameter("year_from"));
 		}
-		return true; 
-	}
-	
-	public String getPrice(HttpServletRequest request) {
-		String from = (String)request.getParameter("price_from");
-		String to = (String)request.getParameter("price_to");
-		String res = "";
-		if (isNumber(from) && from.length() > 0 && from.charAt(0) != '0')
-			res += " price >= '" + from + "' and";
-		if (isNumber(to) && to.length() > 0 && to.charAt(0) != '0')
-			res += " price <= '" + to + "' and";
-		return res;
-	}
-	
-	public String getRequestParameter(HttpServletRequest request, String parameter) {
-		String selected = request.getParameter(parameter);
-		if (selected.equals("all") || selected.equals("0")) return "";
-		return " " + parameter + "='" + selected + "' and";
-	}
-	
-	public String getUploadDate(HttpServletRequest request) {
-		return "";
-	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String queryString = "FROM Car WHERE";
-		queryString += getRequestParameter(request, "carmake_id");
-		queryString += getRequestParameter(request, "carmodel_id");
-		queryString += getRequestParameter(request, "category_id");
-		queryString += getYear(request);
-		queryString += getPrice(request);
-		queryString += getRequestParameter(request, "location_id");
-		queryString += getRequestParameter(request, "gearbox");
-		queryString += getRequestParameter(request, "fuel");
-		queryString += getUploadDate(request);
-		queryString += getRequestParameter(request, "ganbajebuli");
-		queryString += getRequestParameter(request, "rightsteeringwheel");
-		
-		int n = queryString.length();
-		if (queryString.substring(n - 5).equals("WHERE")) queryString = queryString.substring(0, n - 6);
-		else if (queryString.substring(n - 3).equals("and")) queryString = queryString.substring(0, n - 4);
+		if(!request.getParameter("year_to").isEmpty()) {
+			data.put("year_to", request.getParameter("year_to"));
+		}
+		if(!request.getParameter("gearbox").isEmpty()) {
+			data.put("gearbox", request.getParameter("gearbox"));
+		}
+		if(!request.getParameter("ganbajebuli").isEmpty()) {
+			data.put("ganbajebuli", request.getParameter("ganbajebuli"));
+		}
+		if(!request.getParameter("carmodel_id").isEmpty()) {
+			data.put("carmodel_id", request.getParameter("carmodel_id"));
+		}
+		if(!request.getParameter("price_from").isEmpty()) {
+			try {
+				Integer.parseInt(request.getParameter("price_from"));
+				data.put("price_from", request.getParameter("price_from"));
+			}catch (Exception e){
+			}
+		}
+		if(!request.getParameter("price_to").isEmpty()) {
+			try {
+				Integer.parseInt(request.getParameter("price_to"));
+				data.put("price_to", request.getParameter("price_to"));
+			}catch (Exception e){
+			}
+		}
+		if(!request.getParameter("rightsteeringwheel").isEmpty()) {
+			data.put("rightsteeringwheel", request.getParameter("rightsteeringwheel"));
+		}
+		if(!request.getParameter("fuel").isEmpty()) {
+			data.put("fuel", request.getParameter("fuel"));
+		}
+		if(!request.getParameter("category_id").isEmpty()) {
+			data.put("category_id", request.getParameter("category_id"));
+		}
+		if(!request.getParameter("location_id").isEmpty()) {
+			data.put("location_id", request.getParameter("location_id"));
+		}
 		
 		PersistenceService service = new PersistenceService();
-		List<Car> carList = service.getCars(queryString);
-		request.setAttribute("carList", carList);
-		System.out.println(queryString);
-		request.getRequestDispatcher("show-search.jsp").forward(request, response);
+		List<Car> result = service.loadCars(data, 0, 100);	//აქ გადაეცემა შესაბამისად რომელი ინდეხიდან გინდა, და რამდენი გინდა
+		for (Car car : result) {
+			//TODO
+		}
+	}
+	
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 	}
 
 }

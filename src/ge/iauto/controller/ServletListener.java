@@ -3,11 +3,11 @@ package ge.iauto.controller;
 import java.util.HashMap;
 import java.util.List;
 
-import ge.iauto.data.CarMake;
-import ge.iauto.data.Category;
-import ge.iauto.data.Location;
 import ge.iauto.server.PersistenceProvider;
 import ge.iauto.server.PersistenceService;
+import ge.iauto.server.model.CarMake;
+import ge.iauto.server.model.Category;
+import ge.iauto.server.model.Location;
 import ge.iauto.services.Reloader;
 
 import javax.servlet.ServletContextEvent;

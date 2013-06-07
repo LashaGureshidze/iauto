@@ -25,30 +25,23 @@
     <servlet-name>home-page</servlet-name>
     <url-pattern>/home-page</url-pattern>
   </servlet-mapping>
-  
-  	<filter>
-		<filter-name>EncodingFilter</filter-name>
-		<filter-class>ge.iauto.controller.EncodingFilter</filter-class>
-			<init-param>
-				<param-name>encoding</param-name>
-				<param-value>UTF-8</param-value>
-			</init-param>
-	</filter>
-
-	<filter-mapping>
-		<filter-name>EncodingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-  
-  
-  
-  	<context-param> 
-    	<description>Location to store uploaded file</description> 
-    	<param-name>file-upload</param-name> 
-    	<param-value>
+  <filter>
+    <filter-name>EncodingFilter</filter-name>
+    <filter-class>ge.iauto.controller.EncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>EncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <context-param>
+    <description>Location to store uploaded file</description>
+    <param-name>file-upload</param-name>
+    <param-value>
         	 C:\Program Files\Apache Software Foundation\apache-tomcat-7.0.34\webapps\data\
-     	</param-value> 
-   </context-param>
-  
-  
+     	</param-value>
+  </context-param>
 </web-app>

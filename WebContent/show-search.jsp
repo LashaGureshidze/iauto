@@ -14,9 +14,9 @@
 	<table align="center">
 		<%
 		List<Car> list = (List<Car>)request.getAttribute("carList");
-		for(Car car : list){	
+		for(int i = 0 ; i < list.size() ; i++){	
 		%>
-			<tr><td><a href="'/IAUTO/ShowCar?id='+<%=car.getId()%>"><img src="'data:image/png;base64,'+<%=car.getPhoto1()%>"></a></td></tr>
+			<tr><td><a href="'/IAUTO/ShowCar?id='+<%=list.get(i).getId()%>"><img src="'data:image/png;base64,'+<%=list.get(i).getPhoto1()%>"></a></td></tr>
 		<%
 		}
 		%>

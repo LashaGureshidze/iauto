@@ -104,10 +104,10 @@ public class AddCar extends HttpServlet {
 						String parameter = new String(fi.getString().getBytes("iso-8859-1"),"UTF-8");
 						if(fieldName.equals("category_id")){
 							car.setCategory(service.findCategory(Long.valueOf(parameter)));
-						}else if(fieldName.equals("man_id")){
-						//	car.setCarmake(service.findCarMake(Long.valueOf(parameter)));
-						}else if(fieldName.equals("model")){
-						//	car.setCarmodel(service.findCarModel(Long.valueOf(parameter)));
+						}else if(fieldName.equals("carmake_id")){
+							car.setCarmake(service.findCarMake(Long.valueOf(parameter)));
+						}else if(fieldName.equals("model_id")){
+							car.setCarmodel(service.findCarModel(Long.valueOf(parameter)));
 						}else if(fieldName.equals("location_id")){
 							car.setLocation(service.findLocation(Long.valueOf(parameter)));
 						}else if(fieldName.equals("prod_year")){

@@ -74,8 +74,8 @@
 		var newOption;
 		if (which == "მწარმოებელი" || which == "ყველა") {
 			newOption = document.createElement("option");
-			newOption.value = "all";
-			newOption.text = "მოდელი";
+			newOption.value = "0";
+			newOption.text = "მწარმოებელი";
 			try {
 				cSelect.add(newOption); 
 			} catch (e) {
@@ -92,7 +92,7 @@
 		%>
 			if(which == "<%=name%>"){
 				newOption = document.createElement("option");
-				newOption.value = "all";
+				newOption.value = "0";
 				newOption.text = "მოდელი";
 				try {
 					cSelect.add(newOption); 
@@ -122,7 +122,7 @@
 
 </head>
 <body>
-	<form action="SearchServlet" method="post">
+	<form action="SearchServlet" method="get">
 		<input value="1" name="search_tp" type="hidden">
 		<div id="axali_dzebna">
 			<div id="gamochenili">
@@ -181,8 +181,8 @@
 					</span>
 				</div>
 				<div id="meore_rigi">
-					<span class="sigane" style="width: 150px;"> <select
-						name="carmodel_id" id="model" class="seleqtebi">
+					<span class="sigane" style="width: 150px;"> 
+					<select	name="carmodel_id" id="model" class="seleqtebi">
 							<option value="all" selected="selected">მოდელი</option>
 					</select>
 					</span> <span class="sigane" style="text-align: right; width: 200px;">

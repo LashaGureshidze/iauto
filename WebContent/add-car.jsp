@@ -43,12 +43,12 @@
 <script type="text/javascript">
 	function BoxChange(selectObj) {
 		var idx = selectObj.selectedIndex;
-		var which = selectObj.options[idx].value;
+		var which = selectObj.options[idx].text;
+		var cSelect = document.getElementById("model_id");
+		while (cSelect.options.length > 0) {
+			cSelect.remove(0);
+		}
 		if(which == ""){
-			var cSelect = document.getElementById("model");
-			while (cSelect.options.length > 0) {
-				cSelect.remove(0);
-			}
 			var newOption;
 			newOption = document.createElement("option");
 			newOption.value = "";
@@ -61,12 +61,7 @@
 			checkStarFields();
 			return;
 		}
-		var cSelect = document.getElementById("model");
-		while (cSelect.options.length > 0) {
-			cSelect.remove(0);
-		}
 		var newOption;
-		var cList = [];
 		<%
 		@SuppressWarnings("unchecked")
 		HashMap<String,Long> car = (HashMap<String,Long>)request.getServletContext().getAttribute("idByName");
@@ -78,7 +73,14 @@
 			<%
 				for(CarModel model : models.get(car.get(name)).getModels()){
 			%>
-					cList.push("<%=model.getName()%>");
+				newOption = document.createElement("option");
+				newOption.value = "<%=model.getId()%>";
+				newOption.text = "<%=model.getName()%>";
+				try {
+					cSelect.add(newOption); 
+				} catch (e) {
+					cSelect.appendChild(newOption);
+				}
 			<%
 				}
 			%>		
@@ -86,25 +88,15 @@
 		<%
 		}
 		%>
-		for ( var i = 0; i < cList.length; i++) {
-			newOption = document.createElement("option");
-			newOption.value = cList[i];
-			newOption.text = cList[i];
-			try {
-				cSelect.add(newOption); 
-			} catch (e) {
-				cSelect.appendChild(newOption);
-			}
-		}
-		checkStarFields();
+			checkStarFields();
 	}
 </script>
 
 <script type="text/javascript">
 function checkStarFields() {
 	var category = document.getElementById('category_id').options[document.getElementById('category_id').selectedIndex].value;
-	var make = document.getElementById('man_id').options[document.getElementById('man_id').selectedIndex].value;
-	var model = document.getElementById('model').options[document.getElementById('model').selectedIndex].value;
+	var make = document.getElementById('carmake_id').options[document.getElementById('carmake_id').selectedIndex].value;
+	var model = document.getElementById('model_id').options[document.getElementById('model_id').selectedIndex].value;
 	var location = document.getElementById('location_id').options[document.getElementById('location_id').selectedIndex].value;
 	var year = document.getElementById('prod_year').options[document.getElementById('prod_year').selectedIndex].value;
 	var month = document.getElementById('prod_month').options[document.getElementById('prod_month').selectedIndex].value;
@@ -151,14 +143,14 @@ function isNumber(e) {
 			<tr>
 				<td align=right>მწარმოებელი<font color="red">*</font>:</td>
 				<td align=left>
-				<select name="man_id" id="man_id" onChange="BoxChange(this);" tabindex="1">
+				<select name="carmake_id" id="carmake_id" onChange="BoxChange(this);" tabindex="1">
 						<option value="" selected="selected"></option>
 							<%
 							@SuppressWarnings("unchecked")
 							HashMap<String,Long> cars = (HashMap<String,Long>)request.getServletContext().getAttribute("idByName");
 							for(String ids : cars.keySet()){
 							%>
-								<option value="<%=ids%>" id="<%=cars.get(ids)%>"><%=ids%></option>
+								<option value="<%=cars.get(ids)%>" ><%=ids%></option>
 							<%}%>
 				</select></td>
 				<td align="right">ფასი<font color="red">*</font>:</td>
@@ -172,9 +164,11 @@ function isNumber(e) {
 			</tr>
 			<tr>
 				<td align="right">მოდელი<font color="red">*</font>:</td>
-				<td align="left"><select name="model" id="model" class="seleqtebi" onchange="checkStarFields()">
+				<td align="left">
+					<select name="model_id" id="model_id" class="seleqtebi" onchange="checkStarFields()">
 							<option value="" selected="selected"></option>
-					</select> <input name="model" size="10" maxlength="10" /></td>
+					</select> 
+				</td>
 				<td align="right">გაცვლა:</td>
 				<td align="left"><input type="checkbox" name="changable" /></td>
 			</tr>

@@ -41,7 +41,7 @@
     <description>Location to store uploaded file</description>
     <param-name>file-upload</param-name>
     <param-value>
-        	 C:\Program Files\Apache Software Foundation\apache-tomcat-7.0.34\webapps\data\
+        	 D:\iauto\data\
      	</param-value>
   </context-param>
 </web-app>

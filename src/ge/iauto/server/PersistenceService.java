@@ -8,6 +8,7 @@ import ge.iauto.server.model.Location;
 import ge.iauto.server.model.SearchData;
 import ge.iauto.server.model.User;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -253,4 +254,33 @@ public class PersistenceService {
 		
 		return qr.getResultList();
 	}
+	
+	public Car findCar(long id){
+		EntityManager entitymanager = PersistenceProvider.createEM();
+		Car car = entitymanager.find(Car.class, id);
+		entitymanager.close();
+		return car;
+	}
+	
+	public void updateCar(Car car){
+		EntityManager entitymanager = PersistenceProvider.createEM();
+		entitymanager.getTransaction().begin();
+    	entitymanager.merge(car);
+    	entitymanager.getTransaction().commit();
+    	entitymanager.close();
+	}
+	
+	public void updateCarUploadDate(long id){
+		EntityManager entitymanager = PersistenceProvider.createEM();
+		Car car = entitymanager.find(Car.class, id);
+		if (car != null) {
+			car.setUploaddate(new Date());
+			entitymanager.getTransaction().begin();
+	    	entitymanager.merge(car);
+	    	entitymanager.getTransaction().commit();
+		}
+		entitymanager.close();
+	}
+	
+	
 }

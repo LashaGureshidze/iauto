@@ -7,6 +7,7 @@ import ge.iauto.server.model.User;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -46,6 +47,7 @@ public class AddCar extends HttpServlet {
 			PersistenceService service = new PersistenceService();
 			Car car = new Car();
 			car.setUser((User)request.getSession().getAttribute("user"));
+			car.setUploaddate(new Date());
 			
 			File file;
 			String filePath = getServletContext().getInitParameter("file-upload");
@@ -63,7 +65,6 @@ public class AddCar extends HttpServlet {
 			            String fileName = fi.getName();
 			            long sizeInBytes = fi.getSize();
 			         // Write the file
-			            System.out.println("photo size:..." + sizeInBytes);
 			            if(!fileName.isEmpty() && sizeInBytes <= 160000){
 			            	if( fileName.lastIndexOf("\\") >= 0 ){
 			            		file = new File( filePath + fileName.substring( fileName.lastIndexOf("\\"))) ;
@@ -182,7 +183,6 @@ public class AddCar extends HttpServlet {
 							car.setHydraulics(true);
 						}else if(fieldName.equals("discription")){
 							car.setDescribtion(parameter);
-							System.out.println(car.getDescribtion());
 						}else if(fieldName.equals("vin")){
 							car.setVincode(parameter);
 						}

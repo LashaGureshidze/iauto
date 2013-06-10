@@ -69,10 +69,9 @@ public class SearchServlet extends HttpServlet {
 		}
 		
 		PersistenceService service = new PersistenceService();
-		List<Car> result = service.loadCars(data, 0, 100);	//აქ გადაეცემა შესაბამისად რომელი ინდეხიდან გინდა, და რამდენი გინდა
-		for (Car car : result) {
-			//TODO
-		}
+		List<Car> result = service.loadCars(data, 0, 100);	//áƒ�áƒ¥ áƒ’áƒ�áƒ“áƒ�áƒ”áƒªáƒ”áƒ›áƒ� áƒ¨áƒ”áƒ¡áƒ�áƒ‘áƒ�áƒ›áƒ˜áƒ¡áƒ�áƒ“ áƒ áƒ�áƒ›áƒ”áƒšáƒ˜ áƒ˜áƒœáƒ“áƒ”áƒ®áƒ˜áƒ“áƒ�áƒœ áƒ’áƒ˜áƒœáƒ“áƒ�, áƒ“áƒ� áƒ áƒ�áƒ›áƒ“áƒ”áƒœáƒ˜ áƒ’áƒ˜áƒœáƒ“áƒ�
+		request.setAttribute("carList", result);
+		request.getRequestDispatcher("show-search.jsp").forward(request, response);
 	}
 	
 	

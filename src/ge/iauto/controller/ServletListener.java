@@ -1,15 +1,14 @@
 package ge.iauto.controller;
 
+import java.util.HashMap;
+import java.util.List;
+
 import ge.iauto.server.PersistenceProvider;
 import ge.iauto.server.PersistenceService;
 import ge.iauto.server.model.CarMake;
 import ge.iauto.server.model.Category;
 import ge.iauto.server.model.Location;
-import ge.iauto.services.CarExpirationTimeChecker;
-import ge.iauto.services.CurrencyAutoUpdaterService;
-
-import java.util.HashMap;
-import java.util.List;
+import ge.iauto.services.Reloader;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -57,8 +56,7 @@ public class ServletListener implements ServletContextListener {
         List<Category> lis = service.getCategories();
         arg0.getServletContext().setAttribute("categories", lis);
         //================start up timer==============
-        CurrencyAutoUpdaterService.start(15 * 60); //15 წუთების რაოდენობა
-        CarExpirationTimeChecker.start(24 * 60 * 60);
+        Reloader.start(15 * 60); //15 წუთების რაოდენობა
     }
 
 	/**
@@ -66,8 +64,7 @@ public class ServletListener implements ServletContextListener {
      */
     public void contextDestroyed(ServletContextEvent arg0) {
         PersistenceProvider.closeEM();
-        CurrencyAutoUpdaterService.shutdown();
-        CarExpirationTimeChecker.shutdown();
+        Reloader.shutdown();
     }
 	
 }

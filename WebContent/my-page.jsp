@@ -45,7 +45,6 @@ a:hover,a:active {
 		style="font-family: verdana; padding: 5px; border-radius: 5px; border: 2px solid #3399FF;">
 		<table>
 			<tr align="center">
-
 				<td width="25%" valign="top" align="left"><a
 					href="add-cars.jsp">განცხადების დამატება</a> <br> <a
 					href="my-cars.jsp">ჩემი განცხადებები</a> <br> <a

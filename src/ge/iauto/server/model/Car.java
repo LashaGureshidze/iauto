@@ -1,7 +1,6 @@
 package ge.iauto.server.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
@@ -18,7 +17,7 @@ public class Car implements Serializable{
 	
 	private long id;
 	
-	private Date uploaddate;
+	private String uploaddate;
 	
 	private User user;
 	
@@ -117,16 +116,6 @@ public class Car implements Serializable{
 	private byte[] photo5;
 	
 	private byte[] photo6;
-	
-	public Car() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	public Car(long id, Date uploaddate) {
-		this.id = id;
-		this.uploaddate = uploaddate;
-	}
-	
 	@Lob
 	@Basic(fetch=FetchType.EAGER)
 	public byte[] getPhoto1() {
@@ -504,6 +493,14 @@ public class Car implements Serializable{
 		this.carmodel = carmodel;
 	}
 
+	public String getUploaddate() {
+		return uploaddate;
+	}
+
+	public void setUploaddate(String uploaddate) {
+		this.uploaddate = uploaddate;
+	}
+
 	public int getYear() {
 		return year;
 	}
@@ -534,13 +531,5 @@ public class Car implements Serializable{
 
 	public void setCurrency(String currency) {
 		this.currency = currency;
-	}
-
-	public Date getUploaddate() {
-		return uploaddate;
-	}
-
-	public void setUploaddate(Date uploaddate) {
-		this.uploaddate = uploaddate;
 	}
 }

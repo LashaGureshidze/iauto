@@ -58,7 +58,7 @@ public class ServletListener implements ServletContextListener {
         arg0.getServletContext().setAttribute("categories", lis);
         //================start up timer==============
         CurrencyAutoUpdaterService.start(15 * 60); //15 წუთების რაოდენობა
-        CarExpirationTimeChecker.start(60 * 60 * 24);
+        CarExpirationTimeChecker.start(24 * 60 * 60);
     }
 
 	/**

@@ -117,6 +117,16 @@ public class Car implements Serializable{
 	private byte[] photo5;
 	
 	private byte[] photo6;
+	
+	public Car() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Car(long id, Date uploaddate) {
+		this.id = id;
+		this.uploaddate = uploaddate;
+	}
+	
 	@Lob
 	@Basic(fetch=FetchType.EAGER)
 	public byte[] getPhoto1() {
